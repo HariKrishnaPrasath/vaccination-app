@@ -27,4 +27,5 @@ public class AdminController {
     public List<Patient> getAllUser(){
         return this.patientService.getAllUsers();
     }
+    //change
 }
