@@ -5,6 +5,8 @@ import com.jpa.vaccinationapp.patient.entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PatientServiceImple implements PatientService {
     @Autowired
@@ -13,4 +15,10 @@ public class PatientServiceImple implements PatientService {
     public Patient signIN(Patient patient) {
         return this.patientRepository.save(patient);
     }
+
+    @Override
+    public List<Patient> getAllUsers() {
+        return this.patientRepository.findAll();
+    }
+
 }
