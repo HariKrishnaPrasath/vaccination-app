@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-//by Senthuran
+
 @RestController
 public class AdminController {
     @Autowired
