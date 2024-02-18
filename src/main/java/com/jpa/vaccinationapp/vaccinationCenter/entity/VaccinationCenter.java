@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 
 import java.util.*;
 
+
+// changes made by gopinath
 @Entity
 public class VaccinationCenter {
     @Id
