@@ -22,7 +22,7 @@ public class Slot {
     @ManyToOne
     private VaccinationCenter vaccinationCenter;
 
-    @OneToMany(mappedBy = "vaccinationSlot")
+    @OneToMany
     private List<BookingDetails> appointments;
 
     public Slot(Long id, LocalDateTime startTime, LocalDateTime endTime,
