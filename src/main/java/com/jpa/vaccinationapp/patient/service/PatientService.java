@@ -1,6 +1,6 @@
 package com.jpa.vaccinationapp.patient.service;
 
-import com.jpa.vaccinationapp.patient.entity.Patient;
+import com.jpa.vaccinationapp.patient.Patient;
 
 import java.util.List;
 

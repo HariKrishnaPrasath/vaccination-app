@@ -1,7 +1,7 @@
 package com.jpa.vaccinationapp.admin.service;
 
-import com.jpa.vaccinationapp.admin.entity.Admin;
-import com.jpa.vaccinationapp.admin.exception.AdminException;
+import com.jpa.vaccinationapp.admin.Admin;
+import com.jpa.vaccinationapp.admin.AdminException;
 
 import java.util.List;
 

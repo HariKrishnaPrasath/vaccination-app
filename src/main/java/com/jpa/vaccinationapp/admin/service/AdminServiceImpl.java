@@ -1,8 +1,8 @@
 package com.jpa.vaccinationapp.admin.service;
 
-import com.jpa.vaccinationapp.admin.dao.AdminRepository;
-import com.jpa.vaccinationapp.admin.entity.Admin;
-import com.jpa.vaccinationapp.admin.exception.AdminException;
+import com.jpa.vaccinationapp.admin.AdminRepository;
+import com.jpa.vaccinationapp.admin.Admin;
+import com.jpa.vaccinationapp.admin.AdminException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
