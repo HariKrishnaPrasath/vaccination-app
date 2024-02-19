@@ -22,12 +22,7 @@ public class Slot {
     private VaccinationCenter vaccinationCenter;
 
     @OneToMany
-<<<<<<< HEAD:src/main/java/com/jpa/vaccinationapp/slot/entity/Slot.java
-    private List<BookingDetails> appointments;
-=======
     private List<Appointment> appointments;
->>>>>>> a6fa418219e2c35b74a3a4ceab6f5fa956b7e1d6:src/main/java/com/jpa/vaccinationapp/slot/Slot.java
-
     public Slot(Long id, LocalDateTime startTime, LocalDateTime endTime,
                 Integer availableSlots, VaccinationCenter vaccinationCenter,
                 List<Appointment> appointments) {
