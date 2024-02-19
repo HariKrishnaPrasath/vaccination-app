@@ -12,19 +12,5 @@ import java.util.List;
 
 @RestController
 public class AdminController {
-    @Autowired
-    private PatientService patientService;
-    @PostMapping("admin/signup")
-    public String superAdminSignUp(@RequestBody Admin superAdmin) {
-        return null;
-    }
-    @PostMapping("user/signin")
-    public Patient signUserUsingEmailAndPassword(@RequestBody Patient patient) {
-        return this.patientService.signIN(patient);
-    }
-    @GetMapping("admin/users")
-    public List<Patient> getAllUser(){
-        return this.patientService.getAllUsers();
-    }
     //change
 }

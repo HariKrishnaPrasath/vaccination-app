@@ -19,6 +19,14 @@ public class Admin {
     @OneToOne
     private VaccinationCenter vaccinationCenter;
 
+    public Admin(String email, String phoneNumber, String adminName, String password, String adminType) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.adminName = adminName;
+        this.password = password;
+        this.adminType = adminType;
+    }
+
     public Admin() {
     }
 
