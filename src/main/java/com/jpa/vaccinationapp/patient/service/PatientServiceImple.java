@@ -1,7 +1,7 @@
 package com.jpa.vaccinationapp.patient.service;
 
-import com.jpa.vaccinationapp.patient.dao.PatientRepository;
-import com.jpa.vaccinationapp.patient.entity.Patient;
+import com.jpa.vaccinationapp.patient.PatientRepository;
+import com.jpa.vaccinationapp.patient.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
