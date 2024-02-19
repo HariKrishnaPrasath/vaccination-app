@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.bookingDetail.entity;
 
 import com.jpa.vaccinationapp.certificate.entity.Certificate;
+import com.jpa.vaccinationapp.slot.entity.Slot;
 import com.jpa.vaccinationapp.vaccinationCenter.entity.VaccinationCenter;
 import com.jpa.vaccinationapp.vaccine.entity.Vaccine;
 import com.jpa.vaccinationapp.patient.entity.Patient;
@@ -15,7 +16,7 @@ public class BookingDetails {
     private Integer bookingId;
     private Boolean vaccineStatus;
     @OneToOne
-    private Vaccine vaccine;
+    private Slot slot;
     @OneToOne
     private Certificate certificate;
     @ManyToOne
@@ -27,21 +28,21 @@ public class BookingDetails {
     public BookingDetails() {
     }
 
-    public BookingDetails(Integer bookingId, Boolean vaccineStatus, Vaccine vaccine, Certificate certificate,
+    public BookingDetails(Integer bookingId, Boolean vaccineStatus, Slot slot, Certificate certificate,
                           VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate) {
         this.bookingId = bookingId;
         this.vaccineStatus = vaccineStatus;
-        this.vaccine = vaccine;
+        this.slot = slot;
         this.certificate = certificate;
         this.vaccinationCenter = vaccinationCenter;
         this.patient = patient;
         this.bookingDate = bookingDate;
     }
 
-    public BookingDetails(Boolean vaccineStatus, Vaccine vaccine, Certificate certificate,
+    public BookingDetails(Boolean vaccineStatus, Slot slot, Certificate certificate,
                           VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate) {
         this.vaccineStatus = vaccineStatus;
-        this.vaccine = vaccine;
+        this.slot = slot;
         this.certificate = certificate;
         this.vaccinationCenter = vaccinationCenter;
         this.patient = patient;
@@ -64,12 +65,12 @@ public class BookingDetails {
         this.vaccineStatus = vaccineStatus;
     }
 
-    public Vaccine getVaccine() {
-        return vaccine;
+    public Slot getVaccine() {
+        return slot;
     }
 
-    public void setVaccine(Vaccine vaccine) {
-        this.vaccine = vaccine;
+    public void setVaccine(Slot slot) {
+        this.slot = slot;
     }
 
     public Certificate getCertificate() {
