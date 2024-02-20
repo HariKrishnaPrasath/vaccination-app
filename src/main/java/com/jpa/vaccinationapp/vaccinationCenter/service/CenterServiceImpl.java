@@ -1,9 +1,9 @@
 package com.jpa.vaccinationapp.vaccinationCenter.service;
 
 import com.jpa.vaccinationapp.admin.Admin;
-import com.jpa.vaccinationapp.slot.Slot;
-import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
+import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
+import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,20 @@ public class CenterServiceImpl implements CenterSerivce {
         }
         centerRepository.delete(center.get());
         return center.get();
+    }
+
+    @Override
+    public Center updateCenter(Center center, Admin admin) throws CenterException {
+        if(admin.getAdminType().equals("admin")){
+            String message=String.format("%d is not a super admin to update a centre",admin.getAdminId());
+            throw new CenterException(message);
+        }
+        Optional<Center>result= centerRepository.findById(center.getCenterId());
+        if(result.isEmpty()){
+            String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
+            throw new CenterException(message);
+        }
+        return centerRepository.save(result.get());
     }
 
     @Override
@@ -114,8 +128,8 @@ public class CenterServiceImpl implements CenterSerivce {
         }
         var center = Optional.ofNullable(centerRepository.findByPincode(pincode));
         if(center.get().isEmpty()){
-            String message=String.format("There's no such centre with the pincode: %s. Please check it and try again",
-                    pincode);
+            String message=String.format("There's no such centre with the pincode: %s. " +
+                    "Please check it and try again", pincode);
             throw new CenterException(message);
         }
         return center.get();
@@ -124,5 +138,22 @@ public class CenterServiceImpl implements CenterSerivce {
     @Override
     public List<Center> getAllCenter(){
         return centerRepository.findAll();
+    }
+
+    @Override
+    public Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws CenterException {
+        Optional<Center> result=centerRepository.findById(addressDTO.getCenterId());
+        if(result.isEmpty()){
+            String message=String.format("There is no such centre with ID to update the address: %d",
+                    addressDTO.getCenterId());
+            throw new CenterException(message);
+        }
+        Center center=result.get();
+        center.setAddress(addressDTO.getAddress());
+        center.setContactNumber(addressDTO.getContactNumber());
+        center.setPincode(addressDTO.getPincode());
+        center.setDistrict(addressDTO.getDistrict());
+        center.setState(addressDTO.getState());
+        return centerRepository.save(center);
     }
 }
