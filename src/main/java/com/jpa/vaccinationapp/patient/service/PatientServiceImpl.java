@@ -6,8 +6,10 @@ import com.jpa.vaccinationapp.patient.Login;
 import com.jpa.vaccinationapp.patient.PatientException;
 import com.jpa.vaccinationapp.patient.PatientRepository;
 import com.jpa.vaccinationapp.patient.Patient;
-import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenter;
-import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenterRepository;
+import com.jpa.vaccinationapp.vaccinationCenter.Center;
+import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
+import com.jpa.vaccinationapp.vaccinationCenter.Center;
+import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import com.jpa.vaccinationapp.vaccine.VaccineException;
 import com.jpa.vaccinationapp.vaccine.VaccineRepository;
@@ -24,7 +26,7 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
     @Autowired
-    private VaccinationCenterRepository vaccinationCenterRepository;
+    private CenterRepository vaccinationCenterRepository;
     @Autowired
     private VaccineRepository vaccineRepository;
     @Override
@@ -37,7 +39,8 @@ public class PatientServiceImpl implements PatientService {
     public Patient logIn(Login login) throws PatientException {
         Optional<Patient> patient = this.patientRepository.findByEmail(login.getEmail());
         if(patient.isEmpty()) throw new PatientException("no user found");
-        if(!Objects.equals(login.getPassword(), patient.get().getPassword())) throw new PatientException("userid or password incorrect");
+        if(!Objects.equals(login.getPassword(), patient.get().getPassword())) throw new
+                PatientException("userid or password incorrect");
         return patient.get();
     }
     @Override
@@ -63,8 +66,8 @@ public class PatientServiceImpl implements PatientService {
     }
     //change exception to vaccination centre exception
     @Override
-    public List<VaccinationCenter> getAllCentres() throws PatientException {
-        List<VaccinationCenter> vaccinationCentersList = this.vaccinationCenterRepository.findAll();
+    public List<Center> getAllCentres() throws PatientException {
+        List<Center> vaccinationCentersList = this.vaccinationCenterRepository.findAll();
         if(vaccinationCentersList.isEmpty()) throw new PatientException("no vaccination centres available");
         return vaccinationCentersList;
     }
@@ -106,7 +109,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Appointment> getPatientAppointmentDetailsByCentre(Integer patientId, VaccinationCenter vaccinationCenter) throws PatientException {
+    public List<Appointment> getPatientAppointmentDetailsByCentre(Integer patientId, Center vaccinationCenter) throws PatientException {
         Optional<Patient> patient = this.patientRepository.findById(patientId);
         if(patient.isEmpty()) throw new PatientException("patient with id "+patientId+" not found");
         if(patient.get().getBookingDetails().isEmpty()) throw new PatientException("no booking done");
@@ -135,7 +138,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Certificate> getPatientCertificatesByCentre(Integer patientId, VaccinationCenter vaccinationCenter) throws PatientException {
+    public List<Certificate> getPatientCertificatesByCentre(Integer patientId, Center vaccinationCenter) throws PatientException {
         Optional<Patient> patient = this.patientRepository.findById(patientId);
         if(patient.isEmpty()) throw new PatientException("patient with id "+patientId+" not found");
         return patient.get().getBookingDetails().values().stream().filter((a)->a.getVaccinationCenter().equals(vaccinationCenter)).map((a)->a.getCertificate()).toList();

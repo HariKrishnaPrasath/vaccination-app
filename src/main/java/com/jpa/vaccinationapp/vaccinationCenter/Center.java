@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.*;
 
 @Entity
-public class VaccinationCenter {
+public class Center {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer centerId;
@@ -21,13 +21,13 @@ public class VaccinationCenter {
     @ManyToMany
     private Map<Integer, Vaccine> vaccineMap;
     @OneToMany//(mappedBy = "vaccinationCenter")
-    private Map<Integer, Slot> slots;
+    private Map<Integer, Slot> slots=new HashMap<>();
     @OneToOne
     private Admin admin;
 
-    public VaccinationCenter(){}
-    public VaccinationCenter(Integer centerId, String centerName, String address, String pincode, String district,
-                             String state, String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots, Admin admin) {
+    public Center(){}
+    public Center(Integer centerId, String centerName, String address, String pincode, String district,
+                  String state, String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots, Admin admin) {
         this.centerId = centerId;
         this.centerName = centerName;
         this.address = address;
@@ -40,8 +40,31 @@ public class VaccinationCenter {
         this.admin = admin;
     }
 
-    public VaccinationCenter(String centerName, String address, String pincode, String district, String state,
-                             String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots, Admin admin) {
+    public Center(String centerName, String address, String pincode, String district, String state,
+                  String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots) {
+        this.centerName = centerName;
+        this.address = address;
+        this.pincode = pincode;
+        this.district = district;
+        this.state = state;
+        this.contactNumber = contactNumber;
+        this.vaccineMap = vaccineMap;
+        this.slots = slots;
+    }
+
+    public Center(String centerName, String address, String pincode, String district, String state,
+                  String contactNumber, Map<Integer, Vaccine> vaccineMap) {
+        this.centerName = centerName;
+        this.address = address;
+        this.pincode = pincode;
+        this.district = district;
+        this.state = state;
+        this.contactNumber = contactNumber;
+        this.vaccineMap = vaccineMap;
+    }
+
+    public Center(String centerName, String address, String pincode, String district, String state,
+                  String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots, Admin admin) {
         this.centerName = centerName;
         this.address = address;
         this.pincode = pincode;

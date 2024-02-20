@@ -1,15 +1,9 @@
 package com.jpa.vaccinationapp.patient;
 
-import com.jpa.vaccinationapp.appointment.Appointment;
-import com.jpa.vaccinationapp.certificate.Certificate;
 import com.jpa.vaccinationapp.patient.service.PatientService;
-import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenter;
-import com.jpa.vaccinationapp.vaccine.Vaccine;
-import com.jpa.vaccinationapp.vaccine.VaccineException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
