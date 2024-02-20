@@ -1,6 +1,8 @@
 package com.jpa.vaccinationapp.admin;
 
+import com.jpa.vaccinationapp.patient.Login;
 import com.jpa.vaccinationapp.patient.Patient;
+import com.jpa.vaccinationapp.patient.PatientException;
 import com.jpa.vaccinationapp.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +21,12 @@ public class AdminController {
         return null;
     }
     @PostMapping("user/signin")
-    public Patient signUserUsingEmailAndPassword(@RequestBody Patient patient) {
-        return this.patientService.signIN(patient);
+    public Patient signUserUsingEmailAndPassword(@RequestBody Login login) throws PatientException {
+        return this.patientService.logIn(login);
     }
     @GetMapping("admin/users")
     public List<Patient> getAllUser(){
-        return this.patientService.getAllUsers();
+        return this.patientService.getAllPatients();
     }
     //change
 }
