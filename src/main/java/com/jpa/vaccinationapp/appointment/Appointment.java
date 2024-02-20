@@ -5,6 +5,7 @@ import com.jpa.vaccinationapp.certificate.Certificate;
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.patient.Patient;
+import com.jpa.vaccinationapp.vaccine.Vaccine;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -24,6 +25,8 @@ public class Appointment {
     @OneToOne
     @JsonIgnore
     private Patient patient;
+    @ManyToOne
+    private Vaccine vaccine;
     private LocalDate bookingDate;
 
     public Appointment() {
@@ -38,16 +41,18 @@ public class Appointment {
         this.center = center;
         this.patient = patient;
         this.bookingDate = bookingDate;
+        this.vaccine = vaccine;
     }
 
     public Appointment(Boolean vaccineStatus, Slot slot, Certificate certificate,
-                       Center center, Patient patient, LocalDate bookingDate) {
+                Center center, Patient patient, LocalDate bookingDate) {
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
         this.certificate = certificate;
         this.center = center;
         this.patient = patient;
         this.bookingDate = bookingDate;
+        this.vaccine=vaccine;
     }
 
     public Integer getBookingId() {
@@ -66,11 +71,11 @@ public class Appointment {
         this.vaccineStatus = vaccineStatus;
     }
 
-    public Slot getVaccine() {
+    public Slot getSlot() {
         return slot;
     }
 
-    public void setVaccine(Slot slot) {
+    public void setSlot(Slot slot) {
         this.slot = slot;
     }
 
@@ -104,5 +109,13 @@ public class Appointment {
 
     public void setBookingDate(LocalDate bookingDate) {
         this.bookingDate = bookingDate;
+    }
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
     }
 }

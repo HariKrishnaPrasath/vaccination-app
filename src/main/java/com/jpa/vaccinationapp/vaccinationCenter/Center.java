@@ -21,7 +21,7 @@ public class Center {
     @ManyToMany
     private Map<Integer, Vaccine> vaccineMap;
     @OneToMany//(mappedBy = "vaccinationCenter")
-    private Map<Integer, Slot> slots;
+    private Map<Integer, Slot> slots=new HashMap<>();
     @OneToOne
     private Admin admin;
 
