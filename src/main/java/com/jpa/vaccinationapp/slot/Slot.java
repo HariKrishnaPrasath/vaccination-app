@@ -1,7 +1,7 @@
 package com.jpa.vaccinationapp.slot;
 
 import com.jpa.vaccinationapp.appointment.Appointment;
-import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenter;
+import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -19,33 +19,28 @@ public class Slot {
     private Integer availableSlots; // The number of available slots for this time period
 
     @ManyToOne
-    private VaccinationCenter vaccinationCenter;
+    private Center center;
 
     @OneToMany
-<<<<<<< HEAD:src/main/java/com/jpa/vaccinationapp/slot/entity/Slot.java
-    private List<BookingDetails> appointments;
-=======
     private List<Appointment> appointments;
->>>>>>> a6fa418219e2c35b74a3a4ceab6f5fa956b7e1d6:src/main/java/com/jpa/vaccinationapp/slot/Slot.java
-
     public Slot(Long id, LocalDateTime startTime, LocalDateTime endTime,
-                Integer availableSlots, VaccinationCenter vaccinationCenter,
+                Integer availableSlots, Center center,
                 List<Appointment> appointments) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.availableSlots = availableSlots;
-        this.vaccinationCenter = vaccinationCenter;
+        this.center = center;
         this.appointments = appointments;
     }
 
     public Slot(LocalDateTime startTime, LocalDateTime endTime, Integer availableSlots,
-                VaccinationCenter vaccinationCenter,
+                Center center,
                 List<Appointment> appointments) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.availableSlots = availableSlots;
-        this.vaccinationCenter = vaccinationCenter;
+        this.center = center;
         this.appointments = appointments;
     }
 
@@ -81,12 +76,12 @@ public class Slot {
         this.availableSlots = availableSlots;
     }
 
-    public VaccinationCenter getVaccinationCenter() {
-        return vaccinationCenter;
+    public Center getVaccinationCenter() {
+        return center;
     }
 
-    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
-        this.vaccinationCenter = vaccinationCenter;
+    public void setVaccinationCenter(Center center) {
+        this.center = center;
     }
 
     public List<Appointment> getAppointments() {

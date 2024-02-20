@@ -1,6 +1,6 @@
 package com.jpa.vaccinationapp.admin;
 
-import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenter;
+import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,7 +17,7 @@ public class Admin {
     private String password;
     private String adminType;
     @OneToOne
-    private VaccinationCenter vaccinationCenter;
+    private Center center;
 
     public Admin(String email, String phoneNumber, String adminName, String password, String adminType) {
         this.email = email;
@@ -31,24 +31,24 @@ public class Admin {
     }
 
     public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType,
-                 VaccinationCenter vaccinationCenter) {
+                 Center center) {
         this.adminId = adminId;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.adminName = adminName;
         this.password = password;
         this.adminType = adminType;
-        this.vaccinationCenter = vaccinationCenter;
+        this.center = center;
     }
 
     public Admin(String email, String phoneNumber, String adminName, String password, String adminType,
-                 VaccinationCenter vaccinationCenter) {
+                 Center center) {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.adminName = adminName;
         this.password = password;
         this.adminType = adminType;
-        this.vaccinationCenter = vaccinationCenter;
+        this.center = center;
     }
 
     public Integer getAdminId() {
@@ -99,11 +99,11 @@ public class Admin {
         this.adminType = adminType;
     }
 
-    public VaccinationCenter getVaccinationCenter() {
-        return vaccinationCenter;
+    public Center getVaccinationCenter() {
+        return center;
     }
 
-    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
-        this.vaccinationCenter = vaccinationCenter;
+    public void setVaccinationCenter(Center center) {
+        this.center = center;
     }
 }

@@ -3,7 +3,7 @@ package com.jpa.vaccinationapp.appointment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.certificate.Certificate;
 import com.jpa.vaccinationapp.slot.Slot;
-import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenter;
+import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.patient.Patient;
 import jakarta.persistence.*;
 
@@ -20,7 +20,7 @@ public class Appointment {
     @OneToOne
     private Certificate certificate;
     @ManyToOne
-    private VaccinationCenter vaccinationCenter;
+    private Center center;
     @OneToOne
     @JsonIgnore
     private Patient patient;
@@ -30,22 +30,22 @@ public class Appointment {
     }
 
     public Appointment(Integer bookingId, Boolean vaccineStatus, Slot slot, Certificate certificate,
-                       VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate) {
+                       Center center, Patient patient, LocalDate bookingDate) {
         this.bookingId = bookingId;
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
         this.certificate = certificate;
-        this.vaccinationCenter = vaccinationCenter;
+        this.center = center;
         this.patient = patient;
         this.bookingDate = bookingDate;
     }
 
     public Appointment(Boolean vaccineStatus, Slot slot, Certificate certificate,
-                       VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate) {
+                       Center center, Patient patient, LocalDate bookingDate) {
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
         this.certificate = certificate;
-        this.vaccinationCenter = vaccinationCenter;
+        this.center = center;
         this.patient = patient;
         this.bookingDate = bookingDate;
     }
@@ -82,12 +82,12 @@ public class Appointment {
         this.certificate = certificate;
     }
 
-    public VaccinationCenter getVaccinationCenter() {
-        return vaccinationCenter;
+    public Center getVaccinationCenter() {
+        return center;
     }
 
-    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
-        this.vaccinationCenter = vaccinationCenter;
+    public void setVaccinationCenter(Center center) {
+        this.center = center;
     }
 
     public Patient getPatient() {
