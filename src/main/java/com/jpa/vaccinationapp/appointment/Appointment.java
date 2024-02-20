@@ -5,6 +5,7 @@ import com.jpa.vaccinationapp.certificate.Certificate;
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccinationCenter.VaccinationCenter;
 import com.jpa.vaccinationapp.patient.Patient;
+import com.jpa.vaccinationapp.vaccine.Vaccine;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -24,13 +25,15 @@ public class Appointment {
     @OneToOne
     @JsonIgnore
     private Patient patient;
+    @ManyToOne
+    private Vaccine vaccine;
     private LocalDate bookingDate;
 
     public Appointment() {
     }
 
     public Appointment(Integer bookingId, Boolean vaccineStatus, Slot slot, Certificate certificate,
-                       VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate) {
+                       VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate,Vaccine vaccine) {
         this.bookingId = bookingId;
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
@@ -38,16 +41,18 @@ public class Appointment {
         this.vaccinationCenter = vaccinationCenter;
         this.patient = patient;
         this.bookingDate = bookingDate;
+        this.vaccine = vaccine;
     }
 
     public Appointment(Boolean vaccineStatus, Slot slot, Certificate certificate,
-                       VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate) {
+                       VaccinationCenter vaccinationCenter, Patient patient, LocalDate bookingDate,Vaccine vaccine) {
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
         this.certificate = certificate;
         this.vaccinationCenter = vaccinationCenter;
         this.patient = patient;
         this.bookingDate = bookingDate;
+        this.vaccine=vaccine;
     }
 
     public Integer getBookingId() {
@@ -66,11 +71,11 @@ public class Appointment {
         this.vaccineStatus = vaccineStatus;
     }
 
-    public Slot getVaccine() {
+    public Slot getSlot() {
         return slot;
     }
 
-    public void setVaccine(Slot slot) {
+    public void setSlot(Slot slot) {
         this.slot = slot;
     }
 
@@ -104,5 +109,13 @@ public class Appointment {
 
     public void setBookingDate(LocalDate bookingDate) {
         this.bookingDate = bookingDate;
+    }
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
     }
 }

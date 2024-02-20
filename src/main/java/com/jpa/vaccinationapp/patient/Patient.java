@@ -2,11 +2,14 @@ package com.jpa.vaccinationapp.patient;
 
 import com.jpa.vaccinationapp.appointment.Appointment;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.util.*;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Patient {
     @Id
     @GeneratedValue(generator = "100")
@@ -16,6 +19,7 @@ public class Patient {
     private String password;
     private String address;
     private String patientName;
+    @CreatedDate
     private LocalDate registrationDate;
     @OneToMany
     private Map<Integer, Appointment> bookingDetails = new HashMap<>();
