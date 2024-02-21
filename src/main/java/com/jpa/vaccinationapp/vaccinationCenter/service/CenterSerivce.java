@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public interface CenterSerivce {
-    Center createCenter(Center newCenter, Admin admin) throws CenterException;
+    Center createCenter(Center newCenter) throws CenterException;
     Center removeCenter(Integer centerID, Admin admin)throws CenterException;
     Center updateCenter(Center center,Admin admin)throws CenterException;
     Center addVaccineToCenter(Integer centerID, Admin admin, Vaccine newVaccine)throws CenterException;

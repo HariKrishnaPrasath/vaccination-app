@@ -16,17 +16,14 @@ public class AdminServiceImpl implements AdminService{
     AdminRepository adminRepo;
     @Override
     public Admin addAdmin(Admin adminDetails) throws AdminException {
-        Optional<Admin> checkAdmin=adminRepo.findById(adminDetails.getAdminId());
-        if(checkAdmin.isPresent())
-            throw new AdminException("Admin already exist and please check provided details");
-        String phoneNumber=adminDetails.getPhoneNumber();
-        if(phoneNumber.length()>=10 || Pattern.matches("[0-9]{10}",phoneNumber))
-            throw new AdminException("Admin Phone Number is Invalid");
-        String email=adminDetails.getEmail();
-        if(Pattern.matches("[@]{1}",email))
-            throw new AdminException("Admin email is Invalid");
-        if(Pattern.matches("[gmail,outlook]{0}",email))
-            throw new AdminException("Admin email is Invalid");
+//        String phoneNumber=adminDetails.getPhoneNumber();
+//        if(phoneNumber.length()>=10 || Pattern.matches("[0-9]{10}",phoneNumber))
+//            throw new AdminException("Admin Phone Number is Invalid");
+//        String email=adminDetails.getEmail();
+//        if(Pattern.matches("[@]{1}",email))
+//            throw new AdminException("Admin email is Invalid");
+//        if(Pattern.matches("[gmail,outlook]{0}",email))
+//            throw new AdminException("Admin email is Invalid");
         return this.adminRepo.save(adminDetails);
     }
     @Override

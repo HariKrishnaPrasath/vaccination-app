@@ -1,5 +1,6 @@
 package com.jpa.vaccinationapp.admin;
 
+import com.jpa.vaccinationapp.admin.service.AdminService;
 import com.jpa.vaccinationapp.patient.Login;
 import com.jpa.vaccinationapp.patient.Patient;
 import com.jpa.vaccinationapp.patient.PatientException;
@@ -16,9 +17,11 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private PatientService patientService;
+    @Autowired
+    private AdminService adminService;
     @PostMapping("admin/signup")
-    public String superAdminSignUp(@RequestBody Admin superAdmin) {
-        return null;
+    public Admin superAdminSignUp(@RequestBody Admin superAdmin) throws AdminException {
+        return this.adminService.addAdmin(superAdmin);
     }
     @PostMapping("user/signin")
     public Patient signUserUsingEmailAndPassword(@RequestBody Login login) throws PatientException {

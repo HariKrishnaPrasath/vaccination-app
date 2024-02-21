@@ -1,5 +1,6 @@
 package com.jpa.vaccinationapp.vaccinationCenter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
@@ -19,8 +20,10 @@ public class Center {
     private String state;
     private String contactNumber;
     @ManyToMany
+    @Column(nullable = true)
     private Map<Integer, Vaccine> vaccineMap;
     @OneToMany//(mappedBy = "vaccinationCenter")
+    @Column(nullable = true)
     private Map<Integer, Slot> slots=new HashMap<>();
     @OneToOne
     private Admin admin;
