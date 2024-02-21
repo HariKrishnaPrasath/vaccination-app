@@ -21,8 +21,8 @@ public class CenterController {
 
     // creating a center
     @PostMapping("center/create")
-    public Center createCenter(@RequestBody Center newCenter, @RequestBody Admin admin) throws CenterException {
-        return centerSerivce.createCenter(newCenter,admin);
+    public Center createCenter(@RequestBody Center newCenter) throws CenterException {
+        return centerSerivce.createCenter(newCenter);
     }
 
     // adding vaccine to a center

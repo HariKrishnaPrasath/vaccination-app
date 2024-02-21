@@ -113,7 +113,7 @@ public class PatientServiceImpl implements PatientService {
         Optional<Patient> patient = this.patientRepository.findById(patientId);
         if(patient.isEmpty()) throw new PatientException("patient with id "+patientId+" not found");
         if(patient.get().getBookingDetails().isEmpty()) throw new PatientException("no booking done");
-        return patient.get().getBookingDetails().values().stream().filter((a)->a.getVaccinationCenter().equals(vaccinationCenter)).toList();
+        return patient.get().getBookingDetails().values().stream().filter((a)->a.getSlot().getCenter().getCenterId().equals(vaccinationCenter.getCenterId())).toList();
     }
 
     @Override
@@ -141,6 +141,6 @@ public class PatientServiceImpl implements PatientService {
     public List<Certificate> getPatientCertificatesByCentre(Integer patientId, Center vaccinationCenter) throws PatientException {
         Optional<Patient> patient = this.patientRepository.findById(patientId);
         if(patient.isEmpty()) throw new PatientException("patient with id "+patientId+" not found");
-        return patient.get().getBookingDetails().values().stream().filter((a)->a.getVaccinationCenter().equals(vaccinationCenter)).map((a)->a.getCertificate()).toList();
+        return patient.get().getBookingDetails().values().stream().filter((a)->a.getSlot().getCenter().getCenterId().equals(vaccinationCenter.getCenterId())).map((a)->a.getCertificate()).toList();
     }
 }

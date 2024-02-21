@@ -16,8 +16,6 @@ public class Admin {
     private String adminName;
     private String password;
     private String adminType;
-    @OneToOne
-    private Center center;
 
     public Admin(String email, String phoneNumber, String adminName, String password, String adminType) {
         this.email = email;
@@ -44,26 +42,13 @@ public class Admin {
         this.password = password;
         this.adminType = adminType;
     }
-
-    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType,
-                 Center center) {
+    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType) {
         this.adminId = adminId;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.adminName = adminName;
         this.password = password;
         this.adminType = adminType;
-        this.center = center;
-    }
-
-    public Admin(String email, String phoneNumber, String adminName, String password, String adminType,
-                 Center center) {
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.adminName = adminName;
-        this.password = password;
-        this.adminType = adminType;
-        this.center = center;
     }
 
     public Integer getAdminId() {
@@ -114,11 +99,4 @@ public class Admin {
         this.adminType = adminType;
     }
 
-    public Center getVaccinationCenter() {
-        return center;
-    }
-
-    public void setVaccinationCenter(Center center) {
-        this.center = center;
-    }
 }

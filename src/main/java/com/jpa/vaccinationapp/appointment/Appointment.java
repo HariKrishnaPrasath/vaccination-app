@@ -20,8 +20,6 @@ public class Appointment {
     private Slot slot;
     @OneToOne
     private Certificate certificate;
-    @ManyToOne
-    private Center center;
     @OneToOne
     @JsonIgnore
     private Patient patient;
@@ -33,23 +31,20 @@ public class Appointment {
     }
 
     public Appointment(Integer bookingId, Boolean vaccineStatus, Slot slot, Certificate certificate,
-                       Center center, Patient patient, LocalDate bookingDate) {
+                       Patient patient, LocalDate bookingDate,Vaccine vaccine) {
         this.bookingId = bookingId;
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
         this.certificate = certificate;
-        this.center = center;
         this.patient = patient;
         this.bookingDate = bookingDate;
         this.vaccine = vaccine;
     }
 
-    public Appointment(Boolean vaccineStatus, Slot slot, Certificate certificate,
-                Center center, Patient patient, LocalDate bookingDate) {
+    public Appointment(Boolean vaccineStatus, Slot slot,Vaccine vaccine, Certificate certificate, Patient patient, LocalDate bookingDate) {
         this.vaccineStatus = vaccineStatus;
         this.slot = slot;
         this.certificate = certificate;
-        this.center = center;
         this.patient = patient;
         this.bookingDate = bookingDate;
         this.vaccine=vaccine;
@@ -85,14 +80,6 @@ public class Appointment {
 
     public void setCertificate(Certificate certificate) {
         this.certificate = certificate;
-    }
-
-    public Center getVaccinationCenter() {
-        return center;
-    }
-
-    public void setVaccinationCenter(Center center) {
-        this.center = center;
     }
 
     public Patient getPatient() {
