@@ -1,8 +1,12 @@
 package com.jpa.vaccinationapp.vaccine.service;
 
-import com.jpa.vaccinationapp.admin.entity.Admin;
-import com.jpa.vaccinationapp.vaccine.entity.Vaccine;
-import com.jpa.vaccinationapp.vaccine.exception.VaccineException;
+
+import com.jpa.vaccinationapp.admin.Admin;
+
+import com.jpa.vaccinationapp.vaccine.Vaccine;
+import com.jpa.vaccinationapp.vaccine.VaccineException;
+
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,4 +24,5 @@ public interface VaccineService {
 
     List<Vaccine> getAllVaccine();
     List<Vaccine> deleteAllExpiredVaccines();
+
 }

@@ -1,8 +1,8 @@
 package com.jpa.vaccinationapp.vaccine.controller;
 
-import com.jpa.vaccinationapp.admin.entity.Admin;
-import com.jpa.vaccinationapp.vaccine.entity.Vaccine;
-import com.jpa.vaccinationapp.vaccine.exception.VaccineException;
+import com.jpa.vaccinationapp.admin.Admin;
+import com.jpa.vaccinationapp.vaccine.Vaccine;
+import com.jpa.vaccinationapp.vaccine.VaccineException;
 import com.jpa.vaccinationapp.vaccine.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
