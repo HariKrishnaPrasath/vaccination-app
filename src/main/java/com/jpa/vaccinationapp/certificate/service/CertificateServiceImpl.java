@@ -21,7 +21,7 @@ public class CertificateServiceImpl implements CertificateService{
     @Override
     public Certificate addCerificate(Admin adminDetails, Certificate certificateDetails)
             throws AdminException, CertificateException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -39,7 +39,7 @@ public class CertificateServiceImpl implements CertificateService{
 
     public Certificate verifyAndApproveServiceByAdmin(Admin adminDetails, Certificate certificateDetails)
             throws AdminException,CertificateException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -58,7 +58,7 @@ public class CertificateServiceImpl implements CertificateService{
 
     @Override
     public List<Certificate> getAllCertificate(Admin adminDetails)throws AdminException, CertificateException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -72,7 +72,7 @@ public class CertificateServiceImpl implements CertificateService{
     @Override
     public Certificate getCertificateById(Admin adminDetails, Certificate certificateDetails)
             throws AdminException, CertificateException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -89,7 +89,7 @@ public class CertificateServiceImpl implements CertificateService{
     @Override
     public Certificate deleteCertificate(Admin adminDetails, Certificate certificateDetails)
             throws AdminException, CertificateException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -107,7 +107,7 @@ public class CertificateServiceImpl implements CertificateService{
     @Override
     public Certificate updateCertificateDetails(Admin adminDetails, Certificate certificateDetails)
             throws AdminException, CertificateException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
