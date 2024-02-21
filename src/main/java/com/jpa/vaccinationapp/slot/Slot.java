@@ -23,6 +23,7 @@ public class Slot {
 
     @OneToMany
     private List<Appointment> appointments;
+
     public Slot(Long id, LocalDateTime startTime, LocalDateTime endTime,
                 Integer availableSlots, Center center,
                 List<Appointment> appointments) {
