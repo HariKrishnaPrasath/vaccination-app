@@ -8,9 +8,9 @@ import com.jpa.vaccinationapp.vaccine.VaccineException;
 import java.util.List;
 
 public interface AdminService {
-    public Admin addAdmin(Admin adminDetails)throws AdminException;
-    public Admin updateAdminDetails(Admin adminDetails)throws AdminException;
-    public List<Admin> getAllAdminById(Admin adminCheck) throws AdminException;
+    public Admin addAdmin(Admin adminDetails,Admin admin)throws AdminException;
+    public Admin updateAdminDetails(Admin adminDetails,Admin admin)throws AdminException;
+    public List<Admin> getAllAdmin(Admin adminCheck) throws AdminException;
     public Admin getAdminById(Admin adminCheck,Integer id)throws AdminException;
     public Admin getAdminByEmail(Admin adminDetails,String email)throws AdminException;
     public Admin deleteAdminById(Admin adminDetails,Integer id)throws AdminException;
