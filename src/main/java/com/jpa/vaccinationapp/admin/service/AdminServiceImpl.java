@@ -19,37 +19,21 @@ public class AdminServiceImpl implements AdminService{
     CenterRepository vaccRepo;
     @Override
     public Admin addAdmin(Admin adminDetails) throws AdminException {
-        Optional<Admin> checkAdmin=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> checkAdmin=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(checkAdmin.isPresent())
             throw new AdminException("Admin already exist and please check provided details");
-        String phoneNumber=adminDetails.getPhoneNumber();
-        if(phoneNumber.length()!=10 || Pattern.matches("[a-zA-Z]",phoneNumber))
-            throw new AdminException("Admin Phone Number is Invalid");
-        String email=adminDetails.getEmail();
-        if(Pattern.matches("[@]{0}",email))
-            throw new AdminException("Admin email is Invalid");
-        if(Pattern.matches("[gmail.com,outlook.com]{0}",email))
-            throw new AdminException("Admin email is Invalid");
         return this.adminRepo.save(adminDetails);
     }
     @Override
     public Admin updateAdminDetails(Admin adminDetails) throws AdminException {
-        Optional<Admin> checkAdmin=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> checkAdmin=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(checkAdmin.isPresent())
             throw new AdminException("Admin already exist and please check provided details");
-        String phoneNumber=adminDetails.getPhoneNumber();
-        if(phoneNumber.length()!=10 || Pattern.matches("[a-zA-Z]",phoneNumber))
-            throw new AdminException("Admin Phone Number is Invalid");
-        String email=adminDetails.getEmail();
-        if(Pattern.matches("[@]{0}",email))
-            throw new AdminException("Admin email is Invalid");
-        if(Pattern.matches("[gmail.com,outlook.com]{0}",email))
-            throw new AdminException("Admin email is Invalid");
         return this.adminRepo.save(adminDetails);
     }
     @Override
     public List<Admin> getAllAdminById(Admin adminDetails) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super"))
@@ -59,7 +43,7 @@ public class AdminServiceImpl implements AdminService{
     }
     @Override
     public Admin getAdminById(Admin adminDetails, Integer id)throws AdminException  {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())) {
@@ -74,7 +58,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public Admin getAdminByEmail(Admin adminDetails, String email) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -88,7 +72,7 @@ public class AdminServiceImpl implements AdminService{
     }
     @Override
     public Admin deleteAdminById(Admin adminDetails, Integer id) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -107,7 +91,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public Admin assignAdminToCentre(Admin adminDetails,Integer id,Integer adminId) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
@@ -129,7 +113,7 @@ public class AdminServiceImpl implements AdminService{
     }
     @Override
     public Admin releaseAdminFromCentre(Admin adminDetails, Integer id, Integer adminId) throws AdminException {
-        Optional<Admin> adminCheck = adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if (adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if (adminCheck.get().getPassword().equals(adminDetails.getPassword()) && adminDetails.getAdminType().equals("Super")) {
@@ -151,7 +135,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public Admin updateAdminCentreAssignment(Admin adminDetails, Integer id, Integer adminId) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findById(adminDetails.getAdminId());
+        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(adminCheck.isEmpty())
             throw new AdminException("Admin not found");
         if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
