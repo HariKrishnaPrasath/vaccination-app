@@ -25,9 +25,23 @@ public class Admin {
         this.adminType = adminType;
     }
 
+    public Admin(Integer adminId, String email, String adminName, String password, String adminType) {
+        this.adminId = adminId;
+        this.email = email;
+        this.adminName = adminName;
+        this.password = password;
+        this.adminType = adminType;
+    }
+
     public Admin() {
     }
 
+    public Admin(String email, String adminName, String password, String adminType) {
+        this.email = email;
+        this.adminName = adminName;
+        this.password = password;
+        this.adminType = adminType;
+    }
     public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType) {
         this.adminId = adminId;
         this.email = email;

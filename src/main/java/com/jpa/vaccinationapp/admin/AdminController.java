@@ -32,6 +32,5 @@ public class AdminController {
         return this.patientService.getAllPatients();
     }
 
-
     //change
 }
