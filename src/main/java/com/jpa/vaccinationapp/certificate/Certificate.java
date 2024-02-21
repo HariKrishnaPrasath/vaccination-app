@@ -14,23 +14,42 @@ public class Certificate {
     private Appointment appointment;
     private LocalDate dateOfVaccination;
     private String certificateUrl;
+    private String approvedStatus;
 
     public Certificate() {
     }
 
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
+    }
+
+    public String getApprovedStatus() {
+        return approvedStatus;
+    }
+
+    public void setApprovedStatus(String approved) {
+        this.approvedStatus = approved;
+    }
+
     public Certificate(Integer certificateId, Appointment appointment,
-                       LocalDate dateOfVaccination, String certificateUrl) {
+                       LocalDate dateOfVaccination, String certificateUrl, String approved) {
         this.certificateId = certificateId;
         this.appointment = appointment;
         this.dateOfVaccination = dateOfVaccination;
         this.certificateUrl = certificateUrl;
+        this.approvedStatus =approved;
     }
 
     public Certificate(Appointment appointment,
-                       LocalDate dateOfVaccination, String certificateUrl) {
+                       LocalDate dateOfVaccination, String certificateUrl,String approved) {
         this.appointment = appointment;
         this.dateOfVaccination = dateOfVaccination;
         this.certificateUrl = certificateUrl;
+        this.approvedStatus =approved;
     }
 
     public Integer getCertificateId() {
