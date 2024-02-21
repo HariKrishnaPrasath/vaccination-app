@@ -17,13 +17,7 @@ public class Admin {
     private String password;
     private String adminType;
 
-    public Admin(String email, String phoneNumber, String adminName, String password, String adminType) {
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.adminName = adminName;
-        this.password = password;
-        this.adminType = adminType;
-    }
+
 
     public Admin(Integer adminId, String email, String adminName, String password, String adminType) {
         this.adminId = adminId;
@@ -42,8 +36,18 @@ public class Admin {
         this.password = password;
         this.adminType = adminType;
     }
-    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType) {
+
+    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType
+                 ) {
         this.adminId = adminId;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.adminName = adminName;
+        this.password = password;
+        this.adminType = adminType;
+    }
+
+    public Admin(String email, String phoneNumber, String adminName, String password, String adminType) {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.adminName = adminName;
