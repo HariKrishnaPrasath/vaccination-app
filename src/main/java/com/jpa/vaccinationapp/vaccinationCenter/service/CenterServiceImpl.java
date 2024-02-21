@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CenterServiceImpl implements CenterSerivce {
+public class CenterServiceImpl implements CenterService {
+
 
     private final CenterRepository centerRepository;
     @Autowired
@@ -23,6 +24,7 @@ public class CenterServiceImpl implements CenterSerivce {
 
     @Override
     public Center createCenter(Center newCenter, Admin admin) throws CenterException {
+        if(newCenter==null || admin==null)throw new CenterException("Input shld not be null");
         if(admin.getAdminType().equals("admin")){
             String message=String.format("%d ID is not a super admin to create a centre",admin.getAdminId());
             throw new CenterException(message);

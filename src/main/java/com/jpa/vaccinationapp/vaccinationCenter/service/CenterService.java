@@ -1,7 +1,6 @@
 package com.jpa.vaccinationapp.vaccinationCenter.service;
 
 import com.jpa.vaccinationapp.admin.Admin;
-import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
@@ -10,7 +9,7 @@ import com.jpa.vaccinationapp.vaccine.Vaccine;
 import java.util.List;
 
 
-public interface CenterSerivce {
+public interface CenterService {
     Center createCenter(Center newCenter, Admin admin) throws CenterException;
     Center removeCenter(Integer centerID, Admin admin)throws CenterException;
     Center updateCenter(Center center,Admin admin)throws CenterException;
