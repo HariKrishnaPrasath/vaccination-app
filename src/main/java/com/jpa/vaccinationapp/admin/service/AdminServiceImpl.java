@@ -9,167 +9,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 @Service
 public class AdminServiceImpl implements AdminService{
     @Autowired
-    AdminRepository adminRepo;
+    private AdminRepository adminRepo;
     @Autowired
-    CenterRepository vaccRepo;
+    private CenterRepository vaccRepo;
+    AdminException adminException=new AdminException("Admin password is Invalid");
+    AdminException adminNotFoundException=new AdminException("Admin not found");
+    String adminType="Super";
     @Override
-    public Admin addAdmin(Admin adminDetails,Admin admin) throws AdminException {
-        Optional<Admin> presentAdmin=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-        if(presentAdmin.isEmpty())
-            throw new AdminException("No admin present in given Id");
-        if(presentAdmin.get().getPassword().equals(admin.getPassword())) {
+    public Admin addAdmin(Admin adminDetails) throws AdminException {
+
             Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
             if (checkAdmin.isPresent())
                 throw new AdminException("Admin already exist and please check provided details");
             return this.adminRepo.save(adminDetails);
-        }
-        else {
-            throw new AdminException("Admin Password is Invalid");
-        }
     }
     @Override
-    public Admin updateAdminDetails(Admin adminDetails,Admin admin) throws AdminException {
-        Optional<Admin> presentAdmin=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-        if(presentAdmin.isEmpty())
-            throw new AdminException("No admin present in given Id");
-        if(presentAdmin.get().getPassword().equals(admin.getPassword())) {
+    public Admin updateAdminDetails(Admin adminDetails) throws AdminException {
             Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-            if (checkAdmin.isPresent())
-                throw new AdminException("Admin already exist and please check provided details");
+            if (checkAdmin.isEmpty())
+                throw adminNotFoundException;
             return this.adminRepo.save(adminDetails);
-        }
-        else {
-            throw new AdminException("Admin Password is Invalid");
-        }
     }
     @Override
-    public List<Admin> getAllAdmin(Admin adminDetails) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-        if(adminCheck.isEmpty())
-            throw new AdminException("Admin not found");
-        if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super"))
+    public List<Admin> getAllAdmin() throws AdminException {
             return this.adminRepo.findAll();
-        else
-            throw new AdminException("Admin Password is Invalid");
     }
     @Override
-    public Admin getAdminById(Admin adminDetails, Integer id)throws AdminException  {
-        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-        if(adminCheck.isEmpty())
-            throw new AdminException("Admin not found");
-        if(adminCheck.get().getPassword().equals(adminDetails.getPassword())) {
+    public Admin getAdminById(Integer id)throws AdminException  {
             Optional<Admin> adminFound = this.adminRepo.findById(id);
             if(adminFound.isEmpty())
-                throw new AdminException("No admin is not found in this given Id");
+                throw adminNotFoundException;
             return adminFound.get();
-        }
-        else
-            throw new AdminException("Admin Password is Invalid");
     }
 
     @Override
-    public Admin getAdminByEmail(Admin adminDetails, String email) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-        if(adminCheck.isEmpty())
-            throw new AdminException("Admin not found");
-        if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
+    public Admin getAdminByEmail(String email) throws AdminException {
             Optional<Admin> adminFound = this.adminRepo.findByEmailIgnoreCase(email);
             if(adminFound.isEmpty())
-                throw new AdminException("No admin is not found in this given Id");
+                throw adminNotFoundException;
             return adminFound.get();
-        }
-        else
-            throw new AdminException("Admin Password is Invalid");
     }
     @Override
-    public Admin deleteAdminById(Admin adminDetails, Integer id) throws AdminException {
-        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-        if(adminCheck.isEmpty())
-            throw new AdminException("Admin not found");
-        if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
+    public Admin deleteAdminById(Integer id) throws AdminException {
             Optional<Admin> adminFound = this.adminRepo.findById(id);
             if(adminFound.isEmpty())
-                throw new AdminException("No admin is not found in this given Id");
+                throw adminNotFoundException;
             Center vaccineCentre=vaccRepo.findByAdmin(adminFound.get());
             vaccineCentre.setAdmin(null);
             this.vaccRepo.save(vaccineCentre);
             this.adminRepo.deleteById(id);
             return adminFound.get();
-        }
-        else
-            throw new AdminException("Admin Password is Invalid");
     }
-
-//    @Override
-//    public Admin assignAdminToCentre(Admin adminDetails,Integer id,Integer adminId) throws AdminException {
-//        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-//        if(adminCheck.isEmpty())
-//            throw new AdminException("Admin not found");
-//        if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
-//            Optional<Center> centerFound=this.vaccRepo.findById(id);
-//            if(centerFound.isEmpty())
-//                throw new AdminException("No centre found");
-//            Optional<Admin> adminFound=this.adminRepo.findById(adminId);
-//            if(adminFound.isEmpty())
-//                throw new AdminException("No admin Found in this ID");
-//            adminFound.get().setVaccinationCenter(centerFound.get());
-//            centerFound.get().setAdmin(adminFound.get());
-//            this.vaccRepo.save(centerFound.get());
-//            return this.adminRepo.save(adminFound.get());
-//        }
-//        else
-//        {
-//            throw new AdminException("Admin password is Invalid");
-//        }
-//    }
-//    @Override
-//    public Admin releaseAdminFromCentre(Admin adminDetails, Integer id, Integer adminId) throws AdminException {
-//        Optional<Admin> adminCheck = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-//        if (adminCheck.isEmpty())
-//            throw new AdminException("Admin not found");
-//        if (adminCheck.get().getPassword().equals(adminDetails.getPassword()) && adminDetails.getAdminType().equals("Super")) {
-//            Optional<Center> centerFound = this.vaccRepo.findById(id);
-//            if (centerFound.isEmpty())
-//                throw new AdminException("No centre found");
-//            Optional<Admin> adminFound = this.adminRepo.findById(adminId);
-//            if (adminFound.isEmpty())
-//                throw new AdminException("No admin Found in this ID");
-//            adminFound.get().setVaccinationCenter(null);
-//            centerFound.get().setAdmin(null);
-//            this.vaccRepo.save(centerFound.get());
-//            this.adminRepo.save(adminFound.get());
-//            return adminFound.get();
-//        } else {
-//            throw new AdminException("Admin password is Invalid");
-//        }
-//    }
-//
-//    @Override
-//    public Admin updateAdminCentreAssignment(Admin adminDetails, Integer id, Integer adminId) throws AdminException {
-//        Optional<Admin> adminCheck=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-//        if(adminCheck.isEmpty())
-//            throw new AdminException("Admin not found");
-//        if(adminCheck.get().getPassword().equals(adminDetails.getPassword())&&adminDetails.getAdminType().equals("Super")) {
-//            Optional<Center> centerFound=this.vaccRepo.findById(id);
-//            if(centerFound.isEmpty())
-//                throw new AdminException("No centre found");
-//            Optional<Admin> adminFound=this.adminRepo.findById(adminId);
-//            if(adminFound.isEmpty())
-//                throw new AdminException("No admin Found in this ID");
-//            adminFound.get().setVaccinationCenter(centerFound.get());
-//            centerFound.get().setAdmin(adminFound.get());
-//            this.vaccRepo.save(centerFound.get());
-//            return this.adminRepo.save(adminFound.get());
-//        }
-//        else
-//        {
-//            throw new AdminException("Admin password is Invalid");
-//        }
-//    }
 
 }
