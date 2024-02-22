@@ -9,10 +9,10 @@ import com.jpa.vaccinationapp.certificate.Certificate;
 import java.util.List;
 
 public interface CertificateService {
-    public  Certificate addCerificate(Admin adminDetails,Certificate certificateDetails)throws AdminException, CertificateException;
-    public Certificate verifyAndApproveServiceByAdmin(Admin adminDetails, Certificate certificateDetails)throws AdminException, CertificateException;
-    public List<Certificate> getAllCertificate(Admin adminDetails)throws AdminException, CertificateException;
-    public Certificate getCertificateById(Admin adminDetails,Certificate certificateDetails)throws AdminException, CertificateException;
-    public Certificate deleteCertificate(Admin adminDetails,Certificate certificateDetails)throws AdminException, CertificateException;
-    public Certificate updateCertificateDetails(Admin adminDetails,Certificate certificateDetails)throws AdminException, CertificateException;
+    public  Certificate addCerificate(Certificate certificateDetails)throws AdminException, CertificateException;
+    public Certificate verifyAndApproveServiceByAdmin(Certificate certificateDetails)throws AdminException, CertificateException;
+    public List<Certificate> getAllCertificate()throws AdminException, CertificateException;
+    public Certificate getCertificateById(Integer id)throws AdminException, CertificateException;
+    public Certificate deleteCertificate(Certificate certificateDetails)throws AdminException, CertificateException;
+    public Certificate updateCertificateDetails(Certificate certificateDetails)throws AdminException, CertificateException;
 }
