@@ -18,6 +18,7 @@ public class AdminServiceImpl implements AdminService{
     @Autowired
     CenterRepository vaccRepo;
     @Override
+<<<<<<< Updated upstream
     public Admin addAdmin(Admin adminDetails,Admin admin) throws AdminException {
         Optional<Admin> presentAdmin=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if(presentAdmin.isEmpty())
@@ -31,6 +32,21 @@ public class AdminServiceImpl implements AdminService{
         else {
             throw new AdminException("Admin Password is Invalid");
         }
+=======
+    public Admin addAdmin(Admin adminDetails) throws AdminException {
+//        String phoneNumber=adminDetails.getPhoneNumber();
+//        if(phoneNumber.length()>=10 || Pattern.matches("[0-9]{10}",phoneNumber))
+//            throw new AdminException("Admin Phone Number is Invalid");
+//        String email=adminDetails.getEmail();
+//        if(Pattern.matches("[@]{1}",email))
+//            throw new AdminException("Admin email is Invalid");
+//        if(Pattern.matches("[gmail,outlook]{0}",email))
+//            throw new AdminException("Admin email is Invalid");
+        Optional<Admin> checkAdmin=adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
+        if(checkAdmin.isPresent())
+            throw new AdminException("Admin already exist and please check provided details");
+        return this.adminRepo.save(adminDetails);
+>>>>>>> Stashed changes
     }
     @Override
     public Admin updateAdminDetails(Admin adminDetails,Admin admin) throws AdminException {
@@ -95,9 +111,12 @@ public class AdminServiceImpl implements AdminService{
             Optional<Admin> adminFound = this.adminRepo.findById(id);
             if(adminFound.isEmpty())
                 throw new AdminException("No admin is not found in this given Id");
+<<<<<<< Updated upstream
             Center vaccineCentre=vaccRepo.findByAdmin(adminFound.get());
             vaccineCentre.setAdmin(null);
             this.vaccRepo.save(vaccineCentre);
+=======
+>>>>>>> Stashed changes
             this.adminRepo.deleteById(id);
             return adminFound.get();
         }

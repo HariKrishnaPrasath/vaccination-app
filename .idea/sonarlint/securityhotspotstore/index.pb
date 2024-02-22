@@ -25,3 +25,7 @@ Ksrc/main/java/com/jpa/vaccinationapp/appointment/AppointmentController.java,e\
 Ksrc/main/java/com/jpa/vaccinationapp/appointment/AppointmentRepository.java,c\7\c77c20045ae364dafce82b589b2ddb537f620af8
 €
 Psrc/main/java/com/jpa/vaccinationapp/appointment/service/AppointmentService.java,d\4\d48a2da46f0a2506a5fafea895978e422ce0a790
+o
+?src/main/java/com/jpa/vaccinationapp/admin/AdminController.java,8\3\838252a85cd49414d782ca070a340cd99641ddca
+e
+5src/main/java/com/jpa/vaccinationapp/admin/Admin.java,5\8\58a7777378405c3098999ae7af0fab3bea90fca1
