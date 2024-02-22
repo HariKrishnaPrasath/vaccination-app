@@ -3,6 +3,7 @@ package com.jpa.vaccinationapp.admin.service;
 import com.jpa.vaccinationapp.admin.AdminRepository;
 import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.admin.AdminException;
+import com.jpa.vaccinationapp.admin.Login;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ public class AdminServiceImpl implements AdminService{
     private CenterRepository vaccRepo;
     AdminException adminException=new AdminException("Admin password is Invalid");
     AdminException adminNotFoundException=new AdminException("Admin not found");
-    String adminType="Super";
     @Override
     public Admin addAdmin(Admin adminDetails) throws AdminException {
 
@@ -63,6 +63,17 @@ public class AdminServiceImpl implements AdminService{
             this.vaccRepo.save(vaccineCentre);
             this.adminRepo.deleteById(id);
             return adminFound.get();
+    }
+    @Override
+    public Admin loginAdmin(Login loginDetails) throws AdminException {
+        Optional<Admin> optionalAdmin =this.adminRepo.findByEmailIgnoreCase(loginDetails.getEmail());
+        if(optionalAdmin.isEmpty())
+            throw adminNotFoundException;
+        if(optionalAdmin.get().getPassword().equals(loginDetails.getPassword())){
+            return optionalAdmin.get();
+        }
+        else
+            throw adminException;
     }
 
 }
