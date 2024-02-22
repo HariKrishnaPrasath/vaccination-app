@@ -1,0 +1,19 @@
+
+h
+java:S1192"FDefine a constant instead of duplicating this literal "Super" 6 times.(ˆ‹µøşÿÿÿÿ8ê¸ù‚İ1
+
+java:S1192 "bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8ë¸ù‚İ1
+x
+java:S1192Q"VDefine a constant instead of duplicating this literal "Certificate not exist" 3 times.(ŠÊÛâùÿÿÿÿ8ë¸ù‚İ1
+k
+java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïùÿÿÿÿ8ë¸ù‚İ1
+v
+java:S1192$"ZDefine a constant instead of duplicating this literal "Admin password is Invalid" 6 times.(ß³–]8ë¸ù‚İ1
+r
+java:S1192"PDefine a constant instead of duplicating this literal "Admin not found" 6 times.(ı‹‰Éùÿÿÿÿ8ë¸ù‚İ1
+‚
+java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïùÿÿÿÿ8¸µü‚İ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8áú‰†İ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8áú‰†İ1
