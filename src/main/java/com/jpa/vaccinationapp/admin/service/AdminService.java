@@ -2,6 +2,7 @@ package com.jpa.vaccinationapp.admin.service;
 
 import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.admin.AdminException;
+import com.jpa.vaccinationapp.admin.Login;
 
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface AdminService {
     public Admin getAdminById(Integer id)throws AdminException;
     public Admin getAdminByEmail(String email)throws AdminException;
     public Admin deleteAdminById(Integer id)throws AdminException;
-
+    public Admin loginAdmin(Login loginDetails) throws AdminException;
 }

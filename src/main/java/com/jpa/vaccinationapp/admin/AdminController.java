@@ -41,4 +41,8 @@ public class AdminController {
     public Admin deleteAdminByAdmin(@RequestBody Admin deleteAdminDetails) throws AdminException {
         return this.adminService.deleteAdminById(deleteAdminDetails.getAdminId());
     }
+    @GetMapping("admin/login")
+    public Admin adminLogin(@RequestBody Login loginDetails) throws AdminException {
+        return this.adminService.loginAdmin(loginDetails);
+    }
 }

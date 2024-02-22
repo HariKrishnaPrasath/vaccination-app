@@ -11,5 +11,5 @@ _
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8³ü¼ƒİ1
 _
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8³ü¼ƒİ1
-§
-java:S1130!"„Remove the declaration of thrown exception 'com.jpa.vaccinationapp.admin.AdminException', as it cannot be thrown from method's body.(£ÉÔ²úÿÿÿÿ8éØ¾ƒİ1
+\
+java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8ª¸À„İ1
