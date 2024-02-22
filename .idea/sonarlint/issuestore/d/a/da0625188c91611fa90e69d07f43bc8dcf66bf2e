@@ -1,0 +1,15 @@
+
+
+java:S1192"bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8©ü¼ƒİ1
+x
+java:S11926"VDefine a constant instead of duplicating this literal "Certificate not exist" 3 times.(ŠÊÛâùÿÿÿÿ8©ü¼ƒİ1
+k
+java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïùÿÿÿÿ8©ü¼ƒİ1
+‚
+java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïùÿÿÿÿ8±ü¼ƒİ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8³ü¼ƒİ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8³ü¼ƒİ1
+§
+java:S1130!"„Remove the declaration of thrown exception 'com.jpa.vaccinationapp.admin.AdminException', as it cannot be thrown from method's body.(£ÉÔ²úÿÿÿÿ8éØ¾ƒİ1
