@@ -23,12 +23,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center createCenter(Center newCenter, Admin admin) throws CenterException {
-        if(newCenter==null || admin==null)throw new CenterException("Input shld not be null");
-        if(admin.getAdminType().equals("admin")){
-            String message=String.format("%d ID is not a super admin to create a centre",admin.getAdminId());
-            throw new CenterException(message);
-        }
+    public Center createCenter(Center newCenter) throws CenterException {
         return centerRepository.save(newCenter);
     }
 
@@ -100,11 +95,12 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public List<Center> findByNameCaseInsensitive(String centerName) throws CenterException {
+    public List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException {
         if(centerName==null){
             throw new CenterException("Cannot perform search with no centre name");
         }
-        var center = Optional.ofNullable(centerRepository.findByCenterNameIgnoreCase(centerName));
+        Optional<List<Center>> center= Optional.ofNullable(centerRepository.
+                findCenterByCenterNameIsContainingIgnoreCase(centerName));
         if(center.get().isEmpty()){
             String message=String.format("There's no such centre with name: %s. Please check it and try again",
                     centerName);

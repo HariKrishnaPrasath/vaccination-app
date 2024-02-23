@@ -1,0 +1,18 @@
+
+‚
+java:S1192D"gDefine a constant instead of duplicating this literal "No admin is not found in this given Id" 3 times.(ö¦”øşÿÿÿÿ
+[
+java:S11927"FDefine a constant instead of duplicating this literal "Super" 3 times.(Õ‘ƒG
+u
+java:S1192 "ZDefine a constant instead of duplicating this literal "Admin Password is Invalid" 6 times.(ù†Ûîøÿÿÿÿ
+k
+java:S11926"PDefine a constant instead of duplicating this literal "Admin not found" 4 times.(ı‹‰Éùÿÿÿÿ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
+s
+java:S4144$"XUpdate this method so that its implementation is not identical to "addAdmin" on line 21.(ÙÅÌ›şÿÿÿÿ
+V	java:S125m"<This block of commented-out lines of code should be removed.(¡—í•øÿÿÿÿ
+O
+java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ

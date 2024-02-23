@@ -21,14 +21,14 @@ public class CenterController {
 
     // creating a center
     @PostMapping("center/create")
-    public Center createCenter(@RequestBody Center newCenter, @RequestBody Admin admin) throws CenterException {
-        return centerService.createCenter(newCenter,admin);
+    public Center createCenter(@RequestBody Center newCenter) throws CenterException {
+        return centerService.createCenter(newCenter);
     }
 
     // adding vaccine to a center
     @PutMapping("center/{centerID}/vaccine")
-    public Center addVaccine(@PathVariable Integer centerID, @RequestBody Admin admin, @RequestBody Vaccine newVaccine)
-            throws CenterException {
+    public Center addVaccineToCenter(@PathVariable Integer centerID, @RequestBody Admin admin,
+                                     @RequestBody Vaccine newVaccine) throws CenterException {
         return centerService.addVaccineToCenter(centerID,admin,newVaccine);
     }
 
@@ -40,8 +40,9 @@ public class CenterController {
 
     // getting center by name
     @GetMapping("center/getCenterByName/{centerName}")
-    public List<Center> getByNameCaseInsensitive(@PathVariable String centerName) throws CenterException{
-        return centerService.findByNameCaseInsensitive(centerName);
+    public List<Center> findCenterByCenterNameIsContainingIgnoreCase(@PathVariable String centerName)
+            throws CenterException{
+        return centerService.findCenterByCenterNameIsContainingIgnoreCase(centerName);
     }
 
     //getting center by ID
