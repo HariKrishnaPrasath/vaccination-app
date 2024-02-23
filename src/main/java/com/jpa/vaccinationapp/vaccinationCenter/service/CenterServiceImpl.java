@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CenterServiceImpl implements CenterSerivce {
+public class CenterServiceImpl implements CenterService {
 
     private final CenterRepository centerRepository;
     @Autowired
@@ -23,20 +23,11 @@ public class CenterServiceImpl implements CenterSerivce {
 
     @Override
     public Center createCenter(Center newCenter) throws CenterException {
-//        if(admin.getAdminType().equals("admin")){
-//            String message=String.format("%d ID is not a super admin to create a centre",admin.getAdminId());
-//            throw new CenterException(message);
-//        }
-        System.out.println(newCenter.getCenterName());
         return centerRepository.save(newCenter);
     }
 
     @Override
-    public Center removeCenter(Integer centerID, Admin admin) throws CenterException {
-        if(admin.getAdminType().equals("admin")){
-            String message=String.format("%d is not a super admin to remove a centre",admin.getAdminId());
-            throw new CenterException(message);
-        }
+    public Center removeCenter(Integer centerID) throws CenterException {
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){
             String message=String.format("There is no such centre with ID: %d to remove",centerID);
@@ -47,11 +38,7 @@ public class CenterServiceImpl implements CenterSerivce {
     }
 
     @Override
-    public Center updateCenter(Center center, Admin admin) throws CenterException {
-        if(admin.getAdminType().equals("admin")){
-            String message=String.format("%d is not a super admin to update a centre",admin.getAdminId());
-            throw new CenterException(message);
-        }
+    public Center updateCenter(Center center) throws CenterException {
         Optional<Center>result= centerRepository.findById(center.getCenterId());
         if(result.isEmpty()){
             String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
@@ -59,14 +46,10 @@ public class CenterServiceImpl implements CenterSerivce {
         }
         return centerRepository.save(result.get());
     }
-
     @Override
-    public Center addVaccineToCenter(Integer centerID, Admin admin, Vaccine newVaccine) throws CenterException {
+    public Center addVaccineToCenter(Integer centerID, Vaccine newVaccine) throws CenterException {
         if(newVaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
-        }
-        if(admin==null){
-            throw new CenterException("Need admin credentials to add a vaccine to centre");
         }
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){
@@ -78,14 +61,10 @@ public class CenterServiceImpl implements CenterSerivce {
         centerRepository.save(center.get());
         return center.get();
     }
-
     @Override
-    public Center removeVaccineFromCentre(Integer centerID, Admin admin, Vaccine vaccine) throws CenterException {
+    public Center removeVaccineFromCentre(Integer centerID, Vaccine vaccine) throws CenterException {
         if(vaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
-        }
-        if(admin==null){
-            throw new CenterException("Need admin credentials to remove vaccine from centre");
         }
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){
@@ -99,11 +78,12 @@ public class CenterServiceImpl implements CenterSerivce {
     }
 
     @Override
-    public List<Center> findByNameCaseInsensitive(String centerName) throws CenterException {
+    public List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException {
         if(centerName==null){
             throw new CenterException("Cannot perform search with no centre name");
         }
-        var center = Optional.ofNullable(centerRepository.findByCenterNameIgnoreCase(centerName));
+        Optional<List<Center>> center= Optional.ofNullable(centerRepository.
+                findCenterByCenterNameIsContainingIgnoreCase(centerName));
         if(center.get().isEmpty()){
             String message=String.format("There's no such centre with name: %s. Please check it and try again",
                     centerName);
