@@ -10,7 +10,7 @@ public class Certificate {
     @Id
     @GeneratedValue(generator = "100")
     private Integer certificateId;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Appointment appointment;
     private LocalDate dateOfVaccination;
     private String certificateUrl;

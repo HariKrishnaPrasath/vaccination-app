@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 l
 java:S1192Z"QDefine a constant instead of duplicating this literal "patient with id " 8 times.(ƒÔ¸ìÿÿÿÿÿ
 b
@@ -39,3 +40,10 @@ java:S1611"/Remove the parentheses around the "a" parameter(‰Æ”êÿÿÿÿÿ
 java:S1128"Remove this duplicated import.(ãªñğ
 9
 java:S1128"Remove this duplicated import.(™“äÓüÿÿÿÿ
+=======
+h
+java:S1192-"KDefine a constant instead of duplicating this literal " not found" 3 times.(»Òß¢8°¯‡İ1
+X	java:S125C"<This block of commented-out lines of code should be removed.(ŞÅ€¾8¬°¯‡İ1
+]	java:S125T"<This block of commented-out lines of code should be removed.(âşµŠşÿÿÿÿ8¯°¯‡İ1
+]	java:S125\"<This block of commented-out lines of code should be removed.(äØ·ıÿÿÿÿ8¯°¯‡İ1
+>>>>>>> main

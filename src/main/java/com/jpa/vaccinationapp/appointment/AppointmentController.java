@@ -2,16 +2,43 @@ package com.jpa.vaccinationapp.appointment;
 
 import com.jpa.vaccinationapp.appointment.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("api/appointments")
+import java.util.List;
+
+@RestController
+@RequestMapping("api/appointments")
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
     @PostMapping("/add")
-    public Appointment bookAnAppointment(@RequestBody Appointment appointment) throws AppointmentException {
+    public Appointment bookAppointment(@RequestBody Appointment appointment) throws AppointmentException {
         return this.appointmentService.bookAnAppointment(appointment);
+    }
+    @GetMapping("/{bookingId}")
+    public Appointment getAppointmentById(@PathVariable Integer bookingId) throws AppointmentException {
+        return this.appointmentService.getAppointmentById(bookingId);
+    }
+    @GetMapping("/")
+    public List<Appointment> getAllAppointments() throws AppointmentException{
+        return this.appointmentService.getAllAppointments();
+    }
+    @GetMapping("/vaccinationCenters/{centerId}")
+    public List<Appointment>  getAppointmentsForVaccinationCenter(@PathVariable Integer centerId) throws AppointmentException {
+        return this.appointmentService.getAppointmentsForVaccinationCenter(centerId);
+    }
+    @DeleteMapping("delete/{bookingId}")
+    public Appointment deleteAppointmentById(@PathVariable Integer bookingId) throws AppointmentException{
+        return this.appointmentService.deleteAppointmentById(bookingId);
+    }
+    @GetMapping("/{patientId}")
+    public List<Appointment> getAppointmentByPatient(@PathVariable Integer patientId) throws AppointmentException {
+        return this.appointmentService.getAppointmentByPatient(patientId);
+    }
+    @PutMapping("/vaccinationStatus")
+    public Appointment updateAppointmentStatus(@RequestBody VaccinationStatusDTO vaccinationStatusDTO)
+            throws AppointmentException {
+        return this.appointmentService.updateAppointmentStatus(vaccinationStatusDTO);
     }
 }

@@ -31,10 +31,10 @@ public class Slot {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
     private Date endTime;
     private Integer availableSlots; // The number of available slots for this time period
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Center center;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Appointment> appointments;
     public Slot(Integer id, Date startTime, Date endTime,
                 Integer availableSlots, Center center,

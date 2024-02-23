@@ -1,11 +1,3 @@
 
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-\
-java:S1128"ARemove this unused import 'com.jpa.vaccinationapp.patient.Login'.(×ø şÿÿÿÿ
-Y
-java:S1128"CRemove this unused import 'com.jpa.vaccinationapp.patient.Patient'.(æèÍĞ
-a
-java:S1128"LRemove this unused import 'com.jpa.vaccinationapp.patient.PatientException'.(ÙÎ‚
-h
-java:S1128"RRemove this unused import 'com.jpa.vaccinationapp.patient.service.PatientService'.(ØÈô÷
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ú„°¶İ1

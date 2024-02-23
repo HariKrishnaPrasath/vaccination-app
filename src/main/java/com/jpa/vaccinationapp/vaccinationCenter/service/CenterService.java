@@ -10,10 +10,10 @@ import java.util.List;
 
 public interface CenterService {
     Center createCenter(Center newCenter) throws CenterException;
-    Center removeCenter(Integer centerID, Admin admin)throws CenterException;
-    Center updateCenter(Center center,Admin admin)throws CenterException;
-    Center addVaccineToCenter(Integer centerID, Admin admin, Vaccine newVaccine)throws CenterException;
-    Center removeVaccineFromCentre(Integer centerID, Admin admin, Vaccine vaccine) throws CenterException;
+    Center removeCenter(Integer centerID)throws CenterException;
+    Center updateCenter(Center center)throws CenterException;
+    Center addVaccineToCenter(Integer centerID, Vaccine newVaccine)throws CenterException;
+    Center removeVaccineFromCentre(Integer centerID, Vaccine vaccine) throws CenterException;
     List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException;
     Center findByID(Integer centerID)throws CenterException;
     List<Center> findByPincode(String pincode)throws CenterException;

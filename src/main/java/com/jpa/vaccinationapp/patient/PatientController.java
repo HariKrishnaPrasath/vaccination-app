@@ -8,8 +8,12 @@ import java.util.List;
 
 @RestController
 public class PatientController {
+
+    private final PatientService patientService;
     @Autowired
-    private PatientService patientService;
+    public PatientController(PatientService patientService) {
+        this.patientService = patientService;
+    }
 
     @PostMapping("patient")
     public Patient signUp(@RequestBody Patient patient) throws PatientException {

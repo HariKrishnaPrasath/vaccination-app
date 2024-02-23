@@ -27,15 +27,15 @@ public class CenterController {
 
     // adding vaccine to a center
     @PutMapping("center/{centerID}/vaccine")
-    public Center addVaccineToCenter(@PathVariable Integer centerID, @RequestBody Admin admin,
-                                     @RequestBody Vaccine newVaccine) throws CenterException {
-        return centerService.addVaccineToCenter(centerID,admin,newVaccine);
+    public Center addVaccineToCenter(@PathVariable Integer centerID, @RequestBody Vaccine newVaccine)
+            throws CenterException {
+        return centerService.addVaccineToCenter(centerID,newVaccine);
     }
 
     // removing a center
     @DeleteMapping("center/{centerID}/remove")
-    public Center removeCenter(@PathVariable Integer centerID, @RequestBody Admin admin)throws CenterException{
-        return centerService.removeCenter(centerID,admin);
+    public Center removeCenter(@PathVariable Integer centerID)throws CenterException{
+        return centerService.removeCenter(centerID);
     }
 
     // getting center by name
@@ -65,8 +65,8 @@ public class CenterController {
 
     //updating the center
     @PutMapping("center/update")
-    public Center updateCenter(Center center,Admin admin) throws CenterException {
-        return centerService.updateCenter(center,admin);
+    public Center updateCenter(Center center) throws CenterException {
+        return centerService.updateCenter(center);
     }
 
     //updating the address and phone of the center

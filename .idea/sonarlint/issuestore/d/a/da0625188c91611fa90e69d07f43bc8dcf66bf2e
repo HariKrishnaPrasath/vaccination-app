@@ -1,0 +1,36 @@
+
+<<<<<<< HEAD
+h
+java:S1192"FDefine a constant instead of duplicating this literal "Super" 6 times.(ˆ‹µøþÿÿÿÿ8³ã›†Ý1
+
+java:S1192 "bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8´ã›†Ý1
+x
+java:S1192Q"VDefine a constant instead of duplicating this literal "Certificate not exist" 3 times.(ŠÊÛâùÿÿÿÿ8´ã›†Ý1
+k
+java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïžùÿÿÿÿ8µã›†Ý1
+v
+java:S1192$"ZDefine a constant instead of duplicating this literal "Admin password is Invalid" 6 times.(ß³–]8µã›†Ý1
+r
+java:S1192"PDefine a constant instead of duplicating this literal "Admin not found" 6 times.(ý‹‰Éùÿÿÿÿ8¶ã›†Ý1
+‚
+java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïžùÿÿÿÿ8Ùã›†Ý1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8áú‰†Ý1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8áú‰†Ý1
+=======
+
+java:S1192"bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8‰è†Ý1
+x
+java:S11926"VDefine a constant instead of duplicating this literal "Certificate not exist" 3 times.(ŠÊÛâùÿÿÿÿ8‰è†Ý1
+k
+java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïžùÿÿÿÿ8‰è†Ý1
+‚
+java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïžùÿÿÿÿ8³è†Ý1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8áú‰†Ý1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8áú‰†Ý1
+\
+java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8Íè†Ý1
+>>>>>>> e74cbe6ff7d4823204631feae968232ab9ce8520

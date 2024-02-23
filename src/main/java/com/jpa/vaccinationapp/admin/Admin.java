@@ -1,10 +1,9 @@
 package com.jpa.vaccinationapp.admin;
 
-import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+
 
 @Entity
 public class Admin {
@@ -37,8 +36,8 @@ public class Admin {
         this.adminType = adminType;
     }
 
-    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType
-                 ) {
+    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType) {
+
         this.adminId = adminId;
         this.email = email;
         this.phoneNumber = phoneNumber;

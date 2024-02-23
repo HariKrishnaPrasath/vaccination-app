@@ -1,2 +1,4 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(„ûç‡ýÿÿÿÿ8”ÒÕ¨Ý1
+\
+java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8µÂÑ¶Ý1

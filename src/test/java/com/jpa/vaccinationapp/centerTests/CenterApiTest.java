@@ -59,7 +59,7 @@ class CenterApiTest {
         Admin  adminCheck=null;
         try{
             centerCheck=centerService.createCenter(center);
-            adminService.addAdmin(admin,admin);
+            adminService.addAdmin(admin);
             //centerService.removeCenter(101,admin);
 
             finalCenter=centerService.findByID(centerCheck.getCenterId());

@@ -21,7 +21,7 @@ public class Patient {
     private String patientName;
     @CreatedDate
     private LocalDate registrationDate;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Map<Integer, Appointment> bookingDetails = new HashMap<>();
 
     public Patient() {

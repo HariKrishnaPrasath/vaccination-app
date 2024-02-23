@@ -15,7 +15,6 @@ import java.util.Optional;
 @Service
 public class CenterServiceImpl implements CenterService {
 
-
     private final CenterRepository centerRepository;
     @Autowired
     public CenterServiceImpl(CenterRepository centerRepository){
@@ -28,11 +27,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center removeCenter(Integer centerID, Admin admin) throws CenterException {
-        if(admin.getAdminType().equals("admin")){
-            String message=String.format("%d is not a super admin to remove a centre",admin.getAdminId());
-            throw new CenterException(message);
-        }
+    public Center removeCenter(Integer centerID) throws CenterException {
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){
             String message=String.format("There is no such centre with ID: %d to remove",centerID);
@@ -43,11 +38,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center updateCenter(Center center, Admin admin) throws CenterException {
-        if(admin.getAdminType().equals("admin")){
-            String message=String.format("%d is not a super admin to update a centre",admin.getAdminId());
-            throw new CenterException(message);
-        }
+    public Center updateCenter(Center center) throws CenterException {
         Optional<Center>result= centerRepository.findById(center.getCenterId());
         if(result.isEmpty()){
             String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
@@ -55,14 +46,10 @@ public class CenterServiceImpl implements CenterService {
         }
         return centerRepository.save(result.get());
     }
-
     @Override
-    public Center addVaccineToCenter(Integer centerID, Admin admin, Vaccine newVaccine) throws CenterException {
+    public Center addVaccineToCenter(Integer centerID, Vaccine newVaccine) throws CenterException {
         if(newVaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
-        }
-        if(admin==null){
-            throw new CenterException("Need admin credentials to add a vaccine to centre");
         }
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){
@@ -74,14 +61,10 @@ public class CenterServiceImpl implements CenterService {
         centerRepository.save(center.get());
         return center.get();
     }
-
     @Override
-    public Center removeVaccineFromCentre(Integer centerID, Admin admin, Vaccine vaccine) throws CenterException {
+    public Center removeVaccineFromCentre(Integer centerID, Vaccine vaccine) throws CenterException {
         if(vaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
-        }
-        if(admin==null){
-            throw new CenterException("Need admin credentials to remove vaccine from centre");
         }
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){

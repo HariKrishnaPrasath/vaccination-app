@@ -1,10 +1,7 @@
 package com.jpa.vaccinationapp.slot;
 
 import com.jpa.vaccinationapp.slot.service.SlotService;
-import com.jpa.vaccinationapp.vaccinationCenter.Center;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -12,8 +9,11 @@ import java.util.List;
 
 @RestController
 public class SlotController {
+    private final SlotService slotService;
     @Autowired
-    private SlotService slotService;
+    public SlotController(SlotService slotService) {
+        this.slotService = slotService;
+    }
 
     @PostMapping("slot")
     public Slot createSlot(@RequestBody Slot slot) throws SlotException {
