@@ -1,41 +1,6 @@
 
-s
-java:S1192Z"QDefine a constant instead of duplicating this literal "patient with id " 8 times.(ƒÔ¸ìÿÿÿÿÿ8Ñß›†İ1
-i
-java:S11921"LDefine a constant instead of duplicating this literal " not found" 11 times.(»Òß¢8Ñß›†İ1
-m
-java:S1192["PDefine a constant instead of duplicating this literal "no booking done" 4 times.(ã»8Ñß›†İ1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8…à›†İ1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8…à›†İ1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8…à›†İ1
-L
-java:S1611d"/Remove the parentheses around the "a" parameter(é€¦È8£à›†İ1
-Q
-java:S1611l"/Remove the parentheses around the "a" parameter(ä¸‘¤ıÿÿÿÿ8ªà›†İ1
-x
-java:S2159l"VRemove this call to "equals"; comparisons between unrelated types always return false.(ä¸‘¤ıÿÿÿÿ8«à›†İ1
-Q
-java:S1611t"/Remove the parentheses around the "a" parameter(ØŸ®¸ÿÿÿÿÿ8°à›†İ1
-L
-java:S1611{"/Remove the parentheses around the "a" parameter(Ë“â8³à›†İ1
-M
-java:S1611‚"/Remove the parentheses around the "a" parameter(Ò‰8ºà›†İ1
-t
-java:S2159‚"VRemove this call to "equals"; comparisons between unrelated types always return false.(Ò‰8¼à›†İ1
-M
-java:S1611‚"/Remove the parentheses around the "a" parameter(Ò‰8¿à›†İ1
-M
-java:S1611‰"/Remove the parentheses around the "a" parameter(ñ‹£8Áà›†İ1
-M
-java:S1611‰"/Remove the parentheses around the "a" parameter(ñ‹£8Áà›†İ1
-R
-java:S1611"/Remove the parentheses around the "a" parameter(‰Æ”êÿÿÿÿÿ8Ãà›†İ1
-R
-java:S1611"/Remove the parentheses around the "a" parameter(‰Æ”êÿÿÿÿÿ8Ãà›†İ1
-;
-java:S1128"Remove this duplicated import.(ãªñğ8Äà›†İ1
-@
-java:S1128"Remove this duplicated import.(™“äÓüÿÿÿÿ8Çà›†İ1
+h
+java:S1192-"KDefine a constant instead of duplicating this literal " not found" 3 times.(»Òß¢8°¯‡İ1
+X	java:S125C"<This block of commented-out lines of code should be removed.(ŞÅ€¾8¬°¯‡İ1
+]	java:S125T"<This block of commented-out lines of code should be removed.(âşµŠşÿÿÿÿ8¯°¯‡İ1
+]	java:S125\"<This block of commented-out lines of code should be removed.(äØ·ıÿÿÿÿ8¯°¯‡İ1

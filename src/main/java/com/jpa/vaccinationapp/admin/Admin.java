@@ -1,10 +1,9 @@
 package com.jpa.vaccinationapp.admin;
 
-import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+
 
 @Entity
 public class Admin {
