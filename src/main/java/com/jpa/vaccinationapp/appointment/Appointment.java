@@ -16,14 +16,14 @@ public class Appointment {
     @GeneratedValue
     private Integer bookingId;
     private Boolean vaccineStatus;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Slot slot;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Certificate certificate;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     private Patient patient;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Vaccine vaccine;
     private LocalDate bookingDate;
 

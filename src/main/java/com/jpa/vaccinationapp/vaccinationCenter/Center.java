@@ -19,13 +19,13 @@ public class Center {
     private String district;
     private String state;
     private String contactNumber;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @Column(nullable = true)
     private Map<Integer, Vaccine> vaccineMap;
-    @OneToMany//(mappedBy = "vaccinationCenter")
+    @OneToMany(cascade = CascadeType.ALL)
     @Column(nullable = true)
     private Map<Integer, Slot> slots=new HashMap<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Admin admin;
 
     public Center(){}

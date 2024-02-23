@@ -22,47 +22,47 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public Admin addAdmin(Admin adminDetails) throws AdminException {
 
-            Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-            if (checkAdmin.isPresent())
-                throw new AdminException("Admin already exist and please check provided details");
-            return this.adminRepo.save(adminDetails);
+        Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
+        if (checkAdmin.isPresent())
+            throw new AdminException("Admin already exist and please check provided details");
+        return this.adminRepo.save(adminDetails);
     }
     @Override
     public Admin updateAdminDetails(Admin adminDetails) throws AdminException {
-            Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
-            if (checkAdmin.isEmpty())
-                throw adminNotFoundException;
-            return this.adminRepo.save(adminDetails);
+        Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
+        if (checkAdmin.isEmpty())
+            throw adminNotFoundException;
+        return this.adminRepo.save(adminDetails);
     }
     @Override
     public List<Admin> getAllAdmin() throws AdminException {
-            return this.adminRepo.findAll();
+        return this.adminRepo.findAll();
     }
     @Override
     public Admin getAdminById(Integer id)throws AdminException  {
-            Optional<Admin> adminFound = this.adminRepo.findById(id);
-            if(adminFound.isEmpty())
-                throw adminNotFoundException;
-            return adminFound.get();
+        Optional<Admin> adminFound = this.adminRepo.findById(id);
+        if(adminFound.isEmpty())
+            throw adminNotFoundException;
+        return adminFound.get();
     }
 
     @Override
     public Admin getAdminByEmail(String email) throws AdminException {
-            Optional<Admin> adminFound = this.adminRepo.findByEmailIgnoreCase(email);
-            if(adminFound.isEmpty())
-                throw adminNotFoundException;
-            return adminFound.get();
+        Optional<Admin> adminFound = this.adminRepo.findByEmailIgnoreCase(email);
+        if(adminFound.isEmpty())
+            throw adminNotFoundException;
+        return adminFound.get();
     }
     @Override
     public Admin deleteAdminById(Integer id) throws AdminException {
-            Optional<Admin> adminFound = this.adminRepo.findById(id);
-            if(adminFound.isEmpty())
-                throw adminNotFoundException;
-            Center vaccineCentre=vaccRepo.findByAdmin(adminFound.get());
-            vaccineCentre.setAdmin(null);
-            this.vaccRepo.save(vaccineCentre);
-            this.adminRepo.deleteById(id);
-            return adminFound.get();
+        Optional<Admin> adminFound = this.adminRepo.findById(id);
+        if(adminFound.isEmpty())
+            throw adminNotFoundException;
+        Center vaccineCentre=vaccRepo.findByAdmin(adminFound.get());
+        vaccineCentre.setAdmin(null);
+        this.vaccRepo.save(vaccineCentre);
+        this.adminRepo.deleteById(id);
+        return adminFound.get();
     }
     @Override
     public Admin loginAdmin(Login loginDetails) throws AdminException {

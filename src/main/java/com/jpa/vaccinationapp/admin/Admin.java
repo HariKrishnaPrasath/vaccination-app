@@ -36,8 +36,8 @@ public class Admin {
         this.adminType = adminType;
     }
 
-    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType
-                 ) {
+    public Admin(Integer adminId, String email, String phoneNumber, String adminName, String password, String adminType) {
+
         this.adminId = adminId;
         this.email = email;
         this.phoneNumber = phoneNumber;
