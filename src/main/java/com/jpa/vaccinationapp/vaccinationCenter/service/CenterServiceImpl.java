@@ -57,7 +57,7 @@ public class CenterServiceImpl implements CenterService {
                     centerID);
             throw new CenterException(message);
         }
-        center.get().getVaccineMap().put(newVaccine.getVaccineId(), newVaccine);
+        center.get().getVaccineMap().add(newVaccine);
         centerRepository.save(center.get());
         return center.get();
     }

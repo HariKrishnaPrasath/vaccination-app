@@ -2,13 +2,14 @@ package com.jpa.vaccinationapp.admin;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
 @Entity
 public class Admin {
     @Id
-    @GeneratedValue(generator = "100")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer adminId;
     private String email;
     private String phoneNumber;

@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.slot;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import jakarta.persistence.*;
@@ -11,6 +12,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,10 +33,12 @@ public class Slot {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
     private Date endTime;
     private Integer availableSlots; // The number of available slots for this time period
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "CENTER_CENTER_ID", nullable = false)
     private Center center;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "slot",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonIgnore
     private List<Appointment> appointments;
     public Slot(Integer id, Date startTime, Date endTime,
                 Integer availableSlots, Center center,
@@ -114,7 +118,12 @@ public class Slot {
     public void setAppointments(List<Appointment> appointments) {
         this.appointments = appointments;
     }
-
+    public void addAppointment(Appointment appointment) {
+        if (this.appointments == null)
+            this.appointments = new ArrayList<>();
+        this.appointments.add(appointment);
+        appointment.setSlot(this);
+    }
     public Slot() {
 
     }

@@ -1,49 +1,6 @@
 
-<<<<<<< HEAD
-l
-java:S1192Z"QDefine a constant instead of duplicating this literal "patient with id " 8 times.(ƒÔ¸ìÿÿÿÿÿ
-b
-java:S11921"LDefine a constant instead of duplicating this literal " not found" 11 times.(»Òß¢
-f
-java:S1192["PDefine a constant instead of duplicating this literal "no booking done" 4 times.(ã»
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-E
-java:S1611d"/Remove the parentheses around the "a" parameter(é€¦È
-J
-java:S1611l"/Remove the parentheses around the "a" parameter(ä¸‘¤ıÿÿÿÿ
-q
-java:S2159l"VRemove this call to "equals"; comparisons between unrelated types always return false.(ä¸‘¤ıÿÿÿÿ
-J
-java:S1611t"/Remove the parentheses around the "a" parameter(ØŸ®¸ÿÿÿÿÿ
-E
-java:S1611{"/Remove the parentheses around the "a" parameter(Ë“â
-F
-java:S1611‚"/Remove the parentheses around the "a" parameter(Ò‰
-m
-java:S2159‚"VRemove this call to "equals"; comparisons between unrelated types always return false.(Ò‰
-F
-java:S1611‚"/Remove the parentheses around the "a" parameter(Ò‰
-F
-java:S1611‰"/Remove the parentheses around the "a" parameter(ñ‹£
-F
-java:S1611‰"/Remove the parentheses around the "a" parameter(ñ‹£
-K
-java:S1611"/Remove the parentheses around the "a" parameter(‰Æ”êÿÿÿÿÿ
-K
-java:S1611"/Remove the parentheses around the "a" parameter(‰Æ”êÿÿÿÿÿ
-4
-java:S1128"Remove this duplicated import.(ãªñğ
-9
-java:S1128"Remove this duplicated import.(™“äÓüÿÿÿÿ
-=======
 h
-java:S1192-"KDefine a constant instead of duplicating this literal " not found" 3 times.(»Òß¢8°¯‡İ1
-X	java:S125C"<This block of commented-out lines of code should be removed.(ŞÅ€¾8¬°¯‡İ1
-]	java:S125T"<This block of commented-out lines of code should be removed.(âşµŠşÿÿÿÿ8¯°¯‡İ1
-]	java:S125\"<This block of commented-out lines of code should be removed.(äØ·ıÿÿÿÿ8¯°¯‡İ1
->>>>>>> main
+java:S1192."KDefine a constant instead of duplicating this literal " not found" 4 times.(»Òß¢8ïëÔÔİ1
+X	java:S125D"<This block of commented-out lines of code should be removed.(ŞÅ€¾8±ìÔÔİ1
+]	java:S125]"<This block of commented-out lines of code should be removed.(âşµŠşÿÿÿÿ8¶ìÔÔİ1
+]	java:S125e"<This block of commented-out lines of code should be removed.(äØ·ıÿÿÿÿ8·ìÔÔİ1

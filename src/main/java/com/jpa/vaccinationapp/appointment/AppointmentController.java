@@ -32,8 +32,8 @@ public class AppointmentController {
     public Appointment deleteAppointmentById(@PathVariable Integer bookingId) throws AppointmentException{
         return this.appointmentService.deleteAppointmentById(bookingId);
     }
-    @GetMapping("/{patientId}")
-    public List<Appointment> getAppointmentByPatient(@PathVariable Integer patientId) throws AppointmentException {
+    @GetMapping("/id")
+    public List<Appointment> getAppointmentByPatient(@RequestParam Integer patientId) throws AppointmentException {
         return this.appointmentService.getAppointmentByPatient(patientId);
     }
     @PutMapping("/vaccinationStatus")

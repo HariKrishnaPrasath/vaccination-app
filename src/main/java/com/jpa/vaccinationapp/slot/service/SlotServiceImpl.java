@@ -1,15 +1,21 @@
 package com.jpa.vaccinationapp.slot.service;
 
 import com.jpa.vaccinationapp.slot.Slot;
+import com.jpa.vaccinationapp.slot.SlotDTO;
 import com.jpa.vaccinationapp.slot.SlotException;
 import com.jpa.vaccinationapp.slot.SlotRepository;
+import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.ThreadPoolExecutor;
 
 @Service
 public class SlotServiceImpl implements SlotService{
@@ -29,6 +35,10 @@ public class SlotServiceImpl implements SlotService{
                 findByCenterAndStartTimeAndEndTime(slot.getCenter(),
                         slot.getStartTime(), slot.getEndTime()));
         if(ifSlotAlreadyPresent.isPresent()) throw new SlotException("slot already present");
+        Optional<Center> centerOptional = this.centerRepository.findById(slot.getCenter().getCenterId());
+        if (centerOptional.isEmpty())
+            throw new SlotException("No center is found");
+        slot.setCenter(centerOptional.get());
         return this.slotRepository.save(slot);
     }
 
@@ -82,4 +92,6 @@ public class SlotServiceImpl implements SlotService{
         slot.get().setAvailableSlots(slots);
         return slot.get();
     }
+
+
 }

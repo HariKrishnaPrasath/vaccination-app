@@ -1,5 +1,6 @@
 package com.jpa.vaccinationapp.patient;
 
+import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,10 +48,10 @@ public class PatientController {
 //    public List<Vaccine> getVaccines() throws VaccineException {
 //        return this.patientService.getAllVaccines();
 //    }
-//    @GetMapping("patient/appointment/{id}")
-//    public List<Appointment> getBookedAppointments(@PathVariable("id") Integer patientId) throws PatientException {
-//        return this.patientService.getPatientAppointmentDetails(patientId);
-//    }
+    @GetMapping("patient/appointment/{id}")
+    public List<Appointment> getBookedAppointments(@PathVariable("id") Integer patientId) throws PatientException {
+        return this.patientService.getPatientAppointmentDetails(patientId);
+    }
 //    @GetMapping("patient/appointment/vaccine/{id}/{vaccine}")
 //    public List<Appointment> getBookedAppointmentsByVaccine(@PathVariable("id") Integer patientId,@PathVariable Vaccine vaccine) throws PatientException {
 //        return this.patientService.getPatientAppointmentDetailsByVaccine(patientId,vaccine);

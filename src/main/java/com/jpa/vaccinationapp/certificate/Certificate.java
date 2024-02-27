@@ -1,5 +1,6 @@
 package com.jpa.vaccinationapp.certificate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.appointment.Appointment;
 import jakarta.persistence.*;
 
@@ -8,9 +9,10 @@ import java.time.LocalDate;
 @Entity
 public class Certificate {
     @Id
-    @GeneratedValue(generator = "100")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer certificateId;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "certificate",fetch=FetchType.EAGER, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @JsonIgnore
     private Appointment appointment;
     private LocalDate dateOfVaccination;
     private String certificateUrl;

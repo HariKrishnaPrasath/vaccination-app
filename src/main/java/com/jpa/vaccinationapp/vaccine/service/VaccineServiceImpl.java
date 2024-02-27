@@ -21,18 +21,16 @@ public class VaccineServiceImpl implements VaccineService{
     }
 
     @Override
-    public Vaccine createVaccine(Vaccine newVaccine, Admin admin) throws VaccineException {
-        if(admin.getAdminType().equals("admin")){
-            String message=String.format("%d ID is not a super admin to create a vaccine",admin.getAdminId());
-            throw new VaccineException(message);
+    public Vaccine createVaccine(Vaccine newVaccine) throws VaccineException {
+        if (newVaccine.getVaccineId() != null){
+            Optional<Vaccine> result=vaccineRepository.findById(newVaccine.getVaccineId());
+            if(result.isPresent()) throw new VaccineException("this vaccine already exists!");
         }
-        Optional<Vaccine> result=vaccineRepository.findById(newVaccine.getVaccineId());
-        if(result.isPresent()) throw new VaccineException("this vaccine already exists!");
         return vaccineRepository.save(newVaccine);
     }
 
     @Override
-    public Vaccine updateVaccine(Integer vaccineId, Admin admin) throws VaccineException {
+    public Vaccine updateVaccine(Integer vaccineId) throws VaccineException {
         Optional<Vaccine> result=vaccineRepository.findById(vaccineId);
         if(result.isEmpty()) throw new VaccineException("Vaccine doesn't exists!");
         return vaccineRepository.save(result.get());//doubt

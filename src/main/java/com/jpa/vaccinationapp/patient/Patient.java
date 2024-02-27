@@ -1,5 +1,6 @@
 package com.jpa.vaccinationapp.patient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.appointment.Appointment;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,7 +13,7 @@ import java.util.*;
 @EntityListeners(AuditingEntityListener.class)
 public class Patient {
     @Id
-    @GeneratedValue(generator = "100")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer patientId;
     private String email;
     private String phoneNumber;
@@ -21,14 +22,15 @@ public class Patient {
     private String patientName;
     @CreatedDate
     private LocalDate registrationDate;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Map<Integer, Appointment> bookingDetails = new HashMap<>();
+    @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonIgnore
+    private Set<Appointment> bookingDetails = new HashSet<>();
 
     public Patient() {
     }
 
     public Patient(Integer patientId, String email, String phoneNumber, String password, String address,
-                   String patientName, LocalDate registrationDate, Map<Integer, Appointment> bookingDetails) {
+                   String patientName, LocalDate registrationDate, Set<Appointment> bookingDetails) {
         this.patientId = patientId;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -40,7 +42,7 @@ public class Patient {
     }
 
     public Patient(String email, String phoneNumber, String password, String address, String patientName,
-                   LocalDate registrationDate, Map<Integer, Appointment> bookingDetails) {
+                   LocalDate registrationDate, Set<Appointment> bookingDetails) {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
@@ -106,11 +108,16 @@ public class Patient {
         this.registrationDate = registrationDate;
     }
 
-    public Map<Integer, Appointment> getBookingDetails() {
+    public Set<Appointment> getBookingDetails() {
         return bookingDetails;
     }
 
-    public void setBookingDetails(Map<Integer, Appointment> bookingDetails) {
+    public void setBookingDetails(Set<Appointment> bookingDetails) {
         this.bookingDetails = bookingDetails;
+    }
+
+    public void addAppointment(Appointment appointment) {
+        this.bookingDetails.add(appointment);
+        appointment.setPatient(this);
     }
 }
