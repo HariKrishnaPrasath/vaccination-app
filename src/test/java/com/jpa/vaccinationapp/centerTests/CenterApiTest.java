@@ -9,6 +9,7 @@ import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import com.jpa.vaccinationapp.vaccinationCenter.service.CenterService;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
+import com.jpa.vaccinationapp.vaccine.VaccineException;
 import com.jpa.vaccinationapp.vaccine.service.VaccineService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -81,16 +82,18 @@ class CenterApiTest {
                 "631003","Ranipet", "Tamil Nadu","9597813109",
                 null,null,null);
         Vaccine vaccine=new Vaccine("Covaxine", LocalDate.of(2020,11, 1),
-                LocalDate.of(2024,11, 1));
+                LocalDate.of(2024,11, 1),"Covi Shield");
         Center resultCenter=null;
         Vaccine resultVaccine=null;
         try {
             resultCenter=centerService.createCenter(center);
-            resultVaccine=vaccineService.addVaccine(null,vaccine);
+            resultVaccine=vaccineService.createVaccine(vaccine);
 
-        } catch (AdminException | CenterException ignored) {
+        } catch (CenterException ignored) {
             assert resultCenter != null;
-            Assertions.assertFalse(resultCenter.getVaccineMap().containsValue(resultVaccine));
+            Assertions.assertFalse(resultCenter.getVaccineMap().contains(resultVaccine));
+        } catch (VaccineException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.jpa.vaccinationapp.patient.service;
 
+import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.patient.Login;
 import com.jpa.vaccinationapp.patient.PatientException;
 import com.jpa.vaccinationapp.patient.PatientRepository;
@@ -78,14 +79,22 @@ public class PatientServiceImpl implements PatientService {
     public List<Patient> getAllPatients() {
         return this.patientRepository.findAll();
     }
+
+    @Override
+    public List<Appointment> getPatientAppointmentDetails(Integer patientId) throws PatientException {
+        Optional<Patient> patient = this.patientRepository.findById(patientId);
+        if(patient.isEmpty()) throw new PatientException("patient with id "+patientId+" not found");
+        if(patient.get().getBookingDetails().isEmpty()) throw new PatientException("no booking done");
+        return patient.get().getBookingDetails().stream().toList();
+    }
 }
 
-    //@Override
+//    @Override
 //    public List<Appointment> getPatientAppointmentDetails(Integer patientId) throws PatientException {
 //        Optional<Patient> patient = this.patientRepository.findById(patientId);
 //        if(patient.isEmpty()) throw new PatientException("patient with id "+patientId+" not found");
 //        if(patient.get().getBookingDetails().isEmpty()) throw new PatientException("no booking done");
-//        return patient.get().getBookingDetails().values().stream().toList();
+//        return patient.get().getBookingDetails().stream().toList();
 //    }
 
 //    @Override

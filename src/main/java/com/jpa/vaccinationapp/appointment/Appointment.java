@@ -13,17 +13,19 @@ import java.time.LocalDate;
 @Entity
 public class Appointment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
     private Boolean vaccineStatus;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "SLOT_ID", nullable = false)
     private Slot slot;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "CERTIFICATE_CERTIFICATE_ID", nullable = true)
     private Certificate certificate;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "PATIENT_PATIENT_ID", nullable = false)
     private Patient patient;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
     private Vaccine vaccine;
     private LocalDate bookingDate;
 

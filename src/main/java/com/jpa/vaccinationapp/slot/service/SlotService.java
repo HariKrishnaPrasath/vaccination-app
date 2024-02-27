@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.slot.service;
 
 import com.jpa.vaccinationapp.slot.Slot;
+import com.jpa.vaccinationapp.slot.SlotDTO;
 import com.jpa.vaccinationapp.slot.SlotException;
 
 import java.util.Date;

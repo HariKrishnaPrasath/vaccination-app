@@ -15,12 +15,12 @@ public class VaccineController {
     private  VaccineService vaccineService;
 
     @PostMapping("vaccine/create")
-    public Vaccine createVaccine(@RequestBody Vaccine newVaccine,@RequestBody Admin admin) throws VaccineException {
-        return vaccineService.createVaccine(newVaccine,admin);
+    public Vaccine createVaccine(@RequestBody Vaccine newVaccine) throws VaccineException {
+        return vaccineService.createVaccine(newVaccine);
     }
     @PutMapping("vaccine/update/{vaccineId}")
-    public Vaccine updateVaccine(@PathVariable Integer vaccineId,@RequestBody Admin admin) throws VaccineException{
-        return vaccineService.updateVaccine(vaccineId,admin);
+    public Vaccine updateVaccine(@PathVariable Integer vaccineId) throws VaccineException{
+        return vaccineService.updateVaccine(vaccineId);
     }
     @GetMapping("vaccine/{id}")
     public Vaccine getById(@PathVariable Integer id) throws VaccineException{

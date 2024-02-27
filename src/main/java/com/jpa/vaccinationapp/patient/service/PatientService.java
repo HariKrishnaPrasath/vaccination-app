@@ -19,4 +19,5 @@ public interface PatientService {
     Patient updatePatientInfo(Patient patient) throws PatientException;
     Patient deletePatientInfo(Integer patientId) throws PatientException;
     List<Patient> getAllPatients();
+    List<Appointment> getPatientAppointmentDetails(Integer patientId) throws PatientException;
 }

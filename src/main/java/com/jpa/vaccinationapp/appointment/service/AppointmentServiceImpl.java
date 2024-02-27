@@ -11,6 +11,8 @@ import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.slot.SlotRepository;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
+import com.jpa.vaccinationapp.vaccine.Vaccine;
+import jakarta.transaction.Transactional;
 import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    @Transactional
     public Appointment bookAnAppointment(Appointment appointment) throws AppointmentException {
         if (appointment == null)
             throw new AppointmentException("Appointment can't be null");
@@ -41,6 +44,13 @@ public class AppointmentServiceImpl implements AppointmentService {
                 this.appointmentRepository.findByBookingDateAndPatient(appointment.getBookingDate(), appointment.getPatient());
         if (appointmentOptional.isPresent())
             throw new AppointmentException("Appointment Already exists'");
+
+        Optional<Patient> patientOptional = this.patientRepository.findById(appointment.getPatient().getPatientId());
+        Optional<Slot> slotOptional = this.slotRepository.findById(appointment.getSlot().getId());
+        if (patientOptional.isEmpty() || slotOptional.isEmpty())
+            throw new AppointmentException("no patient or slot is found");
+        appointment.setPatient(patientOptional.get());
+        appointment.setSlot(slotOptional.get());
         return this.appointmentRepository.save(appointment);
     }
 

@@ -2,6 +2,7 @@ package com.jpa.vaccinationapp.vaccinationCenter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.admin.Admin;
+import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import jakarta.persistence.*;
@@ -19,18 +20,17 @@ public class Center {
     private String district;
     private String state;
     private String contactNumber;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @Column(nullable = true)
-    private Map<Integer, Vaccine> vaccineMap;
-    @OneToMany(cascade = CascadeType.ALL)
-    @Column(nullable = true)
-    private Map<Integer, Slot> slots=new HashMap<>();
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
+    private Set<Vaccine> vaccineMap;
+    @OneToMany(mappedBy = "center",fetch=FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonIgnore
+    private Set<Slot> slots=new HashSet<>();
+    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
     private Admin admin;
 
     public Center(){}
     public Center(Integer centerId, String centerName, String address, String pincode, String district,
-                  String state, String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots, Admin admin) {
+                  String state, String contactNumber, Set<Vaccine> vaccineMap, Set<Slot> slots, Admin admin) {
         this.centerId = centerId;
         this.centerName = centerName;
         this.address = address;
@@ -44,7 +44,7 @@ public class Center {
     }
 
     public Center(String centerName, String address, String pincode, String district, String state,
-                  String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots) {
+                  String contactNumber, Set<Vaccine> vaccineMap, Set<Slot> slots) {
         this.centerName = centerName;
         this.address = address;
         this.pincode = pincode;
@@ -56,7 +56,7 @@ public class Center {
     }
 
     public Center(String centerName, String address, String pincode, String district, String state,
-                  String contactNumber, Map<Integer, Vaccine> vaccineMap,Admin admin) {
+                  String contactNumber, Set<Vaccine> vaccineMap,Admin admin) {
         this.centerName = centerName;
         this.address = address;
         this.pincode = pincode;
@@ -68,7 +68,7 @@ public class Center {
     }
 
     public Center(String centerName, String address, String pincode, String district, String state,
-                  String contactNumber, Map<Integer, Vaccine> vaccineMap, Map<Integer, Slot> slots, Admin admin) {
+                  String contactNumber, Set<Vaccine> vaccineMap, Set<Slot> slots, Admin admin) {
         this.centerName = centerName;
         this.address = address;
         this.pincode = pincode;
@@ -136,19 +136,19 @@ public class Center {
         this.contactNumber = contactNumber;
     }
 
-    public Map<Integer, Vaccine> getVaccineMap() {
+    public Set<Vaccine> getVaccineMap() {
         return vaccineMap;
     }
 
-    public void setVaccineMap(Map<Integer, Vaccine> vaccineMap) {
+    public void setVaccineMap(Set<Vaccine> vaccineMap) {
         this.vaccineMap = vaccineMap;
     }
 
-    public Map<Integer, Slot> getSlots() {
+    public Set<Slot> getSlots() {
         return slots;
     }
 
-    public void setSlots(Map<Integer, Slot> slots) {
+    public void setSlots(Set<Slot> slots) {
         this.slots = slots;
     }
 
@@ -159,7 +159,18 @@ public class Center {
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
+    public void addSlot(Slot slot) {
+        if (slot != null){
+            this.slots.add(slot);
+            slot.setCenter(this);
+        }
+    }
+    public void addVaccine(Vaccine vaccine) {
+        if (vaccineMap == null)
+            this.vaccineMap = new HashSet<>();
+        this.vaccineMap.add(vaccine);
 
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
