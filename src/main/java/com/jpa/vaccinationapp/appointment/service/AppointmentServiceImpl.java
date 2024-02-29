@@ -60,7 +60,7 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentException("Id can't be null");
         Optional<Appointment> appointmentOpt = this.appointmentRepository.findById(bookingId);
         if (appointmentOpt.isEmpty())
-            throw new AppointmentException("No such appointment found for the given id");
+            throw new AppointmentException("No such appointment found for the given id " + bookingId);
         return appointmentOpt.get();
     }
 
@@ -100,7 +100,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         Optional<Patient> patient = this.patientRepository.findById(patientId);
         List<Appointment> appointmentList = this.appointmentRepository.findByPatient(patient.get());
         if (appointmentList.isEmpty())
-            throw new AppointmentException("No appointments found for the given patient");
+            throw new AppointmentException("No appointments found for the given patientId :" + patientId);
         return appointmentList;
     }
 
@@ -118,5 +118,4 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setVaccineStatus(vaccinationStatusDTO.getVaccinated());
         return this.appointmentRepository.save(appointment);
     }
-
 }

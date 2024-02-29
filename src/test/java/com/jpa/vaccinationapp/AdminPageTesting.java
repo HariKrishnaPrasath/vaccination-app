@@ -1,4 +1,4 @@
-package com.jpa.vaccinationapp.AdminInterfaceTest;
+package com.jpa.vaccinationapp;
 
 import com.jpa.vaccinationapp.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
