@@ -11,7 +11,8 @@ public class AddressDTO {
     public AddressDTO() {
     }
 
-    public AddressDTO(Integer centerId, String address, String pincode, String district, String state, String contactNumber) {
+    public AddressDTO(Integer centerId, String address, String pincode, String district, String state,
+                      String contactNumber) {
         this.centerId = centerId;
         this.address = address;
         this.pincode = pincode;
@@ -19,6 +20,7 @@ public class AddressDTO {
         this.state = state;
         this.contactNumber = contactNumber;
     }
+
 
     public Integer getCenterId() {
         return centerId;

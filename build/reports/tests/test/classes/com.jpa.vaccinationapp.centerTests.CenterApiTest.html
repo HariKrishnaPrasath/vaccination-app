@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CenterApiTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CenterApiTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.jpa.vaccinationapp.centerTests.html">com.jpa.vaccinationapp.centerTests</a> &gt; CenterApiTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.337s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">updateCenterTest()</td>
+<td class="success">0.337s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>23:58:15.703 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.jpa.vaccinationapp.centerTests.CenterApiTest]: CenterApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:58:15.754 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.jpa.vaccinationapp.VaccinationAppApplication for test class com.jpa.vaccinationapp.centerTests.CenterApiTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2024-03-02T23:58:15.881+05:30  INFO 5068 --- [    Test worker] c.j.v.centerTests.CenterApiTest          : Starting CenterApiTest using Java 17.0.10 with PID 5068 (started by gv14 in /Users/gv14/IdeaProjects/vaccination-app)
+2024-03-02T23:58:15.881+05:30  INFO 5068 --- [    Test worker] c.j.v.centerTests.CenterApiTest          : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-03-02T23:58:16.212+05:30  INFO 5068 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-02T23:58:16.249+05:30  INFO 5068 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 7 JPA repository interfaces.
+2024-03-02T23:58:16.434+05:30  INFO 5068 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-02T23:58:16.456+05:30  INFO 5068 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-02T23:58:16.469+05:30  INFO 5068 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-02T23:58:16.569+05:30  INFO 5068 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-02T23:58:16.579+05:30  INFO 5068 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-02T23:58:16.673+05:30  INFO 5068 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/vaccine-app user=SA
+2024-03-02T23:58:16.674+05:30  INFO 5068 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-02T23:58:16.684+05:30  WARN 5068 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-02T23:58:17.105+05:30  INFO 5068 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists admin cascade 
+Hibernate: 
+    drop table if exists appointment cascade 
+Hibernate: 
+    drop table if exists center cascade 
+Hibernate: 
+    drop table if exists center_vaccine_map cascade 
+Hibernate: 
+    drop table if exists certificate cascade 
+Hibernate: 
+    drop table if exists patient cascade 
+Hibernate: 
+    drop table if exists slot cascade 
+Hibernate: 
+    drop table if exists vaccine cascade 
+Hibernate: 
+    create table admin (
+        admin_id integer generated by default as identity,
+        admin_name varchar(255),
+        admin_type varchar(255),
+        email varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (admin_id)
+    )
+Hibernate: 
+    create table appointment (
+        booking_date date,
+        booking_id integer generated by default as identity,
+        certificate_certificate_id integer unique,
+        patient_patient_id integer not null,
+        slot_id integer not null,
+        vaccine_status boolean,
+        vaccine_vaccine_id integer,
+        primary key (booking_id)
+    )
+Hibernate: 
+    create table center (
+        admin_admin_id integer unique,
+        center_id integer generated by default as identity,
+        address varchar(255),
+        center_name varchar(255),
+        contact_number varchar(255),
+        district varchar(255),
+        pincode varchar(255),
+        state varchar(255),
+        primary key (center_id)
+    )
+Hibernate: 
+    create table center_vaccine_map (
+        center_center_id integer not null,
+        vaccine_map_vaccine_id integer not null,
+        primary key (center_center_id, vaccine_map_vaccine_id)
+    )
+Hibernate: 
+    create table certificate (
+        certificate_id integer generated by default as identity,
+        date_of_vaccination date,
+        approved_status varchar(255),
+        certificate_url varchar(255),
+        primary key (certificate_id)
+    )
+Hibernate: 
+    create table patient (
+        patient_id integer generated by default as identity,
+        registration_date date,
+        address varchar(255),
+        email varchar(255),
+        password varchar(255),
+        patient_name varchar(255),
+        phone_number varchar(255),
+        primary key (patient_id)
+    )
+Hibernate: 
+    create table slot (
+        available_slots integer,
+        center_center_id integer not null,
+        date date,
+        end_time time(6),
+        id integer generated by default as identity,
+        start_time time(6),
+        primary key (id)
+    )
+Hibernate: 
+    create table vaccine (
+        expiry_date date,
+        manufacturing_date date,
+        vaccine_id integer generated by default as identity,
+        description varchar(255),
+        vaccine_name varchar(255),
+        primary key (vaccine_id)
+    )
+Hibernate: 
+    alter table if exists appointment 
+       add constraint FKtgsohxc6t4t9wf5c0s6lvb01l 
+       foreign key (certificate_certificate_id) 
+       references certificate
+Hibernate: 
+    alter table if exists appointment 
+       add constraint FK2vlah44v7jbr62swnit3835kr 
+       foreign key (patient_patient_id) 
+       references patient
+Hibernate: 
+    alter table if exists appointment 
+       add constraint FK4y0a87r5lchmdgjfh0mxui5bq 
+       foreign key (slot_id) 
+       references slot
+Hibernate: 
+    alter table if exists appointment 
+       add constraint FKjsnjr225544bmb87a5my2ct1j 
+       foreign key (vaccine_vaccine_id) 
+       references vaccine
+Hibernate: 
+    alter table if exists center 
+       add constraint FK9ewylm9cbfra3ow1lds0v20ai 
+       foreign key (admin_admin_id) 
+       references admin
+Hibernate: 
+    alter table if exists center_vaccine_map 
+       add constraint FKhikh258tbnarrtj9613tuu8sq 
+       foreign key (vaccine_map_vaccine_id) 
+       references vaccine
+Hibernate: 
+    alter table if exists center_vaccine_map 
+       add constraint FKtkh852u0n1cag6875c08q61no 
+       foreign key (center_center_id) 
+       references center
+Hibernate: 
+    alter table if exists slot 
+       add constraint FKflsy6x4thfia31dn6np7cs2k8 
+       foreign key (center_center_id) 
+       references center
+2024-03-02T23:58:17.135+05:30  INFO 5068 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-02T23:58:17.333+05:30  INFO 5068 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-02T23:58:17.654+05:30  WARN 5068 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-02T23:58:17.828+05:30  INFO 5068 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/vaccine-app'
+2024-03-02T23:58:17.857+05:30  INFO 5068 --- [    Test worker] c.j.v.centerTests.CenterApiTest          : Started CenterApiTest in 2.051 seconds (process running for 2.526)
+Hibernate: 
+    insert 
+    into
+        center
+        (address, admin_admin_id, center_name, contact_number, district, pincode, state, center_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        vaccine
+        (description, expiry_date, manufacturing_date, vaccine_name, vaccine_id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        vaccine
+        (description, expiry_date, manufacturing_date, vaccine_name, vaccine_id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    select
+        c1_0.center_id,
+        c1_0.address,
+        a1_0.admin_id,
+        a1_0.admin_name,
+        a1_0.admin_type,
+        a1_0.email,
+        a1_0.password,
+        a1_0.phone_number,
+        c1_0.center_name,
+        c1_0.contact_number,
+        c1_0.district,
+        c1_0.pincode,
+        s1_0.center_center_id,
+        s1_0.id,
+        s1_0.available_slots,
+        s1_0.date,
+        s1_0.end_time,
+        s1_0.start_time,
+        c1_0.state,
+        vm1_0.center_center_id,
+        vm1_1.vaccine_id,
+        vm1_1.description,
+        vm1_1.expiry_date,
+        vm1_1.manufacturing_date,
+        vm1_1.vaccine_name 
+    from
+        center c1_0 
+    left join
+        admin a1_0 
+            on a1_0.admin_id=c1_0.admin_admin_id 
+    left join
+        slot s1_0 
+            on c1_0.center_id=s1_0.center_center_id 
+    left join
+        center_vaccine_map vm1_0 
+            on c1_0.center_id=vm1_0.center_center_id 
+    left join
+        vaccine vm1_1 
+            on vm1_1.vaccine_id=vm1_0.vaccine_map_vaccine_id 
+    where
+        c1_0.center_id=?
+Hibernate: 
+    select
+        c1_0.center_id,
+        c1_0.address,
+        a1_0.admin_id,
+        a1_0.admin_name,
+        a1_0.admin_type,
+        a1_0.email,
+        a1_0.password,
+        a1_0.phone_number,
+        c1_0.center_name,
+        c1_0.contact_number,
+        c1_0.district,
+        c1_0.pincode,
+        s1_0.center_center_id,
+        s1_0.id,
+        s1_0.available_slots,
+        s1_0.date,
+        s1_0.end_time,
+        s1_0.start_time,
+        c1_0.state,
+        vm1_0.center_center_id,
+        vm1_1.vaccine_id,
+        vm1_1.description,
+        vm1_1.expiry_date,
+        vm1_1.manufacturing_date,
+        vm1_1.vaccine_name 
+    from
+        center c1_0 
+    left join
+        admin a1_0 
+            on a1_0.admin_id=c1_0.admin_admin_id 
+    left join
+        slot s1_0 
+            on c1_0.center_id=s1_0.center_center_id 
+    left join
+        center_vaccine_map vm1_0 
+            on c1_0.center_id=vm1_0.center_center_id 
+    left join
+        vaccine vm1_1 
+            on vm1_1.vaccine_id=vm1_0.vaccine_map_vaccine_id 
+    where
+        c1_0.center_id=?
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.5</a> at 02-Mar-2024, 11:58:18 pm</p>
+</div>
+</div>
+</body>
+</html>

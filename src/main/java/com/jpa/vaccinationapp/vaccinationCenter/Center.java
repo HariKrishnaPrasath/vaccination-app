@@ -2,12 +2,13 @@ package com.jpa.vaccinationapp.vaccinationCenter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.admin.Admin;
-import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import jakarta.persistence.*;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Center {
@@ -171,6 +172,23 @@ public class Center {
         this.vaccineMap.add(vaccine);
 
     }
+
+    @Override
+    public String toString() {
+        return "Center{" +
+                "centerId=" + centerId +
+                ", centerName='" + centerName + '\'' +
+                ", address='" + address + '\'' +
+                ", pincode='" + pincode + '\'' +
+                ", district='" + district + '\'' +
+                ", state='" + state + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", vaccineMap=" + vaccineMap +
+                ", slots=" + slots +
+                ", admin=" + admin +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
