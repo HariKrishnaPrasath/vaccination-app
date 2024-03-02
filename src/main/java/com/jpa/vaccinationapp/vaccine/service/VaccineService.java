@@ -17,9 +17,11 @@ public interface VaccineService {
     Vaccine updateVaccine(Integer vaccineId) throws VaccineException;
     Vaccine getById(Integer id) throws VaccineException;
     List<Vaccine> getByName(String vaccineName) throws VaccineException;
-    Vaccine deleteExpiredVaccines(Integer vaccineId) throws VaccineException;
+    List<Vaccine> deleteExpiredVaccines() throws VaccineException;
 
     Vaccine deleteById(Integer vaccineId) throws VaccineException;
+
+
 
 
     List<Vaccine> getAllVaccine();

@@ -30,9 +30,9 @@ public class VaccineController {
     public List<Vaccine> getByName(@PathVariable String vaccineName) throws VaccineException{
         return vaccineService.getByName(vaccineName);
     }
-    @DeleteMapping("vaccine/deleteExpiredVaccine/{vaccineId}")
-    public Vaccine deleteExpiredVaccines(@PathVariable Integer vaccindeId) throws VaccineException{
-        return vaccineService.deleteExpiredVaccines(vaccindeId);
+    @DeleteMapping("vaccine/deleteExpiredVaccine")
+    public List<Vaccine> deleteExpiredVaccines() throws VaccineException{
+        return vaccineService.deleteExpiredVaccines();
     }
     @DeleteMapping("vaccine/deleteById/{vaccineId}")
     public Vaccine deleteById(@PathVariable Integer vaccineId) throws VaccineException{
