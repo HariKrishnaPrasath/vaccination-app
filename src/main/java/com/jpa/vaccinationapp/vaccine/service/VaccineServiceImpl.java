@@ -94,7 +94,4 @@ public class VaccineServiceImpl implements VaccineService{
         Optional<List<Vaccine>> result = Optional.ofNullable(vaccineRepository.deleteRecordsByExpiryDateBefore(currentDate));
         return result.get();
     }
-
-
-
 }

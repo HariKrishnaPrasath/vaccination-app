@@ -1,15 +1,15 @@
 
 p
-java:S11921"TDefine a constant instead of duplicating this literal "slot does not exist" 4 times.(•²ö8ô‰¤Óİ1
+java:S11923"TDefine a constant instead of duplicating this literal "slot does not exist" 4 times.(•²ö8ô‰¤Óİ1
 {
-java:S11927"YDefine a constant instead of duplicating this literal "slot ID must not be null" 3 times.(‡¤ Ëùÿÿÿÿ8õ‰¤Óİ1
+java:S11929"YDefine a constant instead of duplicating this literal "slot ID must not be null" 3 times.(‡¤ Ëùÿÿÿÿ8õ‰¤Óİ1
 ]
 java:S1128"@Remove this unused import 'com.jpa.vaccinationapp.slot.SlotDTO'.(»ŠÒ8¢êÔİ1
 k
 java:S1128	"IRemove this unused import 'jakarta.persistence.criteria.CriteriaBuilder'.(À¼ºñşÿÿÿÿ8¢êÔİ1
 ;
-java:S1128"Remove this duplicated import.(¼¸õ›8Š¤Óİ1
+java:S1128"Remove this duplicated import.(¼¸õ›8Š¤Óİ1
 ;
-java:S1128"Remove this duplicated import.(¼¸õ›8£êÔİ1
+java:S1128"Remove this duplicated import.(¼¸õ›8£êÔİ1
 a
-java:S1128"DRemove this unused import 'java.util.concurrent.ThreadPoolExecutor'.(¦ÿöÊ8£êÔİ1
+java:S1128"DRemove this unused import 'java.util.concurrent.ThreadPoolExecutor'.(¦ÿöÊ8£êÔİ1

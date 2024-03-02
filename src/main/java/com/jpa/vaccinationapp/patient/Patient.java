@@ -52,6 +52,14 @@ public class Patient {
         this.bookingDetails = bookingDetails;
     }
 
+    public Patient(String email, String phoneNumber, String password, String address, String patientName) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.address = address;
+        this.patientName = patientName;
+    }
+
     public Integer getPatientId() {
         return patientId;
     }

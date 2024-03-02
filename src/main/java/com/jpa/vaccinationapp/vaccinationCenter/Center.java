@@ -21,7 +21,7 @@ public class Center {
     private String state;
     private String contactNumber;
     @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
-    private Set<Vaccine> vaccineMap;
+    private Set<Vaccine> vaccineMap=new HashSet<>();
     @OneToMany(mappedBy = "center",fetch=FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnore
     private Set<Slot> slots=new HashSet<>();
