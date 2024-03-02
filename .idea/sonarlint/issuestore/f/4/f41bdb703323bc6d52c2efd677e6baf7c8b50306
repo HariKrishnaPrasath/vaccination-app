@@ -1,2 +1,14 @@
 
+<<<<<<< HEAD
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(„ûç‡ıÿÿÿÿ8áÌÚğß1
+=======
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(„ûç‡ıÿÿÿÿ8ù°™¯ß1
+g
+java:S3655W"LCall "center.isPresent()" or "!center.isEmpty()" before accessing the value.(ŒÍîæùÿÿÿÿ
+g
+java:S3655o"LCall "center.isPresent()" or "!center.isEmpty()" before accessing the value.(ŒÍîæùÿÿÿÿ
+N
+java:S2175J",A "Set<Vaccine>" cannot contain a "Integer".(·¹ò»ùÿÿÿÿ8¸àÀÚİ1
+\
+java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8ÎàÀÚİ1
+>>>>>>> main

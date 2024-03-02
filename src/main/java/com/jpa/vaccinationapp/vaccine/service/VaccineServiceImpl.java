@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -53,18 +54,23 @@ public class VaccineServiceImpl implements VaccineService{
 
 
     @Override
-    public Vaccine deleteExpiredVaccines(Integer vaccineId) throws VaccineException {
-        Optional<Vaccine> vaccine=vaccineRepository.findById(vaccineId);
-        if(vaccine.isEmpty()) throw new VaccineException("No vaccine found for the given id");
+    public List<Vaccine> deleteExpiredVaccines() throws VaccineException {
+        List<Vaccine> vaccineList = this.vaccineRepository.findAll();
+        List<Vaccine> deletedVaccines = new ArrayList<>();
+
         LocalDate currentDate=LocalDate.now();
-        LocalDate expiryDate=vaccine.get().getExpiryDate();
-        if(currentDate.isAfter(expiryDate)) {
-            vaccineRepository.delete(vaccine.get());
+        System.out.println(currentDate);
+        for(Vaccine vaccine : vaccineList) {
+            LocalDate expiryDate = vaccine.getExpiryDate();
+            if (currentDate.isAfter(expiryDate) || currentDate.isEqual(expiryDate)) {
+                vaccineRepository.delete(vaccine);
+                deletedVaccines.add(vaccine);
+            }
         }
-        else{
-            throw new VaccineException("the vaccine is not yet expired");
+        if(deletedVaccines.isEmpty()){
+            throw new VaccineException("No expired vaccines");
         }
-        return vaccine.get();
+        return deletedVaccines;
 
     }
     @Override
@@ -88,7 +94,4 @@ public class VaccineServiceImpl implements VaccineService{
         Optional<List<Vaccine>> result = Optional.ofNullable(vaccineRepository.deleteRecordsByExpiryDateBefore(currentDate));
         return result.get();
     }
-
-
-
 }

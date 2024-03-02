@@ -7,6 +7,7 @@ import com.jpa.vaccinationapp.slot.SlotRepository;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class SlotServiceImpl implements SlotService{
     }
 
     @Override
+    @Transactional
     public Slot createSlot(Slot slot) throws SlotException {
         if(slot == null) throw new SlotException("slot must not be null");
         if(slot.getCenter() == null) throw new SlotException("no such vaccine center");
@@ -92,6 +94,5 @@ public class SlotServiceImpl implements SlotService{
         slot.get().setAvailableSlots(slots);
         return slot.get();
     }
-
 
 }
