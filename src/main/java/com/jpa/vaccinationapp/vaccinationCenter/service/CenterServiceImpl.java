@@ -1,28 +1,35 @@
 package com.jpa.vaccinationapp.vaccinationCenter.service;
 
-import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
+import com.jpa.vaccinationapp.vaccine.VaccineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CenterServiceImpl implements CenterService {
 
     private final CenterRepository centerRepository;
+    private final VaccineRepository vaccineRepository;
+
     @Autowired
-    public CenterServiceImpl(CenterRepository centerRepository){
+    public CenterServiceImpl(CenterRepository centerRepository, VaccineRepository vaccineRepository){
         this.centerRepository=centerRepository;
+        this.vaccineRepository = vaccineRepository;
     }
 
     @Override
     public Center createCenter(Center newCenter) throws CenterException {
+        if(newCenter==null){
+            throw new CenterException("Center can't be created without entering all valid details");
+        }
         return centerRepository.save(newCenter);
     }
 
@@ -44,37 +51,68 @@ public class CenterServiceImpl implements CenterService {
             String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
             throw new CenterException(message);
         }
+        if(!center.getCenterId().equals(result.get().getCenterId())){
+            throw new CenterException("Center's ID can't be changed, contact the Admin!");
+        }
         return centerRepository.save(result.get());
     }
+
     @Override
     public Center addVaccineToCenter(Integer centerID, Vaccine newVaccine) throws CenterException {
         if(newVaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
         }
-        Optional<Center>center= centerRepository.findById(centerID);
-        if(center.isEmpty()){
-            String message=String.format("Can't add a vaccine to centre! There is no such centre with ID: %d",
-                    centerID);
+        Optional<Center>centerOptional= centerRepository.findById(centerID);
+        // can add only if the vaccine is present in vaccine repository
+        Optional<Vaccine>vaccineOptional=vaccineRepository.findById(newVaccine.getVaccineId());
+        if(vaccineOptional.isEmpty()){
+            String message=String.format("Entered Vaccine ID: %d not found. Can't assign the vaccine to the center, " +
+                    "please check the vaccine details",newVaccine.getVaccineId());
             throw new CenterException(message);
         }
-        center.get().getVaccineMap().add(newVaccine);
-        centerRepository.save(center.get());
-        return center.get();
+        Center center;
+        if(centerOptional.isPresent()){
+            center = centerOptional.get();
+        }else {
+            String message=String.format("There is no such centre with ID: %d to add a Vaccine", centerID);
+            throw new CenterException(message);
+        }
+        Set<Vaccine> vaccines = center.getVaccineMap();
+        boolean vaccineExists = vaccines.stream()
+                .anyMatch(v -> v.getVaccineId().equals(newVaccine.getVaccineId()));
+        if (vaccineExists) {
+            throw new CenterException("Vaccine with ID: " + newVaccine.getVaccineId() + " already exists in center.");
+        }
+        vaccines.add(newVaccine);
+        center=centerRepository.save(center);
+        return center;
     }
+
     @Override
     public Center removeVaccineFromCentre(Integer centerID, Vaccine vaccine) throws CenterException {
         if(vaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
         }
-        Optional<Center>center= centerRepository.findById(centerID);
-        if(center.isEmpty()){
+        if(centerID==null){
+            throw new CenterException("can't proceed without the center ID!");
+        }
+        Optional<Center> centerOptional = centerRepository.findById(centerID);
+        if(centerOptional.isEmpty()){
             String message=String.format("There is no such centre with ID: %d",centerID);
             throw new CenterException(message);
         }
-        center.get().getVaccineMap().remove(vaccine.getVaccineId());
-
-        centerRepository.save(center.get());
-        return center.get();
+        Center center = centerOptional.get();
+        Set<Vaccine> vaccines = center.getVaccineMap();
+        Vaccine vaccineToRemove = vaccines.stream()
+                .filter(v -> v.getVaccineId().equals(vaccine.getVaccineId())).findFirst().orElseThrow(() ->
+                        new CenterException("Vaccine with ID: " + vaccine.getVaccineId() + " not found in center."));
+        boolean removed = vaccines.remove(vaccineToRemove);
+        if (!removed) {
+            throw new CenterException("Failed to remove vaccine with ID: " + vaccine.getVaccineId());
+        }
+        center.setVaccineMap(vaccines);
+        center=centerRepository.save(center);
+        return center;
     }
 
     @Override
@@ -82,9 +120,8 @@ public class CenterServiceImpl implements CenterService {
         if(centerName==null){
             throw new CenterException("Cannot perform search with no centre name");
         }
-        Optional<List<Center>> center= Optional.ofNullable(centerRepository.
-                findCenterByCenterNameIsContainingIgnoreCase(centerName));
-        if(center.get().isEmpty()){
+        var center= Optional.ofNullable(centerRepository.findCenterByCenterNameIsContainingIgnoreCase(centerName));
+        if(center.isEmpty()){
             String message=String.format("There's no such centre with name: %s. Please check it and try again",
                     centerName);
             throw new CenterException(message);
@@ -108,7 +145,7 @@ public class CenterServiceImpl implements CenterService {
             throw new CenterException("Cannot perform search with no pincode");
         }
         var center = Optional.ofNullable(centerRepository.findByPincode(pincode));
-        if(center.get().isEmpty()){
+        if(center.isEmpty()){
             String message=String.format("There's no such centre with the pincode: %s. " +
                     "Please check it and try again", pincode);
             throw new CenterException(message);
@@ -136,5 +173,20 @@ public class CenterServiceImpl implements CenterService {
         center.setDistrict(addressDTO.getDistrict());
         center.setState(addressDTO.getState());
         return centerRepository.save(center);
+    }
+
+    @Override
+    public List<Vaccine> getAllVaccinesFromCenter(Integer centerId) throws CenterException {
+        Optional<Center> result=centerRepository.findById(centerId);
+        if(result.isEmpty()){
+            String message=String.format("There is no such centre with ID to update the address: %d",
+                    centerId);
+            throw new CenterException(message);
+        }
+        Center center=result.get();
+        if(center.getVaccineMap().isEmpty()){
+            throw new CenterException("There is no any vaccines available in this center currently");
+        }
+        return center.getVaccineMap().stream().toList();
     }
 }
