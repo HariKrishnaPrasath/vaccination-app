@@ -152,17 +152,10 @@ class CenterApiTest {
     @Test
     @Order(10)
     void updateCenterTest(){
-        try {
             center.setCenterId(101);
             center.setContactNumber("9500932516");
-            center=centerService.updateCenter(center);
-            Center finalCreatedCenter = center;
-            Assertions.assertThrows(CenterException.class,()->centerService.updateCenter(finalCreatedCenter));
-            Assertions.assertNotEquals(101,center.getCenterId());
+            Assertions.assertThrows(CenterException.class,()->centerService.updateCenter(center));
             Assertions.assertNotEquals("9597813109",center.getContactNumber());
-        } catch (CenterException e) {
-            //Assertions.fail(e.getMessage());
-        }
     }
 
     @Test

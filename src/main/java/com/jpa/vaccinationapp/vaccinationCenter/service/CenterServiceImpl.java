@@ -51,9 +51,6 @@ public class CenterServiceImpl implements CenterService {
             String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
             throw new CenterException(message);
         }
-        if(!center.getCenterId().equals(result.get().getCenterId())){
-            throw new CenterException("Center's ID can't be changed, contact the Admin!");
-        }
         return centerRepository.save(result.get());
     }
 
