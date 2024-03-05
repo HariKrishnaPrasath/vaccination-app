@@ -30,14 +30,6 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String email, String phoneNumber, String password, String address, String patientName) {
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.address = address;
-        this.patientName = patientName;
-    }
-
     public Patient(Integer patientId, String email, String phoneNumber, String password, String address,
                    String patientName, LocalDate registrationDate, Set<Appointment> bookingDetails) {
         this.patientId = patientId;
@@ -59,6 +51,14 @@ public class Patient {
         this.patientName = patientName;
         this.registrationDate = registrationDate;
         this.bookingDetails = bookingDetails;
+    }
+
+    public Patient(String email, String phoneNumber, String password, String address, String patientName) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.address = address;
+        this.patientName = patientName;
     }
 
     public Integer getPatientId() {
