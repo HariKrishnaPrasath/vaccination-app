@@ -198,7 +198,8 @@ class AppointmentServiceTest {
         try {
             List<Appointment> appointmentList = this.appointmentService.getAppointmentByPatient(patient.getPatientId());
             Assertions.assertNotNull(appointmentList);
-            List<Appointment> appointments = appointmentList.stream().filter(appointment -> appointment.getPatient().getPatientId().equals(patient.getPatientId())).toList();
+            List<Appointment> appointments = appointmentList.stream().filter(appointment -> appointment.getPatient()
+                    .getPatientId().equals(patient.getPatientId())).toList();
             Assertions.assertFalse(appointments.isEmpty());
         } catch (AppointmentException e) {
             Assertions.fail(e.getMessage());

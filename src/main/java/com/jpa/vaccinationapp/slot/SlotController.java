@@ -4,6 +4,7 @@ import com.jpa.vaccinationapp.slot.service.SlotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class SlotController {
         return this.slotService.getAllSlots();
     }
     @GetMapping("slot/date/{date}")
-    public List<Slot> getSlotsByDate(@PathVariable Date date){
+    public List<Slot> getSlotsByDate(@PathVariable LocalDate date){
         return this.slotService.getSlotsByDate(date);
     }
     @GetMapping("slot/center/{centerId}")

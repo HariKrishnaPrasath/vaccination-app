@@ -37,9 +37,9 @@ public class Slot {
     @JoinColumn(name = "CENTER_CENTER_ID", nullable = false)
     private Center center;
 
-    @OneToMany(mappedBy = "slot",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "slot",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JsonIgnore
-    private List<Appointment> appointments;
+    private List<Appointment> appointments = new ArrayList<>();
     public Slot(Integer id, Date startTime, Date endTime,
                 Integer availableSlots, Center center,
                 List<Appointment> appointments,LocalDate date) {
@@ -118,12 +118,15 @@ public class Slot {
     public void setAppointments(List<Appointment> appointments) {
         this.appointments = appointments;
     }
-    public void addAppointment(Appointment appointment) {
-        if (this.appointments == null)
-            this.appointments = new ArrayList<>();
-        this.appointments.add(appointment);
-        appointment.setSlot(this);
-    }
+//    public void addAppointment(Appointment appointment) {
+//        appointments.add(appointment);
+//        appointment.setSlot(this);
+//    }
+//
+//    public void removeAppointment(Appointment appointment) {
+//        appointments.remove(appointment);
+//        appointment.setSlot(null);
+//    }
     public Slot() {
 
     }
