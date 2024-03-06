@@ -1,9 +1,6 @@
 package com.jpa.vaccinationapp;
 
-import com.jpa.vaccinationapp.admin.Admin;
-import com.jpa.vaccinationapp.admin.AdminException;
 import com.jpa.vaccinationapp.certificate.Certificate;
-import com.jpa.vaccinationapp.certificate.CertificateException;
 import com.jpa.vaccinationapp.certificate.service.CertificateService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;

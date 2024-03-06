@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:64998/")
+@CrossOrigin("http://localhost:4200")
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -37,10 +37,10 @@ public class AdminController {
     public Admin getAdminByEmail(@PathVariable String email) throws AdminException {
         return this.adminService.getAdminByEmail(email);
     }
-    @DeleteMapping("vaccinationapp/admin/deleteadmin")
+    @DeleteMapping("vaccinationapp/admin/deleteadmin/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Admin deleteAdminByAdmin(@RequestBody Admin deleteAdminDetails) throws AdminException {
-        return this.adminService.deleteAdminById(deleteAdminDetails.getAdminId());
+    public Admin deleteAdminByAdmin(@PathVariable Integer id) throws AdminException {
+        return this.adminService.deleteAdminById(id);
     }
     @GetMapping("admin/login")
     public Admin adminLogin(@RequestBody Login loginDetails) throws AdminException {
