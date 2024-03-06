@@ -161,11 +161,19 @@ public class Center {
         this.admin = admin;
     }
     public void addSlot(Slot slot) {
+        if (slots == null) {
+            this.slots = new HashSet<>();
+        }
         if (slot != null){
             this.slots.add(slot);
             slot.setCenter(this);
         }
     }
+//    public void removeSlot(Slot slot) {
+//        if (slot != null) {
+//            this.slots.
+//        }
+//    }
     public void addVaccine(Vaccine vaccine) {
         if (vaccineMap == null)
             this.vaccineMap = new HashSet<>();
