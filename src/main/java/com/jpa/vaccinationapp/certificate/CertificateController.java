@@ -23,8 +23,9 @@ public class CertificateController {
     public List<Certificate> getAllCertificate() throws AdminException, CertificateException {
         return this.certificateService.getAllCertificate();
     }
-    @DeleteMapping("certificate/delete")
-    public Certificate deleteCertificate(@RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
+    @DeleteMapping("certificate/delete/{id}")
+    public Certificate deleteCertificate(@PathVariable Integer id) throws AdminException, CertificateException {
+        Certificate certificateDetails=this.certificateService.getCertificateById(id);
         return this.certificateService.deleteCertificate(certificateDetails);
     }
     @PutMapping("certificate/update")
