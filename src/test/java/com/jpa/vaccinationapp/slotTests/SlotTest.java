@@ -4,6 +4,7 @@ import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.admin.AdminException;
 import com.jpa.vaccinationapp.admin.AdminRepository;
 import com.jpa.vaccinationapp.admin.service.AdminServiceImpl;
+
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.slot.SlotException;
 import com.jpa.vaccinationapp.slot.SlotRepository;
@@ -14,6 +15,7 @@ import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import com.jpa.vaccinationapp.vaccinationCenter.service.CenterServiceImpl;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -115,7 +117,7 @@ public class SlotTest {
         try {
             deletedSlot = this.slotService.deleteSlot(slot.getId());
             Assertions.assertNotNull(deletedSlot);
-            Assertions.assertNull(this.slotRepository.findById(deletedSlot.getId()));
+            Assertions.assertFalse(this.slotRepository.findById(deletedSlot.getId()).isPresent());
         } catch (SlotException e) {
             Assertions.fail(e);
         }
@@ -162,5 +164,22 @@ public class SlotTest {
         List<Slot> slotList;
         slotList = this.slotService.getSlotsByDate(LocalDate.now());
         Assertions.assertNotNull(slotList);
+    }
+    @Test
+    void getAllSlotByVaccinationCenter(){
+        List<Slot> slotList;
+        slotList = this.slotService.getSlotsByVaccinationCentre(center.getCenterId());
+        Assertions.assertNotNull(slotList);
+    }
+    @Test
+    void changeSlotWindowTest(){
+        Slot updatedSlot;
+        try {
+            updatedSlot = this.slotService.changeSlotAppointments(slot.getId(),30);
+            Assertions.assertNotNull(updatedSlot);
+            Assertions.assertEquals(30,updatedSlot.getAvailableSlots());
+        } catch (SlotException e) {
+            Assertions.fail(e);
+        }
     }
 }

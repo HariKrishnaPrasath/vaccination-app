@@ -69,6 +69,7 @@ public class PatientServiceTest {
             Patient updatedPatient = this.patientService.updatePatientInfo(newPatient);
             Assertions.assertNotNull(updatedPatient);
             Assertions.assertEquals(updatedPatient.getPatientName(),newPatient.getPatientName());
+
         } catch (PatientException e) {
             Assertions.fail(e.getMessage());
         }
