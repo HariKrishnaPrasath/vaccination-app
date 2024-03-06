@@ -24,6 +24,7 @@ public class Patient {
     private LocalDate registrationDate;
     @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnore
+    @Column(nullable = true)
     private Set<Appointment> bookingDetails = new HashSet<>();
 
     public Patient() {
