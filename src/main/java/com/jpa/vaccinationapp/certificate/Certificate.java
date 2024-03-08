@@ -9,14 +9,27 @@ import java.time.LocalDate;
 @Entity
 public class Certificate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer certificateId;
     @OneToOne(mappedBy = "certificate",fetch=FetchType.EAGER, cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JsonIgnore
     private Appointment appointment;
     private LocalDate dateOfVaccination;
+
+    public Certificate(LocalDate dateOfVaccination, String certificateUrl, String approvedStatus) {
+        this.dateOfVaccination = dateOfVaccination;
+        this.certificateUrl = certificateUrl;
+        this.approvedStatus = approvedStatus;
+    }
+
     private String certificateUrl;
     private String approvedStatus;
+
+    public Certificate(Integer certificateId, LocalDate dateOfVaccination, String certificateUrl, String approvedStatus) {
+        this.certificateId = certificateId;
+        this.dateOfVaccination = dateOfVaccination;
+        this.certificateUrl = certificateUrl;
+        this.approvedStatus = approvedStatus;
+    }
 
     public Certificate() {
     }
@@ -35,6 +48,11 @@ public class Certificate {
 
     public void setApprovedStatus(String approved) {
         this.approvedStatus = approved;
+    }
+
+    public Certificate(Integer certificateId, String approvedStatus) {
+        this.certificateId = certificateId;
+        this.approvedStatus = approvedStatus;
     }
 
     public Certificate(Integer certificateId, Appointment appointment,
@@ -60,14 +78,6 @@ public class Certificate {
 
     public void setCertificateId(Integer certificateId) {
         this.certificateId = certificateId;
-    }
-
-    public Appointment getBookingDetails() {
-        return appointment;
-    }
-
-    public void setBookingDetails(Appointment appointment) {
-        this.appointment = appointment;
     }
 
     public LocalDate getDateOfVaccination() {

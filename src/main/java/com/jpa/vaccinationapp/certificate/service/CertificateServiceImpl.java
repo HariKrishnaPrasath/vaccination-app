@@ -1,6 +1,5 @@
 package com.jpa.vaccinationapp.certificate.service;
 
-import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.admin.AdminException;
 import com.jpa.vaccinationapp.admin.AdminRepository;
 import com.jpa.vaccinationapp.certificate.Certificate;
@@ -33,7 +32,7 @@ public class CertificateServiceImpl implements CertificateService{
             throws AdminException,CertificateException {
             Optional<Certificate> certificateFound = certRepo.findById(certificateDetails.getCertificateId());
             if (certificateFound.isEmpty())
-                throw new CertificateException("Certificate already exist");
+                throw new CertificateException("Certificate not exist");
             if(certificateFound.get().getApprovedStatus().equals("Approved"))
                 throw new CertificateException("Check Certificate approval status");
             certificateFound.get().setApprovedStatus("Approved");
