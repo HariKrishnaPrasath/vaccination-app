@@ -1,5 +1,7 @@
 package com.jpa.vaccinationapp.admin;
 
+import org.apache.juli.logging.Log;
+
 public class Login {
     private String name;
     private String email;
@@ -15,6 +17,11 @@ public class Login {
 
     public Login(String name, String email, String password) {
         this.name=name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Login(String email, String password) {
         this.email = email;
         this.password = password;
     }
