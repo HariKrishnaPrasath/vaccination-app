@@ -4,10 +4,13 @@ import com.jpa.vaccinationapp.slot.service.SlotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class SlotController {
     private final SlotService slotService;
     @Autowired
@@ -22,7 +25,7 @@ public class SlotController {
     @PutMapping("slot")
     public Slot updateSlot(@RequestBody Slot slot) throws SlotException {
         return this.slotService.updateSlot(slot);
-    }
+    }   
     @DeleteMapping("slot/{id}")
     public Slot deleteSlot(@PathVariable Integer id) throws SlotException {
         return this.slotService.deleteSlot(id);
@@ -36,7 +39,7 @@ public class SlotController {
         return this.slotService.getAllSlots();
     }
     @GetMapping("slot/date/{date}")
-    public List<Slot> getSlotsByDate(@PathVariable Date date){
+    public List<Slot> getSlotsByDate(@PathVariable LocalDate date){
         return this.slotService.getSlotsByDate(date);
     }
     @GetMapping("slot/center/{centerId}")

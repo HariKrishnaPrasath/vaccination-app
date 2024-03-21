@@ -88,11 +88,12 @@ class AppointmentServiceTest {
                     "631003","Ranipet",
                     "Tamil Nadu","9593813109",vaccineSet, null, admin));
 
-            LocalDateTime currentTime = LocalDateTime.now();
-            LocalTime localTime = currentTime.toLocalTime();
-            Date startTime = Date.from(localTime.atDate(LocalDate.of(1970, 1, 1))
-                    .atZone(ZoneId.systemDefault())
-                    .toInstant());
+//            LocalDateTime currentTime = LocalDateTime.now();
+//            LocalTime localTime = currentTime.toLocalTime();
+//            Date startTime = Date.from(localTime.atDate(LocalDate.of(1970, 1, 1))
+//                    .atZone(ZoneId.systemDefault())
+//                    .toInstant());
+            LocalTime startTime = LocalTime.now();
             slot = this.slotService.createSlot(new Slot(startTime, startTime, 10, center,null
                     ,LocalDate.now()));
         } catch (VaccineException | PatientException | AdminException | SlotException | CenterException e) {
@@ -198,7 +199,8 @@ class AppointmentServiceTest {
         try {
             List<Appointment> appointmentList = this.appointmentService.getAppointmentByPatient(patient.getPatientId());
             Assertions.assertNotNull(appointmentList);
-            List<Appointment> appointments = appointmentList.stream().filter(appointment -> appointment.getPatient().getPatientId().equals(patient.getPatientId())).toList();
+            List<Appointment> appointments = appointmentList.stream().filter(appointment -> appointment.getPatient()
+                    .getPatientId().equals(patient.getPatientId())).toList();
             Assertions.assertFalse(appointments.isEmpty());
         } catch (AppointmentException e) {
             Assertions.fail(e.getMessage());

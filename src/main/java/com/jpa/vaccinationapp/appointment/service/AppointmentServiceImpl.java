@@ -49,6 +49,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         Optional<Slot> slotOptional = this.slotRepository.findById(appointment.getSlot().getId());
         if (patientOptional.isEmpty() || slotOptional.isEmpty())
             throw new AppointmentException("no patient or slot is found");
+        Slot slot = slotOptional.get();
+        if (slot.getAvailableSlots() < 1)
+            throw new AppointmentException("Slot is full");
+        slot.setAvailableSlots(slot.getAvailableSlots() - 1);
+        this.slotRepository.save(slot);
         appointment.setPatient(patientOptional.get());
         appointment.setSlot(slotOptional.get());
         return this.appointmentRepository.save(appointment);

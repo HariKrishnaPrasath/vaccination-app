@@ -10,13 +10,14 @@ import java.util.Objects;
 
 @Entity
 public class Vaccine {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer vaccineId;
+
     private String vaccineName;
     private LocalDate manufacturingDate;
     private LocalDate expiryDate;
     private String description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer vaccineId;
 
     public String getDescription() {
         return description;
@@ -26,7 +27,7 @@ public class Vaccine {
         this.description = description;
     }
 
-    public Vaccine(Integer vaccineId, String vaccineName, LocalDate manufacturingDate, LocalDate expiryDate, String description) {
+    public Vaccine(String vaccineName, LocalDate manufacturingDate, LocalDate expiryDate, String description,Integer vaccineId) {
         this.vaccineId = vaccineId;
         this.vaccineName = vaccineName;
         this.manufacturingDate = manufacturingDate;

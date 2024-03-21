@@ -1,6 +1,9 @@
 
+X	java:S125"<This block of commented-out lines of code should be removed.(ıïÌô8œÜÓæå1
 h
 java:S1128"KRemove this unused import 'com.jpa.vaccinationapp.certificate.Certificate'.(âŸÔÎ8‰æĞÔİ1
+c
+java:S1128"ARemove this unused import 'com.jpa.vaccinationapp.patient.Login'.(×ø şÿÿÿÿ8¡ÜÓæå1
 i
 java:S1128"LRemove this unused import 'com.jpa.vaccinationapp.vaccinationCenter.Center'.(ãªñğ8‰æĞÔİ1
 `

@@ -15,7 +15,7 @@ public interface VaccineRepository extends JpaRepository<Vaccine, Integer> {
 
      List<Vaccine> findByVaccineNameIgnoreCase(String vaccineName);
      @Modifying
-     @Query("delete from Vaccine v where v.expiryDate < :currentDate")
+     @Query("delete from Vaccine v where v.expiryDate <= :currentDate")
      List<Vaccine> deleteRecordsByExpiryDateBefore(@Param("currentDate") LocalDate currentDate);
 
 

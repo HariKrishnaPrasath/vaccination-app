@@ -11,11 +11,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.Objects;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @Service
@@ -41,6 +39,7 @@ public class SlotServiceImpl implements SlotService{
         if (centerOptional.isEmpty())
             throw new SlotException("No center is found");
         slot.setCenter(centerOptional.get());
+        slot.setAppointments(new ArrayList<>());
         return this.slotRepository.save(slot);
     }
 
@@ -76,7 +75,7 @@ public class SlotServiceImpl implements SlotService{
     }
 
     @Override
-    public List<Slot> getSlotsByDate(Date date) {
+    public List<Slot> getSlotsByDate(LocalDate date) {
         return this.slotRepository.findByDate(date);
     }
 

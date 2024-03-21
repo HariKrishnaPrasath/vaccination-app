@@ -1,9 +1,8 @@
 package com.jpa.vaccinationapp.vaccinationCenter.service;
 
-import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
-import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
+import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 
 import java.util.List;
@@ -19,4 +18,7 @@ public interface CenterService {
     List<Center> findByPincode(String pincode)throws CenterException;
     List<Center> getAllCenter();
     Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws CenterException;
+    List<Vaccine>getAllVaccinesFromCenter(Integer centerId) throws CenterException;
+
+    Center findByAdminId(Integer id) throws CenterException;
 }

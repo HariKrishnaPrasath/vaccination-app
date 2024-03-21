@@ -1,15 +1,13 @@
 
 
-java:S1192"bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8İŞ¹Úİ1
+java:S1192"bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8İŞ¹Úİ1
 x
-java:S11926"VDefine a constant instead of duplicating this literal "Certificate not exist" 3 times.(ŠÊÛâùÿÿÿÿ8åŞ¹Úİ1
+java:S1192#"VDefine a constant instead of duplicating this literal "Certificate not exist" 4 times.(ŠÊÛâùÿÿÿÿ8åŞ¹Úİ1
 k
-java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïùÿÿÿÿ8æŞ¹Úİ1
+java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïùÿÿÿÿ8æŞ¹Úİ1
 ‚
-java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïùÿÿÿÿ8öŞ¹Úİ1
+java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïùÿÿÿÿ8öŞ¹Úİ1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷Ş¹Úİ1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷Ş¹Úİ1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷Ş¹Úİ1
-\
-java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8‡ß¹Úİ1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷Ş¹Úİ1

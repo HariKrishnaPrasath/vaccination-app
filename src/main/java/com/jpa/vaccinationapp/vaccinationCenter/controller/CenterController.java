@@ -1,6 +1,5 @@
 package com.jpa.vaccinationapp.vaccinationCenter.controller;
 
-import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CenterController {
     private final CenterService centerService;
     @Autowired
@@ -26,10 +26,16 @@ public class CenterController {
     }
 
     // adding vaccine to a center
-    @PutMapping("center/{centerID}/vaccine")
+    @PutMapping("center/{centerID}/addVaccine")
     public Center addVaccineToCenter(@PathVariable Integer centerID, @RequestBody Vaccine newVaccine)
             throws CenterException {
         return centerService.addVaccineToCenter(centerID,newVaccine);
+    }
+
+    @DeleteMapping("center/{centerID}/removeVaccine")
+    public Center removeVaccineFromCenter(@PathVariable Integer centerID,@RequestBody Vaccine vaccine)
+            throws CenterException{
+        return centerService.removeVaccineFromCentre(centerID,vaccine);
     }
 
     // removing a center
@@ -51,6 +57,11 @@ public class CenterController {
         return centerService.findByID(centerID);
     }
 
+    @GetMapping("center/admin/{id}")
+    public Center findByAdminId(@PathVariable Integer id) throws CenterException {
+        return centerService.findByAdminId(id);
+    }
+
     //getting center by pincode
     @GetMapping("center/getByPincode/{pincode}")
     public List<Center> findByPincode(@PathVariable String pincode)throws CenterException{
@@ -70,9 +81,14 @@ public class CenterController {
     }
 
     //updating the address and phone of the center
-    @PutMapping("center/update/addressAndPhone")
+    @PatchMapping("center/update/addressAndPhone")
     public Center updateCenterAddressAndPhone(@RequestBody AddressDTO addressDTO) throws CenterException {
         return centerService.updateCenterAddressAndPhone(addressDTO);
+    }
+
+    @GetMapping("center/getAllVaccinesInCenter/{centerId}")
+    public List<Vaccine> getAllVaccinesInCenter(@PathVariable Integer centerId)throws CenterException{
+        return centerService.getAllVaccinesFromCenter(centerId);
     }
 
 }

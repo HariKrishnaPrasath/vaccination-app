@@ -1,6 +1,8 @@
 
 h
-java:S1192."KDefine a constant instead of duplicating this literal " not found" 4 times.(»Òß¢8ïëÔÔİ1
-X	java:S125D"<This block of commented-out lines of code should be removed.(ŞÅ€¾8±ìÔÔİ1
-]	java:S125]"<This block of commented-out lines of code should be removed.(âşµŠşÿÿÿÿ8¶ìÔÔİ1
-]	java:S125e"<This block of commented-out lines of code should be removed.(äØ·ıÿÿÿÿ8·ìÔÔİ1
+java:S1192-"KDefine a constant instead of duplicating this literal " not found" 4 times.(»Òß¢8ïëÔÔİ1
+m
+java:S3655."PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·®ÔÅ8”æÓæå1
+]	java:S125 "<This block of commented-out lines of code should be removed.( ëß¬şÿÿÿÿ8¨æÓæå1
+c
+java:S1128"ARemove this unused import 'com.jpa.vaccinationapp.patient.Login'.(×ø şÿÿÿÿ8ÀæÓæå1
