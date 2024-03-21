@@ -24,6 +24,7 @@ public class AdminServiceImpl implements AdminService{
         Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if (checkAdmin.isPresent())
             throw new AdminException("Admin already exist and please check provided details");
+       // Admin admin =adminRepo.findByEmailIgnoreCase(adminDetails.getEmail()).orElseThrow(() ->new AdminException("Admin already exist and please check provided details"));
         return this.adminRepo.save(adminDetails);
     }
     @Override

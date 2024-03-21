@@ -42,7 +42,7 @@ public class AdminController {
     public Admin deleteAdminByAdmin(@PathVariable Integer id) throws AdminException {
         return this.adminService.deleteAdminById(id);
     }
-    @GetMapping("admin/login")
+    @PostMapping("admin/login")
     public Admin adminLogin(@RequestBody Login loginDetails) throws AdminException {
         return this.adminService.loginAdmin(loginDetails);
     }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200/")
 public class PatientController {
 
     private final PatientService patientService;
@@ -22,10 +23,10 @@ public class PatientController {
         return this.patientService.createPatient(patient);
     }
 
-    //    @PostMapping("patient/login")
-//    public Patient patientLogin(@RequestBody Login login) throws PatientException {
-//        return this.patientService.logIn(login);
-//    }
+    @PostMapping("patient/login")
+    public Patient patientLogin(@RequestBody Login login) throws PatientException {
+        return this.patientService.logIn(login);
+   }
     @GetMapping("patient/{id}")
     public Patient displayPatientById(@PathVariable("id") Integer patientId) throws PatientException {
         return this.patientService.displayPatientInfo(patientId);
