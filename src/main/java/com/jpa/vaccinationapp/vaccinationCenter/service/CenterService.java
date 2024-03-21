@@ -19,4 +19,6 @@ public interface CenterService {
     List<Center> getAllCenter();
     Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws CenterException;
     List<Vaccine>getAllVaccinesFromCenter(Integer centerId) throws CenterException;
+
+    Center getCenterByAdminEmail(String adminEmail) throws CenterException;
 }

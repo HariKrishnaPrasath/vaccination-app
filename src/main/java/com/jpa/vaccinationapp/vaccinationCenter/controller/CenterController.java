@@ -71,7 +71,7 @@ public class CenterController {
 
     //updating the center
     @PutMapping("center/update")
-    public Center updateCenter(Center center) throws CenterException {
+    public Center updateCenter(@RequestBody Center center) throws CenterException {
         return centerService.updateCenter(center);
     }
 
@@ -86,4 +86,8 @@ public class CenterController {
         return centerService.getAllVaccinesFromCenter(centerId);
     }
 
+    @GetMapping("center/getCenterByAdminEmail/{adminEmail}")
+    public Center getByAdminId(@PathVariable String adminEmail) throws CenterException{
+        return  centerService.getCenterByAdminEmail(adminEmail);
+    }
 }

@@ -4,7 +4,6 @@ import com.jpa.vaccinationapp.admin.AdminRepository;
 import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.admin.AdminException;
 import com.jpa.vaccinationapp.admin.Login;
-import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +31,8 @@ public class AdminServiceImpl implements AdminService{
         Optional<Admin> checkAdmin = adminRepo.findByEmailIgnoreCase(adminDetails.getEmail());
         if (checkAdmin.isEmpty())
             throw adminNotFoundException;
-        return this.adminRepo.save(adminDetails);
+        this.adminRepo.save(adminDetails);
+        return adminDetails;
     }
     @Override
     public List<Admin> getAllAdmin() throws AdminException {
@@ -58,9 +58,6 @@ public class AdminServiceImpl implements AdminService{
         Optional<Admin> adminFound = this.adminRepo.findById(id);
         if(adminFound.isEmpty())
             throw adminNotFoundException;
-        Center vaccineCentre=vaccRepo.findByAdmin(adminFound.get());
-        vaccineCentre.setAdmin(null);
-        this.vaccRepo.save(vaccineCentre);
         this.adminRepo.deleteById(id);
         return adminFound.get();
     }

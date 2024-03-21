@@ -1,4 +1,4 @@
-package com.jpa.vaccinationapp.centerTests;
+package com.jpa.vaccinationapp;
 
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
