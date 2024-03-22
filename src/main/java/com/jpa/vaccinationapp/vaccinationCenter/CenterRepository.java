@@ -18,4 +18,5 @@ public interface CenterRepository extends JpaRepository<Center, Integer> {
     Center findByAdmin(Integer adminId);
 
 
+
 }

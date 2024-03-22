@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.vaccinationCenter.service;
 
 import com.jpa.vaccinationapp.admin.Admin;
+import com.jpa.vaccinationapp.admin.AdminRepository;
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
@@ -20,16 +21,26 @@ public class CenterServiceImpl implements CenterService {
     private final CenterRepository centerRepository;
     private final VaccineRepository vaccineRepository;
 
+    private  final AdminRepository adminRepository;
+
     @Autowired
-    public CenterServiceImpl(CenterRepository centerRepository, VaccineRepository vaccineRepository){
+    public CenterServiceImpl(CenterRepository centerRepository, VaccineRepository vaccineRepository,
+                             AdminRepository adminRepository){
         this.centerRepository=centerRepository;
         this.vaccineRepository = vaccineRepository;
+        this.adminRepository=adminRepository;
     }
 
     @Override
     public Center createCenter(Center newCenter) throws CenterException {
         if(newCenter==null){
             throw new CenterException("Center can't be created without entering all valid details");
+        }
+        if (newCenter.getAdmin() != null) {
+            Center center = centerRepository.findByAdmin(newCenter.getAdmin().getAdminId());
+            if (center != null) {
+                throw new CenterException("Admin already Exists");
+            }
         }
         return centerRepository.save(newCenter);
     }
@@ -52,7 +63,11 @@ public class CenterServiceImpl implements CenterService {
             String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
             throw new CenterException(message);
         }
-        return centerRepository.save(result.get());
+        
+        Optional<Admin> admin = adminRepository.findById(center.getAdmin().getAdminId());
+        if (admin.isPresent())
+            center.setAdmin(admin.get());
+        return centerRepository.save(center);
     }
 
     @Override
@@ -189,9 +204,22 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center findByAdminId(Integer id) throws CenterException{
-        if(id == null)
+    public Center findByAdminId(Integer id) throws CenterException {
+        if (id == null)
             throw new CenterException("Id can't be null");
         return centerRepository.findByAdmin(id);
+    }
+    @Override
+    public Center getCenterByAdminEmail(String adminEmail) throws CenterException {
+        if(adminEmail==null)throw new CenterException("Admin Id can't be null!");
+        Optional<Admin> adminResult=adminRepository.findByEmailIgnoreCase(adminEmail);
+        if(adminResult.isEmpty()){
+            throw new CenterException("You're not an admin, contact super admin");
+        }
+        var centerResult = Optional.ofNullable(centerRepository.findByAdmin(adminResult.get().getAdminId()));
+        if(centerResult.isEmpty()){
+            throw new CenterException("You're not associated with any center to update");
+        }
+        return centerResult.get();
     }
 }
