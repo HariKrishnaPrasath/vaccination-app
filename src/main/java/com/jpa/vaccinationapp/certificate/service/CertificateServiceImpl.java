@@ -2,12 +2,18 @@ package com.jpa.vaccinationapp.certificate.service;
 
 import com.jpa.vaccinationapp.admin.AdminException;
 import com.jpa.vaccinationapp.admin.AdminRepository;
+import com.jpa.vaccinationapp.appointment.Appointment;
+import com.jpa.vaccinationapp.appointment.AppointmentRepository;
 import com.jpa.vaccinationapp.certificate.Certificate;
 import com.jpa.vaccinationapp.certificate.CertificateException;
 import com.jpa.vaccinationapp.certificate.CertificateRepository;
+import com.jpa.vaccinationapp.certificate.PDFGenerator;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +23,8 @@ public class CertificateServiceImpl implements CertificateService{
     CertificateRepository certRepo;
     @Autowired
     AdminRepository adminRepo;
+    @Autowired
+    AppointmentRepository appointmentRepository;
     @Override
     public Certificate addCerificate(Certificate certificateDetails)
             throws AdminException, CertificateException {
@@ -73,6 +81,12 @@ public class CertificateServiceImpl implements CertificateService{
             if(certificateFound.get().getApprovedStatus().equals("Approved"))
                 throw new CertificateException("Check Certificate approval status");
             return this.certRepo.save(certificateDetails);
+
+    }
+
+    @Override
+    public Appointment generateCertificate(Integer bookingId)  throws DocumentException, IOException {
+        return this.appointmentRepository.findById(bookingId).get();
 
     }
 

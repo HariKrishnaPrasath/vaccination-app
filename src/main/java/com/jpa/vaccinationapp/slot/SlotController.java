@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class SlotController {
     private final SlotService slotService;
     @Autowired
@@ -23,7 +25,7 @@ public class SlotController {
     @PutMapping("slot")
     public Slot updateSlot(@RequestBody Slot slot) throws SlotException {
         return this.slotService.updateSlot(slot);
-    }
+    }   
     @DeleteMapping("slot/{id}")
     public Slot deleteSlot(@PathVariable Integer id) throws SlotException {
         return this.slotService.deleteSlot(id);

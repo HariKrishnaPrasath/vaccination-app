@@ -23,15 +23,15 @@ public class Slot {
     private Integer id;
     private LocalDate date;
     @NotNull
-    @Temporal(TemporalType.TIME)
-    @DateTimeFormat(style = "hh:mm a")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
-    private Date startTime;
+//    @Temporal(TemporalType.TIME)
+//    @DateTimeFormat(style = "hh:mm a")
+//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
+    private LocalTime startTime;
     @NotNull
-    @Temporal(TemporalType.TIME)
-    @DateTimeFormat(style = "hh:mm a")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
-    private Date endTime;
+//    @Temporal(TemporalType.TIME)
+//    @DateTimeFormat(style = "hh:mm a")
+//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
+    private LocalTime endTime;
     private Integer availableSlots; // The number of available slots for this time period
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "CENTER_CENTER_ID", nullable = false)
@@ -40,7 +40,7 @@ public class Slot {
     @OneToMany(mappedBy = "slot",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JsonIgnore
     private List<Appointment> appointments = new ArrayList<>();
-    public Slot(Integer id, Date startTime, Date endTime,
+    public Slot(Integer id, LocalTime startTime, LocalTime endTime,
                 Integer availableSlots, Center center,
                 List<Appointment> appointments,LocalDate date) {
         this.id = id;
@@ -52,7 +52,7 @@ public class Slot {
         this.date = date;
     }
 
-    public Slot(Date startTime, Date endTime, Integer availableSlots,
+    public Slot(LocalTime startTime, LocalTime endTime, Integer availableSlots,
                 Center center,
                 List<Appointment> appointments,LocalDate date) {
         this.startTime = startTime;
@@ -79,19 +79,19 @@ public class Slot {
         this.date = date;
     }
 
-    public Date getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 

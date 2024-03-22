@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CenterController {
     private final CenterService centerService;
     @Autowired
@@ -55,6 +55,11 @@ public class CenterController {
     @GetMapping("center/getByID/{centerID}")
     public Center findByID(@PathVariable Integer centerID)throws CenterException{
         return centerService.findByID(centerID);
+    }
+
+    @GetMapping("center/admin/{id}")
+    public Center findByAdminId(@PathVariable Integer id) throws CenterException {
+        return centerService.findByAdminId(id);
     }
 
     //getting center by pincode

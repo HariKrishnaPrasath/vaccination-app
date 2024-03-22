@@ -66,13 +66,13 @@ public class SlotTest {
     }
     @BeforeEach
     void beforeEach(){
-        LocalDateTime currentTime = LocalDateTime.now();
-        LocalTime localTime = currentTime.toLocalTime();
-        Date startTime = Date.from(localTime.atDate(LocalDate.of(1970, 1, 1))
-                .atZone(ZoneId.systemDefault())
-                .toInstant());
+        LocalTime currentTime = LocalTime.now();
+//        LocalTime localTime = currentTime.toLocalTime();
+//        Date startTime = Date.from(localTime.atDate(LocalDate.of(1970, 1, 1))
+//                .atZone(ZoneId.systemDefault())
+//                .toInstant());
         try {
-            slot = this.slotService.createSlot(new Slot(startTime, startTime, 10, center,new ArrayList<>()
+            slot = this.slotService.createSlot(new Slot(currentTime, currentTime, 10, center,new ArrayList<>()
                     ,LocalDate.now()));
         } catch (SlotException e) {
             Assertions.fail(e.getMessage());
@@ -84,12 +84,12 @@ public class SlotTest {
     }
     @Test
     void createSlotTest(){
-        LocalDateTime currentTime = LocalDateTime.now();
-        LocalTime localTime = currentTime.toLocalTime();
-        Date startTime = Date.from(localTime.atDate(LocalDate.of(1970, 1, 1))
-                .atZone(ZoneId.systemDefault())
-                .toInstant());
-        Slot createSlot = new Slot(startTime,startTime,10,center,new ArrayList<>(),LocalDate.now());
+        LocalTime currentTime = LocalTime.now();
+//        LocalTime localTime = currentTime.toLocalTime();
+//        Date startTime = Date.from(localTime.atDate(LocalDate.of(1970, 1, 1))
+//                .atZone(ZoneId.systemDefault())
+//                .toInstant());
+        Slot createSlot = new Slot(currentTime,currentTime,10,center,new ArrayList<>(),LocalDate.now());
         Slot createdSlot = null;
         try {
             createdSlot = this.slotService.createSlot(createSlot);

@@ -1,13 +1,22 @@
 
 
-java:S1192"bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8İŞ¹Úİ1
+java:S1192#"bDefine a constant instead of duplicating this literal "Check Certificate approval status" 3 times.(š‡Ô8ÎÀæ1
 x
-java:S1192#"VDefine a constant instead of duplicating this literal "Certificate not exist" 4 times.(ŠÊÛâùÿÿÿÿ8åŞ¹Úİ1
+java:S1192+"VDefine a constant instead of duplicating this literal "Certificate not exist" 4 times.(ŠÊÛâùÿÿÿÿ8ÏÀæ1
 k
-java:S1192"IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïùÿÿÿÿ8æŞ¹Úİ1
+java:S1192""IDefine a constant instead of duplicating this literal "Approved" 4 times.(Üšïùÿÿÿÿ8ÏÀæ1
 ‚
-java:S3655"`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïùÿÿÿÿ8öŞ¹Úİ1
+java:S3655""`Call "certificateFound.isPresent()" or "!certificateFound.isEmpty()" before accessing the value.(Üšïùÿÿÿÿ8úÀæ1
+m
+java:S3655Y"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(á‘‡Ò8¥¦æ1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷Ş¹Úİ1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8üÀæ1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷Ş¹Úİ1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8üÀæ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8üÀæ1
+n
+java:S1128
+"LRemove this unused import 'com.jpa.vaccinationapp.certificate.PDFGenerator'.(Şñâ±ùÿÿÿÿ8…Ï©æ1
+g
+java:S1128"ERemove this unused import 'jakarta.servlet.http.HttpServletResponse'.(ÂÓÕÇÿÿÿÿÿ8…Ï©æ1

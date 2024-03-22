@@ -37,7 +37,7 @@ public class CenterServiceImpl implements CenterService {
             throw new CenterException("Center can't be created without entering all valid details");
         }
         if (newCenter.getAdmin() != null) {
-            Center center = centerRepository.findByAdmin(newCenter.getAdmin());
+            Center center = centerRepository.findByAdmin(newCenter.getAdmin().getAdminId());
             if (center != null) {
                 throw new CenterException("Admin already Exists");
             }
@@ -204,13 +204,19 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
+    public Center findByAdminId(Integer id) throws CenterException {
+        if (id == null)
+            throw new CenterException("Id can't be null");
+        return centerRepository.findByAdmin(id);
+    }
+    @Override
     public Center getCenterByAdminEmail(String adminEmail) throws CenterException {
         if(adminEmail==null)throw new CenterException("Admin Id can't be null!");
         Optional<Admin> adminResult=adminRepository.findByEmailIgnoreCase(adminEmail);
         if(adminResult.isEmpty()){
             throw new CenterException("You're not an admin, contact super admin");
         }
-        var centerResult = Optional.ofNullable(centerRepository.findByAdmin(adminResult.get()));
+        var centerResult = Optional.ofNullable(centerRepository.findByAdmin(adminResult.get().getAdminId()));
         if(centerResult.isEmpty()){
             throw new CenterException("You're not associated with any center to update");
         }
