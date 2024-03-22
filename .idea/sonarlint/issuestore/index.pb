@@ -83,3 +83,9 @@ p
 @src/test/java/com/jpa/vaccinationapp/AppointmentServiceTest.java,6\e\6e65b5020af37f4157fbc98a6da02c76d51aedc2
 l
 <src/test/java/com/jpa/vaccinationapp/slotTests/SlotTest.java,2\3\239ac5fbb01ecaeca908ac929d53e88f006176df
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+r
+Bsrc/main/java/com/jpa/vaccinationapp/certificate/PDFGenerator.java,d\2\d2feb4d89609c5f4fd53c9590b51c59f13489957
+{
+Ksrc/main/java/com/jpa/vaccinationapp/vaccinationCenter/CenterException.java,6\3\6395be285ab25461c2a2ec8f3d8ccdb9bd43699f

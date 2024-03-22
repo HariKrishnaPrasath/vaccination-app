@@ -1,5 +1,7 @@
 package com.jpa.vaccinationapp.admin;
 
+import org.apache.juli.logging.Log;
+
 public class Login {
     private String name;
     private String email;

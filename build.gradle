@@ -24,6 +24,8 @@ dependencies {
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
     // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    // https://mvnrepository.com/artifact/com.github.librepdf/openpdf
+    implementation group: 'com.github.librepdf', name: 'openpdf', version: '2.0.1'
 }
 
 tasks.named('test') {

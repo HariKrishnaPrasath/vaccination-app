@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -23,20 +24,20 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Patient createPatient(Patient patient) throws PatientException {
         if (patient == null) throw new PatientException("Patient cant be null");
-        Optional<Patient> patient1 = this.patientRepository.findByEmail(patient.getEmail());
+        Optional<Patient> patient1 = this.patientRepository.findByEmailIgnoreCase(patient.getEmail());
         if (patient1.isPresent()) throw new PatientException("email " + patient.getEmail() + "already exists");
         return this.patientRepository.save(patient);
     }
 
-//    @Override
-//    public Patient logIn(Login login) throws PatientException {
-//        if (login == null) throw new PatientException("user and password not found");
-//        Optional<Patient> patient = this.patientRepository.findByEmail(login.getEmail());
-//        if (patient.isEmpty()) throw new PatientException("no user found");
-//        if (!Objects.equals(login.getPassword(), patient.get().getPassword())) throw new
-//                PatientException("userid or password incorrect");
-//        return patient.get();
-//    }
+    @Override
+    public Patient logIn(Login login) throws PatientException {
+        if (login == null) throw new PatientException("user and password not found");
+        Optional<Patient> patient = this.patientRepository.findByEmailIgnoreCase(login.getEmail());
+        if (patient.isEmpty()) throw new PatientException("no user found");
+        if (!Objects.equals(login.getPassword(), patient.get().getPassword())) throw new
+                PatientException("userid or password incorrect");
+        return patient.get();
+    }
 
     @Override
     public Patient displayPatientInfo(Integer patientId) throws PatientException {

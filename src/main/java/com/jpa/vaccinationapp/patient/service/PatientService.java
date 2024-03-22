@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface PatientService {
     Patient createPatient(Patient patient) throws PatientException;
-    //Patient logIn(Login login) throws PatientException;
+    Patient logIn(Login login) throws PatientException;
     Patient displayPatientInfo(Integer patientId) throws PatientException;
     Patient updatePatientInfo(Patient patient) throws PatientException;
     Patient deletePatientInfo(Integer patientId) throws PatientException;
