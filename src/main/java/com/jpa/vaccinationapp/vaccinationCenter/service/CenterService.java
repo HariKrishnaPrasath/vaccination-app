@@ -12,7 +12,7 @@ public interface CenterService {
     Center removeCenter(Integer centerID)throws CenterException;
     Center updateCenter(Center center)throws CenterException;
     Center addVaccineToCenter(Integer centerID, Vaccine newVaccine)throws CenterException;
-    Center removeVaccineFromCentre(Integer centerID, Vaccine vaccine) throws CenterException;
+    Center removeVaccineFromCentre(Integer centerID, Integer vaccineId) throws CenterException;
     List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException;
     Center findByID(Integer centerID)throws CenterException;
     List<Center> findByPincode(String pincode)throws CenterException;

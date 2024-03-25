@@ -1,5 +1,6 @@
 
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8É·ıµİ1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯¨­®æ1
+G	java:S106+"+Replace this use of System.out by a logger.(ŠÜË8»¨­®æ1
 i
-java:S1128"LRemove this unused import 'org.springframework.data.repository.query.Param'.(©”šô8ğáÔ»İ1
+java:S1128"LRemove this unused import 'org.springframework.data.repository.query.Param'.(©”šô8”ß”Ğæ1

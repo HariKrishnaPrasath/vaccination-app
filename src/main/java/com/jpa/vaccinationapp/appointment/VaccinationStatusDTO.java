@@ -15,12 +15,12 @@ public class VaccinationStatusDTO {
         this.appointmentId = appointmentId;
     }
 
-    public Boolean getVaccinated() {
+    public Boolean getIsVaccinated() {
         return isVaccinated;
     }
 
-    public void setVaccinated(Boolean vaccinated) {
-        isVaccinated = vaccinated;
+    public void setIsVaccinated(Boolean vaccinated) {
+        this.isVaccinated = vaccinated;
     }
 
     public VaccinationStatusDTO(Integer appointmentId, Boolean isVaccinated) {

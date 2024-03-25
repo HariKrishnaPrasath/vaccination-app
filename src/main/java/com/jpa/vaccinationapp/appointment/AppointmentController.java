@@ -40,6 +40,7 @@ public class AppointmentController {
     @PutMapping("/vaccinationStatus")
     public Appointment updateAppointmentStatus(@RequestBody VaccinationStatusDTO vaccinationStatusDTO)
             throws AppointmentException {
+        System.out.println(vaccinationStatusDTO.getIsVaccinated() + " hari " +vaccinationStatusDTO.getAppointmentId());
         return this.appointmentService.updateAppointmentStatus(vaccinationStatusDTO);
     }
 }
