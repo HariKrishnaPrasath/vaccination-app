@@ -32,10 +32,10 @@ public class CenterController {
         return centerService.addVaccineToCenter(centerID,newVaccine);
     }
 
-    @DeleteMapping("center/{centerID}/removeVaccine")
-    public Center removeVaccineFromCenter(@PathVariable Integer centerID,@RequestBody Vaccine vaccine)
+    @DeleteMapping("center/{centerID}/removeVaccine/{vaccineId}")
+    public Center removeVaccineFromCenter(@PathVariable Integer centerID,@PathVariable Integer vaccineId)
             throws CenterException{
-        return centerService.removeVaccineFromCentre(centerID,vaccine);
+        return centerService.removeVaccineFromCentre(centerID,vaccineId);
     }
 
     // removing a center

@@ -1,16 +1,7 @@
 
-<<<<<<< HEAD
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8ýäú‚à1
-c	java:S107!"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8šåú‚à1
-b	java:S107/"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8šåú‚à1
-b	java:S107;"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8šåú‚à1
-b	java:S107G"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8šåú‚à1
-Y	java:S125¬"<This block of commented-out lines of code should be removed.(ªäÖ£8Á–Æ«å1
-=======
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8ã€öÕå1
-c	java:S107!"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8î€öÕå1
-b	java:S107/"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8î€öÕå1
-b	java:S107;"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8î€öÕå1
-b	java:S107G"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8î€öÕå1
-Y	java:S125¬"<This block of commented-out lines of code should be removed.(ªäÖ£8ô€öÕå1
->>>>>>> main
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8³¨Ûªæ1
+c	java:S107!"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8Ü¨Ûªæ1
+b	java:S107/"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
+b	java:S107;"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
+b	java:S107G"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
+Y	java:S125¬"<This block of commented-out lines of code should be removed.(ªäÖ£8ì¨Ûªæ1

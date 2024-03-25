@@ -11,6 +11,7 @@ import com.jpa.vaccinationapp.vaccine.VaccineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -102,9 +103,9 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center removeVaccineFromCentre(Integer centerID, Vaccine vaccine) throws CenterException {
-        if(vaccine==null){
-            throw new CenterException("Vaccine details can't be NULL");
+    public Center removeVaccineFromCentre(Integer centerID, Integer vaccineId) throws CenterException {
+        if(vaccineId==null){
+            throw new CenterException("Vaccine id can't be NULL");
         }
         if(centerID==null){
             throw new CenterException("can't proceed without the center ID!");
@@ -114,6 +115,12 @@ public class CenterServiceImpl implements CenterService {
             String message=String.format("There is no such centre with ID: %d",centerID);
             throw new CenterException(message);
         }
+        Optional<Vaccine> vaccineOpt = this.vaccineRepository.findById(vaccineId);
+        if (vaccineOpt.isEmpty()) {
+            String message=String.format("There is no such vaccine with ID: %d",vaccineId);
+            throw new CenterException(message);
+        }
+        Vaccine vaccine = vaccineOpt.get();
         Center center = centerOptional.get();
         Set<Vaccine> vaccines = center.getVaccineMap();
         Vaccine vaccineToRemove = vaccines.stream()
@@ -198,7 +205,8 @@ public class CenterServiceImpl implements CenterService {
         }
         Center center=result.get();
         if(center.getVaccineMap().isEmpty()){
-            throw new CenterException("There is no any vaccines available in this center currently");
+//            throw new CenterException("There is no any vaccines available in this center currently");
+            return new ArrayList<>();
         }
         return center.getVaccineMap().stream().toList();
     }
