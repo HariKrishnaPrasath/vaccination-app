@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 
 @Entity
@@ -11,10 +14,17 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer adminId;
+    @NotBlank(message = "Email cannot be blank")
+    @Email(message = "Invalid email format")
     private String email;
+    @Pattern(regexp = "^[+]?[0-9]{10,15}$", message = "Invalid phone number format")
     private String phoneNumber;
+    @NotBlank(message = "Name cant be null, it should contain chars")
+    @Pattern(regexp = "[a-zA-Z ]{3,16}", message = "Name should contain min 3 & max 16 chars , no digits and special chars allowed.")
     private String adminName;
+    @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", message = "Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters")
     private String password;
+    @NotBlank(message = "Admin type cannot be blank")
     private String adminType;
 
 

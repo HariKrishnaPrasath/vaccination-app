@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.appointment;
 
 import com.jpa.vaccinationapp.appointment.service.AppointmentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
     @PostMapping("/add")
-    public Appointment bookAppointment(@RequestBody Appointment appointment) throws AppointmentException {
+    public Appointment bookAppointment(@Valid @RequestBody Appointment appointment) throws AppointmentException {
         return this.appointmentService.bookAnAppointment(appointment);
     }
     @GetMapping("/{bookingId}")
@@ -38,7 +39,7 @@ public class AppointmentController {
         return this.appointmentService.getAppointmentByPatient(patientId);
     }
     @PutMapping("/vaccinationStatus")
-    public Appointment updateAppointmentStatus(@RequestBody VaccinationStatusDTO vaccinationStatusDTO)
+    public Appointment updateAppointmentStatus(@Valid @RequestBody VaccinationStatusDTO vaccinationStatusDTO)
             throws AppointmentException {
         System.out.println(vaccinationStatusDTO.getIsVaccinated() + " hari " +vaccinationStatusDTO.getAppointmentId());
         return this.appointmentService.updateAppointmentStatus(vaccinationStatusDTO);

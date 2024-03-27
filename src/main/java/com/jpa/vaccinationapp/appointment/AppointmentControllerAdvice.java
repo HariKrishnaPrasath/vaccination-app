@@ -1,5 +1,6 @@
-package com.jpa.vaccinationapp.certificate;
+package com.jpa.vaccinationapp.appointment;
 
+import com.jpa.vaccinationapp.vaccine.VaccineException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -12,12 +13,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class CertificateControllerAdvice {
-    @ExceptionHandler(value = CertificateException.class)
-    public ResponseEntity<String> adminExceptionHandler(CertificateException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
+public class AppointmentControllerAdvice {
 
+    @ExceptionHandler(value= AppointmentException.class)
+    public ResponseEntity<String> appointmentExceptionHandler(AppointmentException a){
+        return new ResponseEntity<>(a.getMessage(), HttpStatus.BAD_REQUEST);
+
+    }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String,String> handleValidExceptions(MethodArgumentNotValidException ex){

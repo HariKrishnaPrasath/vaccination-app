@@ -3,6 +3,9 @@ package com.jpa.vaccinationapp.patient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.appointment.Appointment;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,10 +18,17 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer patientId;
+    @NotBlank(message = "Email cannot be blank")
+    @Email(message = "Invalid email format")
     private String email;
+    @NotBlank(message = "Phone number cannot be blank")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Invalid phone number format")
     private String phoneNumber;
+    @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", message = "Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters")
     private String password;
     private String address;
+    @NotBlank(message = "Name cant be null, it should contain chars")
+    @Pattern(regexp = "[a-zA-Z ]{3,16}", message = "Name should contain min 3 & max 16 chars , no digits and special chars allowed.")
     private String patientName;
     @CreatedDate
     private LocalDate registrationDate;
