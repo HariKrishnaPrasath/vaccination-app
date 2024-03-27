@@ -2,6 +2,7 @@ package com.jpa.vaccinationapp.patient;
 
 import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.patient.service.PatientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,12 +20,12 @@ public class PatientController {
     }
 
     @PostMapping("patient")
-    public Patient signUp(@RequestBody Patient patient) throws PatientException {
+    public Patient signUp(@Valid @RequestBody Patient patient) throws PatientException {
         return this.patientService.createPatient(patient);
     }
 
     @PostMapping("patient/login")
-    public Patient patientLogin(@RequestBody Login login) throws PatientException {
+    public Patient patientLogin(@Valid @RequestBody Login login) throws PatientException {
         return this.patientService.logIn(login);
    }
     @GetMapping("patient/{id}")
@@ -33,7 +34,7 @@ public class PatientController {
     }
 
     @PutMapping("patient/update")
-    public Patient updatePatientInfo(@RequestBody Patient patient) throws PatientException {
+    public Patient updatePatientInfo(@Valid @RequestBody Patient patient) throws PatientException {
         return this.patientService.updatePatientInfo(patient);
     }
 

@@ -5,6 +5,7 @@ import com.jpa.vaccinationapp.appointment.Appointment;
 import com.jpa.vaccinationapp.certificate.service.CertificateService;
 import com.lowagie.text.DocumentException;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +24,12 @@ public class CertificateController {
     CertificateService certificateService;
     @PostMapping("certificate/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Certificate addCertificate(@RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
+    public Certificate addCertificate(@Valid @RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
         return this.certificateService.addCerificate(certificateDetails);
     }
     @PatchMapping("certificate/verify")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Certificate verifyCertificate(@RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
+    public Certificate verifyCertificate(@Valid @RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
         return this.certificateService.verifyAndApproveServiceByAdmin(certificateDetails);
     }
     @GetMapping("certificate/getall")
@@ -44,7 +45,7 @@ public class CertificateController {
     }
     @PutMapping("certificate/update")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Certificate updateCertificate(@RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
+    public Certificate updateCertificate(@Valid @RequestBody Certificate certificateDetails) throws AdminException, CertificateException {
         return this.certificateService.updateCertificateDetails(certificateDetails);
     }
     @GetMapping("certificate/getbyid/{id}")
