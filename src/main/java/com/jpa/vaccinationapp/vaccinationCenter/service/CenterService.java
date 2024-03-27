@@ -3,22 +3,23 @@ package com.jpa.vaccinationapp.vaccinationCenter.service;
 import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
 import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
+import com.jpa.vaccinationapp.vaccinationCenter.ResourceNotFoundException;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 
 import java.util.List;
 
 public interface CenterService {
     Center createCenter(Center newCenter) throws CenterException;
-    Center removeCenter(Integer centerID)throws CenterException;
+    Center removeCenter(Integer centerID)throws ResourceNotFoundException;
     Center updateCenter(Center center)throws CenterException;
-    Center addVaccineToCenter(Integer centerID, Vaccine newVaccine)throws CenterException;
-    Center removeVaccineFromCentre(Integer centerID, Integer vaccineId) throws CenterException;
-    List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException;
-    Center findByID(Integer centerID)throws CenterException;
-    List<Center> findByPincode(String pincode)throws CenterException;
+    Center addVaccineToCenter(Integer centerID, Vaccine newVaccine)throws CenterException,ResourceNotFoundException;
+    Center removeVaccineFromCentre(Integer centerID, Integer vaccineId) throws CenterException,ResourceNotFoundException;
+    List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException,ResourceNotFoundException;
+    Center findByID(Integer centerID)throws ResourceNotFoundException;
+    List<Center> findByPincode(String pincode)throws CenterException,ResourceNotFoundException;
     List<Center> getAllCenter();
-    Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws CenterException;
-    List<Vaccine>getAllVaccinesFromCenter(Integer centerId) throws CenterException;
+    Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws ResourceNotFoundException;
+    List<Vaccine>getAllVaccinesFromCenter(Integer centerId) throws ResourceNotFoundException;
 
     Center findByAdminId(Integer id) throws CenterException;
     Center getCenterByAdminEmail(String adminEmail) throws CenterException;

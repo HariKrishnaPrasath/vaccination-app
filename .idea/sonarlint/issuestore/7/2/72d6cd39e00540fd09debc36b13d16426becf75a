@@ -1,7 +1,15 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8³¨Ûªæ1
-c	java:S107!"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8Ü¨Ûªæ1
-b	java:S107/"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
-b	java:S107;"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
-b	java:S107G"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
-Y	java:S125¬"<This block of commented-out lines of code should be removed.(ªäÖ£8ì¨Ûªæ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8û€õç1
+c	java:S107+"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8†‘€õç1
+b	java:S1079"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8†‘€õç1
+b	java:S107E"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8†‘€õç1
+b	java:S107Q"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8†‘€õç1
+E
+java:S6396"#Remove this unnecessary quantifier.(¹Ï©Ïþÿÿÿÿ8Ü‹õç1
+^
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(¹Ï©Ïþÿÿÿÿ8Ü‹õç1
+W
+java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(¹Ï©Ïþÿÿÿÿ8Ü‹õç1
+^
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(¹Ï©Ïþÿÿÿÿ8žÜ‹õç1
+Y	java:S125¶"<This block of commented-out lines of code should be removed.(ªäÖ£8‹‘€õç1
