@@ -21,8 +21,8 @@ public class VaccineController {
         return vaccineService.createVaccine(newVaccine);
     }
     @PutMapping("vaccine/update/{vaccineId}")
-    public Vaccine updateVaccine(@PathVariable Integer vaccineId) throws VaccineException{
-        return vaccineService.updateVaccine(vaccineId);
+    public Vaccine updateVaccine(@PathVariable Integer vaccineId, @RequestBody Vaccine vaccine) throws VaccineException{
+        return vaccineService.updateVaccine(vaccineId, vaccine);
     }
     @GetMapping("vaccine/{id}")
     public Vaccine getById(@PathVariable Integer id) throws VaccineException{

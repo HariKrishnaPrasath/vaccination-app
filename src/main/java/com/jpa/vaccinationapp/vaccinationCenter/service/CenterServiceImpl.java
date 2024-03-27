@@ -56,13 +56,15 @@ public class CenterServiceImpl implements CenterService {
 
     @Override
     public Center updateCenter(Center center) throws ResourceNotFoundException {
-        Optional<Center>result= centerRepository.findById(center.getCenterId());
-        if(result.isEmpty()){
-            String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
+        Optional<Center> result = centerRepository.findById(center.getCenterId());
+        if (result.isEmpty()) {
+            String message = String.format("There is no such centre with ID: %d to update", center.getCenterId());
             throw new ResourceNotFoundException(message);
         }
-        Optional<Admin> admin = adminRepository.findById(center.getAdmin().getAdminId());
-        admin.ifPresent(center::setAdmin);
+        if (center.getAdmin()!= null) {
+            Optional<Admin> admin = adminRepository.findById(center.getAdmin().getAdminId());
+            admin.ifPresent(center::setAdmin);
+        }
         return centerRepository.save(center);
     }
 
