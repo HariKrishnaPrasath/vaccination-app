@@ -5,6 +5,8 @@ import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.slot.Slot;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,11 +17,19 @@ public class Center {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer centerId;
+    @NotBlank(message = "center name is mandatory")
+    @Pattern(regexp = "^[a-zA-Z_\\-.]{8,40}$", message = "should contain only characters(min:8 / max:40)")
     private String centerName;
     private String address;
+    @NotBlank(message = "center pincode is mandatory")
+    @Pattern(regexp = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$", message = "pincode pattern is wrong (6 digits required" +
+            "and never starts with 0)")
     private String pincode;
     private String district;
     private String state;
+    @NotBlank(message = "contact number is must for center")
+    @Pattern(regexp = "^[6-9]\\d{9}$", message = "pincode pattern is wrong (10 digits required" +
+            "and starts only with 6,7,8 & 9)")
     private String contactNumber;
     @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Vaccine> vaccineMap=new HashSet<>();

@@ -104,7 +104,7 @@ class CenterApiTest {
             //centerService.addVaccineToCenter(center.getCenterId(), vaccine2);
             center=centerService.findByID(center.getCenterId());
             System.out.println(center.getCenterId());
-            center=centerService.removeVaccineFromCentre(center.getCenterId(), vaccine);
+            center=centerService.removeVaccineFromCentre(center.getCenterId(), vaccine.getVaccineId());
             Set<Vaccine> vaccines = center.getVaccineMap();
             System.out.println(vaccines);
             Assertions.assertFalse(vaccines.contains(vaccine));
