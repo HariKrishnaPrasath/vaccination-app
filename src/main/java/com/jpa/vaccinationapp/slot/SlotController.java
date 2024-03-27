@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.slot;
 
 import com.jpa.vaccinationapp.slot.service.SlotService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +20,11 @@ public class SlotController {
     }
 
     @PostMapping("slot")
-    public Slot createSlot(@RequestBody Slot slot) throws SlotException {
+    public Slot createSlot(@Valid @RequestBody Slot slot) throws SlotException {
         return this.slotService.createSlot(slot);
     }
     @PutMapping("slot")
-    public Slot updateSlot(@RequestBody Slot slot) throws SlotException {
+    public Slot updateSlot(@Valid @RequestBody Slot slot) throws SlotException {
         return this.slotService.updateSlot(slot);
     }   
     @DeleteMapping("slot/{id}")
@@ -47,7 +48,7 @@ public class SlotController {
         return this.slotService.getSlotsByVaccinationCentre(centerId);
     }
     @PatchMapping("slot/window")
-    public Slot changeSlotWindows(@RequestBody WindowDto windowDto) throws SlotException {
+    public Slot changeSlotWindows(@Valid @RequestBody WindowDto windowDto) throws SlotException {
         return this.slotService.changeSlotAppointments(windowDto.getSlotId(),windowDto.getWindows());
     }
 }

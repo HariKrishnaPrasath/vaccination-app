@@ -3,6 +3,7 @@ package com.jpa.vaccinationapp.certificate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpa.vaccinationapp.appointment.Appointment;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -12,7 +13,9 @@ public class Certificate {
     private Integer certificateId;
     @OneToOne(mappedBy = "certificate",fetch=FetchType.EAGER, cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JsonIgnore
+    @NotNull(message = "appointment cant be null")
     private Appointment appointment;
+    @NotNull(message = "date of vaccination cant be null")
     private LocalDate dateOfVaccination;
 
     public Certificate(LocalDate dateOfVaccination, String certificateUrl, String approvedStatus) {

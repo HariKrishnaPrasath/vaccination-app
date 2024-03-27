@@ -5,6 +5,7 @@ import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
 import com.jpa.vaccinationapp.vaccinationCenter.service.CenterService;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class CenterController {
 
     // creating a center
     @PostMapping("center/create")
-    public Center createCenter(@RequestBody Center newCenter) throws CenterException {
+    public Center createCenter(@Valid @RequestBody Center newCenter) throws CenterException {
         return centerService.createCenter(newCenter);
     }
 
@@ -76,13 +77,13 @@ public class CenterController {
 
     //updating the center
     @PutMapping("center/update")
-    public Center updateCenter(@RequestBody Center center) throws CenterException {
+    public Center updateCenter(@Valid @RequestBody Center center) throws CenterException {
         return centerService.updateCenter(center);
     }
 
     //updating the address and phone of the center
     @PatchMapping("center/update/addressAndPhone")
-    public Center updateCenterAddressAndPhone(@RequestBody AddressDTO addressDTO) throws CenterException {
+    public Center updateCenterAddressAndPhone(@Valid @RequestBody AddressDTO addressDTO) throws CenterException {
         return centerService.updateCenterAddressAndPhone(addressDTO);
     }
 

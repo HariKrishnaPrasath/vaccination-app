@@ -7,6 +7,8 @@ import com.jpa.vaccinationapp.vaccinationCenter.Center;
 import com.jpa.vaccinationapp.patient.Patient;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -15,18 +17,23 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
+    @NotNull(message = "Vaccine status is required")
     private Boolean vaccineStatus;
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "SLOT_ID", nullable = false)
+    @NotNull(message = "Slot is required")
     private Slot slot;
     @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "CERTIFICATE_CERTIFICATE_ID", nullable = true)
     private Certificate certificate;
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "PATIENT_PATIENT_ID", nullable = false)
+    @NotNull(message = "Patient is required")
     private Patient patient;
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
+    @NotNull(message = "Vaccine is required")
     private Vaccine vaccine;
+    @FutureOrPresent(message = "booking cannot done on past date")
     private LocalDate bookingDate;
 
     public Appointment() {
