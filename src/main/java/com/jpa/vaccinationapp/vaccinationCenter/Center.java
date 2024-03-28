@@ -18,7 +18,7 @@ public class Center {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer centerId;
     @NotBlank(message = "center name is mandatory")
-    @Pattern(regexp = "^[a-zA-Z_\\-.]{8,40}$", message = "should contain only characters(min:8 / max:40)")
+    @Pattern(regexp = "^([^0-9]*){8,60}$", message = "should contain only characters(min:8 / max:60)")
     private String centerName;
     private String address;
     @NotBlank(message = "center pincode is mandatory")
@@ -31,7 +31,8 @@ public class Center {
     @Pattern(regexp = "^[6-9]\\d{9}$", message = "pincode pattern is wrong (10 digits required" +
             "and starts only with 6,7,8 & 9)")
     private String contactNumber;
-    @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch=FetchType.EAGER,cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+
     private Set<Vaccine> vaccineMap=new HashSet<>();
     @OneToMany(mappedBy = "center",fetch=FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnore
