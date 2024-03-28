@@ -1,19 +1,19 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8ˆ¡›Šè1
-c	java:S107,"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8•¡›Šè1
-b	java:S107:"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8•¡›Šè1
-b	java:S107F"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8•¡›Šè1
-b	java:S107R"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8•¡›Šè1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âð©Å8³¨Ûªæ1
+c	java:S107,"BConstructor has 10 parameters, which is greater than 7 authorized.( ¦¼ëûÿÿÿÿ8Ü¨Ûªæ1
+b	java:S107:"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
+b	java:S107F"AConstructor has 8 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
+b	java:S107R"AConstructor has 9 parameters, which is greater than 7 authorized.(•Ã¾àüÿÿÿÿ8Ü¨Ûªæ1
 Y
-java:S5842"<Rework this part of the regex to not match the empty string.(œÈÍ±8·¡¢è1
+java:S5842"<Rework this part of the regex to not match the empty string.(œÈÍ±8ÈÜî£è1
 Z
-java:S6353"=Use concise character class syntax '\\D' instead of '[^0-9]'.(œÈÍ±8·¡¢è1
+java:S6353"=Use concise character class syntax '\\D' instead of '[^0-9]'.(œÈÍ±8ÊÜî£è1
 E
-java:S6396"#Remove this unnecessary quantifier.(¹Ï©Ïþÿÿÿÿ8¸¡¢è1
+java:S6396"#Remove this unnecessary quantifier.(¹Ï©Ïþÿÿÿÿ8ÎÜî£è1
 ^
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(¹Ï©Ïþÿÿÿÿ8¸¡¢è1
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(¹Ï©Ïþÿÿÿÿ8ÐÜî£è1
 W
-java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(¹Ï©Ïþÿÿÿÿ8¸¡¢è1
+java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(¹Ï©Ïþÿÿÿÿ8ÒÜî£è1
 ^
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(¹Ï©Ïþÿÿÿÿ8¸¡¢è1
-Y	java:S125·"<This block of commented-out lines of code should be removed.(ªäÖ£8¡›Šè1
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(¹Ï©Ïþÿÿÿÿ8ÕÜî£è1
+Y	java:S125·"<This block of commented-out lines of code should be removed.(ªäÖ£8ì¨Ûªæ1

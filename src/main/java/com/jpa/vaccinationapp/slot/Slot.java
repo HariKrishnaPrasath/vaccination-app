@@ -37,7 +37,7 @@ public class Slot {
     private Integer availableSlots; // The number of available slots for this time period
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "CENTER_CENTER_ID", nullable = false)
-    private Center center;
+        private Center center;
 
     @OneToMany(mappedBy = "slot",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JsonIgnore

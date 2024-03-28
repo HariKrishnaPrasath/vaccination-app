@@ -14,6 +14,7 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
     @PostMapping("vaccinationapp/admin/add")
+
     @ResponseStatus(HttpStatus.CREATED)
     public Admin addAdmin(@Valid @RequestBody Admin adminDetails) throws AdminException {
         return this.adminService.addAdmin(adminDetails);
