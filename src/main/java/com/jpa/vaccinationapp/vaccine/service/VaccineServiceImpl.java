@@ -30,6 +30,7 @@ public class VaccineServiceImpl implements VaccineService{
         return vaccineRepository.save(newVaccine);
     }
 
+
     @Override
     public Vaccine updateVaccine(Integer vaccineId, Vaccine vaccine) throws VaccineException {
         Optional<Vaccine> result=vaccineRepository.findById(vaccine.getVaccineId());

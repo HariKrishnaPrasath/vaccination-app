@@ -1,2 +1,4 @@
 
-]	java:S107!"AConstructor has 8 parameters, which is greater than 7 authorized.(°êÄ£8ø«×ËŞ1
+]	java:S107+"AConstructor has 8 parameters, which is greater than 7 authorized.(°êÄ£8ø«×ËŞ1
+Y
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(ÇÃšú8Õâî£è1

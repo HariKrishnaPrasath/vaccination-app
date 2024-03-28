@@ -1,2 +1,10 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼Ğ§Æúÿÿÿÿ8 ¤§¤æ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼Ğ§Æúÿÿÿÿ8– Âå1
+´
+java:S1130,"‘Remove the declaration of thrown exception 'com.jpa.vaccinationapp.vaccinationCenter.CenterException', as it cannot be thrown from method's body.(Â¹å—ùÿÿÿÿ8ÑŸ¢è1
+¯
+java:S11309"‘Remove the declaration of thrown exception 'com.jpa.vaccinationapp.vaccinationCenter.CenterException', as it cannot be thrown from method's body.(ÊÇÑ8ÒŸ¢è1
+®
+java:S1130V"‘Remove the declaration of thrown exception 'com.jpa.vaccinationapp.vaccinationCenter.CenterException', as it cannot be thrown from method's body.(ı´ñ08”Ì¥è1
+®
+java:S1130["‘Remove the declaration of thrown exception 'com.jpa.vaccinationapp.vaccinationCenter.CenterException', as it cannot be thrown from method's body.(ˆ¢…'8”Ì¥è1

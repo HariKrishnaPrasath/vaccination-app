@@ -21,17 +21,19 @@ public class Slot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotNull(message = "date cant be null")
     private LocalDate date;
-    @NotNull
+    @NotNull(message = "Start time cannot be null")
 //    @Temporal(TemporalType.TIME)
 //    @DateTimeFormat(style = "hh:mm a")
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
     private LocalTime startTime;
-    @NotNull
+    @NotNull(message = "end time cannot be null")
 //    @Temporal(TemporalType.TIME)
 //    @DateTimeFormat(style = "hh:mm a")
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm a")
     private LocalTime endTime;
+    @NotNull(message = "Available slots count cannot be null")
     private Integer availableSlots; // The number of available slots for this time period
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "CENTER_CENTER_ID", nullable = false)

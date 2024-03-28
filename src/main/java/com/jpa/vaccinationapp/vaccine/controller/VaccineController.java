@@ -4,6 +4,7 @@ import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import com.jpa.vaccinationapp.vaccine.VaccineException;
 import com.jpa.vaccinationapp.vaccine.service.VaccineService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class VaccineController {
     private  VaccineService vaccineService;
 
     @PostMapping("vaccine/create")
-    public Vaccine createVaccine(@RequestBody Vaccine newVaccine) throws VaccineException {
+    public Vaccine createVaccine(@Valid @RequestBody Vaccine newVaccine) throws VaccineException {
         return vaccineService.createVaccine(newVaccine);
     }
     @PutMapping("vaccine/update/{vaccineId}")

@@ -2,10 +2,7 @@ package com.jpa.vaccinationapp.vaccinationCenter.service;
 
 import com.jpa.vaccinationapp.admin.Admin;
 import com.jpa.vaccinationapp.admin.AdminRepository;
-import com.jpa.vaccinationapp.vaccinationCenter.AddressDTO;
-import com.jpa.vaccinationapp.vaccinationCenter.Center;
-import com.jpa.vaccinationapp.vaccinationCenter.CenterException;
-import com.jpa.vaccinationapp.vaccinationCenter.CenterRepository;
+import com.jpa.vaccinationapp.vaccinationCenter.*;
 import com.jpa.vaccinationapp.vaccine.Vaccine;
 import com.jpa.vaccinationapp.vaccine.VaccineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,32 +44,32 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center removeCenter(Integer centerID) throws CenterException {
+    public Center removeCenter(Integer centerID) throws ResourceNotFoundException {
         Optional<Center>center= centerRepository.findById(centerID);
         if(center.isEmpty()){
             String message=String.format("There is no such centre with ID: %d to remove",centerID);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         centerRepository.delete(center.get());
         return center.get();
     }
 
     @Override
-    public Center updateCenter(Center center) throws CenterException {
-        Optional<Center>result= centerRepository.findById(center.getCenterId());
-        if(result.isEmpty()){
-            String message=String.format("There is no such centre with ID: %d to update",center.getCenterId());
-            throw new CenterException(message);
+    public Center updateCenter(Center center) throws ResourceNotFoundException {
+        Optional<Center> result = centerRepository.findById(center.getCenterId());
+        if (result.isEmpty()) {
+            String message = String.format("There is no such centre with ID: %d to update", center.getCenterId());
+            throw new ResourceNotFoundException(message);
         }
-        
-        Optional<Admin> admin = adminRepository.findById(center.getAdmin().getAdminId());
-        if (admin.isPresent())
-            center.setAdmin(admin.get());
+        if (center.getAdmin()!= null) {
+            Optional<Admin> admin = adminRepository.findById(center.getAdmin().getAdminId());
+            admin.ifPresent(center::setAdmin);
+        }
         return centerRepository.save(center);
     }
 
     @Override
-    public Center addVaccineToCenter(Integer centerID, Vaccine newVaccine) throws CenterException {
+    public Center addVaccineToCenter(Integer centerID, Vaccine newVaccine) throws CenterException,ResourceNotFoundException {
         if(newVaccine==null){
             throw new CenterException("Vaccine details can't be NULL");
         }
@@ -82,14 +79,14 @@ public class CenterServiceImpl implements CenterService {
         if(vaccineOptional.isEmpty()){
             String message=String.format("Entered Vaccine ID: %d not found. Can't assign the vaccine to the center, " +
                     "please check the vaccine details",newVaccine.getVaccineId());
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         Center center;
         if(centerOptional.isPresent()){
             center = centerOptional.get();
         }else {
             String message=String.format("There is no such centre with ID: %d to add a Vaccine", centerID);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         Set<Vaccine> vaccines = center.getVaccineMap();
         boolean vaccineExists = vaccines.stream()
@@ -103,7 +100,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center removeVaccineFromCentre(Integer centerID, Integer vaccineId) throws CenterException {
+    public Center removeVaccineFromCentre(Integer centerID, Integer vaccineId) throws CenterException,ResourceNotFoundException {
         if(vaccineId==null){
             throw new CenterException("Vaccine id can't be NULL");
         }
@@ -113,12 +110,12 @@ public class CenterServiceImpl implements CenterService {
         Optional<Center> centerOptional = centerRepository.findById(centerID);
         if(centerOptional.isEmpty()){
             String message=String.format("There is no such centre with ID: %d",centerID);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         Optional<Vaccine> vaccineOpt = this.vaccineRepository.findById(vaccineId);
         if (vaccineOpt.isEmpty()) {
             String message=String.format("There is no such vaccine with ID: %d",vaccineId);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         Vaccine vaccine = vaccineOpt.get();
         Center center = centerOptional.get();
@@ -136,7 +133,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException {
+    public List<Center> findCenterByCenterNameIsContainingIgnoreCase(String centerName) throws CenterException,ResourceNotFoundException {
         if(centerName==null){
             throw new CenterException("Cannot perform search with no centre name");
         }
@@ -150,17 +147,17 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center findByID(Integer centerID) throws CenterException {
+    public Center findByID(Integer centerID) throws ResourceNotFoundException {
         Optional<Center> center=centerRepository.findById(centerID);
         if(center.isEmpty()){
             String message=String.format("There is no such centre with ID: %d", centerID);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         return center.get();
     }
 
     @Override
-    public List<Center> findByPincode(String pincode) throws CenterException {
+    public List<Center> findByPincode(String pincode) throws CenterException,ResourceNotFoundException {
         if(pincode==null){
             throw new CenterException("Cannot perform search with no pincode");
         }
@@ -168,7 +165,7 @@ public class CenterServiceImpl implements CenterService {
         if(center.isEmpty()){
             String message=String.format("There's no such centre with the pincode: %s. " +
                     "Please check it and try again", pincode);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         return center.get();
     }
@@ -179,12 +176,12 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws CenterException {
+    public Center updateCenterAddressAndPhone(AddressDTO addressDTO) throws ResourceNotFoundException{
         Optional<Center> result=centerRepository.findById(addressDTO.getCenterId());
         if(result.isEmpty()){
             String message=String.format("There is no such centre with ID to update the address: %d",
                     addressDTO.getCenterId());
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         Center center=result.get();
         center.setAddress(addressDTO.getAddress());
@@ -196,12 +193,12 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public List<Vaccine> getAllVaccinesFromCenter(Integer centerId) throws CenterException {
+    public List<Vaccine> getAllVaccinesFromCenter(Integer centerId) throws ResourceNotFoundException {
         Optional<Center> result=centerRepository.findById(centerId);
         if(result.isEmpty()){
             String message=String.format("There is no such centre with ID to update the address: %d",
                     centerId);
-            throw new CenterException(message);
+            throw new ResourceNotFoundException(message);
         }
         Center center=result.get();
         if(center.getVaccineMap().isEmpty()){

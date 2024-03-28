@@ -1,6 +1,7 @@
 package com.jpa.vaccinationapp.admin;
 
 import com.jpa.vaccinationapp.admin.service.AdminService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,14 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
     @PostMapping("vaccinationapp/admin/add")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public Admin addAdmin(@RequestBody Admin adminDetails) throws AdminException {
+
+    @ResponseStatus(HttpStatus.CREATED)
+    public Admin addAdmin(@Valid @RequestBody Admin adminDetails) throws AdminException {
         return this.adminService.addAdmin(adminDetails);
     }
     @PutMapping("vaccinationapp/admin/update")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Admin updateAdmin(@RequestBody Admin adminDetails)throws AdminException{
+    public Admin updateAdmin(@Valid @RequestBody Admin adminDetails)throws AdminException{
         return this.adminService.updateAdminDetails(adminDetails);
     }
     @GetMapping("vaccinationapp/admin/getalladmin")
@@ -43,7 +45,7 @@ public class AdminController {
         return this.adminService.deleteAdminById(id);
     }
     @PostMapping("admin/login")
-    public Admin adminLogin(@RequestBody Login loginDetails) throws AdminException {
+    public Admin adminLogin(@Valid @RequestBody Login loginDetails) throws AdminException {
         return this.adminService.loginAdmin(loginDetails);
     }
 }
