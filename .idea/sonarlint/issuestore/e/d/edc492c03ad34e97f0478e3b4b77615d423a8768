@@ -1,7 +1,8 @@
 
 n
-java:S3655Y"LCall "result.isPresent()" or "!result.isEmpty()" before accessing the value.(õ÷ŠÇøÿÿÿÿ8ÊÓª¸İ1
+java:S3655_"LCall "result.isPresent()" or "!result.isEmpty()" before accessing the value.(õ÷ŠÇøÿÿÿÿ8ÊÓª¸İ1
+L	java:S106>"+Replace this use of System.out by a logger.(í«‚­øÿÿÿÿ8·¡¼è1
 \
-java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8ØÓª¸İ1
+java:S1128"?Remove this unused import 'com.jpa.vaccinationapp.admin.Admin'.(‚Äæ×8ïèà™è1
 Q
-java:S1128"5Remove this unused import 'net.bytebuddy.asm.Advice'.(Úë¼8ØÓª¸İ1
+java:S1128"5Remove this unused import 'net.bytebuddy.asm.Advice'.(Úë¼8ğèà™è1

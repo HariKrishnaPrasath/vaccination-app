@@ -1,5 +1,7 @@
 
 b
-java:S2095"FUse try-with-resources or close this "Document" in a "finally" clause.(µëÜJ8Ì¶îæ1
-V
-java:S1128":Remove this unused import 'java.io.ByteArrayOutputStream'.(Î‡È8™äîæ1
+java:S2095"FUse try-with-resources or close this "Document" in a "finally" clause.(®áo8¨ª è1
+Z
+java:S1854""8Remove this useless assignment to local variable "line".(ŒçÜøÿÿÿÿ8®ª è1
+K
+java:S1481"")Remove this unused "line" local variable.(ŒçÜøÿÿÿÿ8¹ª è1

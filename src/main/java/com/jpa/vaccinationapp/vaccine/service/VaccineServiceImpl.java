@@ -31,10 +31,10 @@ public class VaccineServiceImpl implements VaccineService{
     }
 
     @Override
-    public Vaccine updateVaccine(Integer vaccineId) throws VaccineException {
-        Optional<Vaccine> result=vaccineRepository.findById(vaccineId);
+    public Vaccine updateVaccine(Integer vaccineId, Vaccine vaccine) throws VaccineException {
+        Optional<Vaccine> result=vaccineRepository.findById(vaccine.getVaccineId());
         if(result.isEmpty()) throw new VaccineException("Vaccine doesn't exists!");
-        return vaccineRepository.save(result.get());//doubt
+        return vaccineRepository.save(vaccine);//doubt
     }
     @Override
     public Vaccine getById(Integer id) throws VaccineException {

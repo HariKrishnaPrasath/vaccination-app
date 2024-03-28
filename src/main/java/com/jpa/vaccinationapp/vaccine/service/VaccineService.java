@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public interface VaccineService {
     Vaccine createVaccine(Vaccine newVaccine) throws VaccineException;
-    Vaccine updateVaccine(Integer vaccineId) throws VaccineException;
+    Vaccine updateVaccine(Integer vaccineId, Vaccine vaccine) throws VaccineException;
     Vaccine getById(Integer id) throws VaccineException;
     List<Vaccine> getByName(String vaccineName) throws VaccineException;
     List<Vaccine> deleteExpiredVaccines() throws VaccineException;

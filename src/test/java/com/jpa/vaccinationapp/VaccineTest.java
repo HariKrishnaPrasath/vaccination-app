@@ -57,7 +57,7 @@ public class VaccineTest {
 
         try {
             // Attempt to update the vaccine
-            Vaccine updatedVaccine = vaccineService.updateVaccine(vaccineId);
+            Vaccine updatedVaccine = vaccineService.updateVaccine(vaccineId, new Vaccine());
 
             Assertions.assertEquals(vaccineToUpdate.getVaccineId(),updatedVaccine.getVaccineId());
 
